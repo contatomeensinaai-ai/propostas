@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Implementation Proposal · Cooper &amp; Hunter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg-card: #11111a; --bg-elevated: #16161f; --border: #1f1f2e;
+    --text: #f5f5f7; --text-dim: #a1a1aa; --text-faded: #71717a;
+    --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.12); --accent-line: rgba(245, 158, 11, 0.3);
+    --danger: #ef4444; --success: #22c55e; --blue: #3b82f6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-weight: 400; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.15; }
+
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0 60px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), linear-gradient(180deg, #0a0a0f 0%, #050507 100%); z-index: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; }
+  .hero-content { position: relative; z-index: 2; width: 100%; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent); padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 32px; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent); }
+  .hero h1 { font-size: clamp(40px, 6vw, 76px); font-weight: 800; margin-bottom: 24px; line-height: 1.05; }
+  .hero h1 .highlight { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 20px; color: var(--text-dim); max-width: 760px; margin-bottom: 48px; line-height: 1.5; }
+  .hero-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; max-width: 860px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .hero-meta-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faded); margin-bottom: 8px; }
+  .hero-meta-item .value { font-size: 18px; font-weight: 600; color: var(--text); font-family: 'Space Grotesk', sans-serif; }
+
+  section { padding: 100px 0; position: relative; }
+  .section-label { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .section-label::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .section-title { font-size: clamp(32px, 4vw, 52px); font-weight: 700; margin-bottom: 24px; max-width: 860px; }
+  .section-sub { font-size: 18px; color: var(--text-dim); max-width: 800px; margin-bottom: 56px; line-height: 1.6; }
+
+  .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .diag-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.3s ease; }
+  .diag-card:hover { border-color: var(--accent-line); transform: translateY(-4px); }
+  .diag-num { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.1em; }
+  .diag-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+  .diag-card p { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
+
+  .sol-bg { background: linear-gradient(180deg, #050507 0%, #0a0a0f 100%); }
+  .sol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .sol-card { background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; }
+  .sol-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; }
+  .sol-card:hover::before { opacity: 1; }
+  .sol-num { font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 16px; opacity: 0.9; }
+  .sol-card h3 { font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+  .sol-card p { color: var(--text-dim); font-size: 15px; margin-bottom: 20px; }
+  .sol-list { list-style: none; padding: 0; }
+  .sol-list li { padding: 10px 0; padding-left: 24px; position: relative; color: var(--text-dim); font-size: 14px; border-bottom: 1px solid var(--border); }
+  .sol-list li:last-child { border-bottom: none; }
+  .sol-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  .callout { background: linear-gradient(135deg, var(--accent-soft), transparent); border: 1px solid var(--accent-line); border-radius: 20px; padding: 40px; margin-top: 32px; }
+  .callout h3 { font-size: 22px; margin-bottom: 14px; }
+  .callout p { color: var(--text-dim); font-size: 16px; max-width: 860px; }
+
+  .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 40px; }
+  .month-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; position: relative; }
+  .month-card.highlight { background: linear-gradient(145deg, var(--accent-soft), transparent); border-color: var(--accent-line); }
+  .month-card .month-num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 12px; }
+  .month-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+  .month-card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .deliv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .deliv-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; }
+  .deliv-icon { width: 48px; height: 48px; background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 22px; }
+  .deliv-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+  .deliv-card p { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
+
+  .invest-section { background: linear-gradient(135deg, #0a0a0f 0%, #16110a 100%); border-top: 1px solid var(--accent-line); border-bottom: 1px solid var(--accent-line); }
+  .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .invest-main { background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated)); border: 1px solid var(--accent-line); border-radius: 24px; padding: 56px 48px; text-align: center; position: relative; overflow: hidden; }
+  .invest-main::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%); }
+  .invest-main-content { position: relative; z-index: 1; }
+  .invest-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .invest-value { font-family: 'Space Grotesk', sans-serif; font-size: 80px; font-weight: 700; line-height: 1; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .invest-period { font-size: 18px; color: var(--text-dim); margin-bottom: 32px; }
+  .invest-split { padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 14px; }
+  .invest-split strong { color: var(--text); }
+  .invest-details h3 { font-size: 28px; font-weight: 600; margin-bottom: 24px; }
+  .invest-details ul { list-style: none; padding: 0; }
+  .invest-details li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; color: var(--text-dim); font-size: 15px; }
+  .invest-details li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  .terms { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-top: 40px; }
+  .terms h3 { font-size: 20px; margin-bottom: 20px; }
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .terms-item .label { font-size: 12px; color: var(--text-faded); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .terms-item .value { font-size: 15px; color: var(--text); font-weight: 500; }
+
+  .cta-section { text-align: center; padding: 120px 0; background: radial-gradient(circle at 50% 50%, var(--accent-soft) 0%, transparent 60%), var(--bg); }
+  .cta-section h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; margin-bottom: 24px; max-width: 820px; margin-left: auto; margin-right: auto; }
+  .cta-section p { font-size: 19px; color: var(--text-dim); max-width: 680px; margin: 0 auto 28px; }
+  .validity { display: inline-flex; align-items: center; gap: 10px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent); padding: 12px 24px; border-radius: 100px; font-size: 15px; font-weight: 600; margin-bottom: 40px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 100px; font-weight: 600; font-size: 16px; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+  .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-secondary:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+
+  footer { padding: 48px 0 32px; border-top: 1px solid var(--border); text-align: center; color: var(--text-faded); font-size: 14px; }
+  footer strong { color: var(--text-dim); }
+
+  .image-banner { width: 100%; height: 380px; background-size: cover; background-position: center; position: relative; }
+  .image-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,15,0.4) 0%, rgba(10,10,15,1) 100%); }
+
+  @media (max-width: 860px) {
+    .container { padding: 0 20px; }
+    section { padding: 64px 0; }
+    .sol-grid { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: repeat(2, 1fr); }
+    .deliv-grid { grid-template-columns: 1fr; }
+    .invest-grid { grid-template-columns: 1fr; gap: 32px; }
+    .invest-value { font-size: 60px; }
+    .invest-main { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-tag">Implementation Proposal · Confidential</div>
+    <h1>
+      Put <span class="highlight">Cooper &amp; Hunter</span><br />
+      on top of the HVAC market<br />
+      with artificial intelligence.
+    </h1>
+    <p class="hero-sub">
+      The plan is to build, inside Cooper &amp; Hunter, an AI structure that does three things at once: it sees the market (permits, competition and influence), it protects and strengthens the brand's reputation, and it makes the company found and recommended, both in search and by the AIs. Everything running on its own, in routines, inside Cooper &amp; Hunter's own structure.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Prepared for</div>
+        <div class="value">Jake Neto</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Company</div>
+        <div class="value">Cooper &amp; Hunter</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Timeline</div>
+        <div class="value">30 days</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Investment</div>
+        <div class="value">$8,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSIS -->
+<section>
+  <div class="container">
+    <div class="section-label">The Diagnosis</div>
+    <h2 class="section-title">Cooper &amp; Hunter has product and brand, but it's blind to the market and weak where the decision happens today.</h2>
+    <p class="section-sub">
+      The HVAC market in the United States is large, fragmented and data-driven: who's building, who's renovating, who complains, who influences, and what artificial intelligence answers when someone asks about air conditioning. Today Cooper &amp; Hunter has neither eyes nor hands on these fronts.
+    </p>
+
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-num">01</div>
+        <h3>Invisible opportunity</h3>
+        <p>Building permits reveal who will need HVAC before the competitor finds out. Without capturing this data by location, the company only reacts, it never anticipates.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">02</div>
+        <h3>Unmonitored competition</h3>
+        <p>What HVAC companies do on Google Business and Instagram (reviews, posts, offers) is open information, but nobody is reading it systematically.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">03</div>
+        <h3>Influence off the radar</h3>
+        <p>There are influencers and content creators moving the HVAC market. Cooper &amp; Hunter has no map of who they are, what they say, and who is worth a partnership.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">04</div>
+        <h3>Reputation in the dark</h3>
+        <p>Complaints and mentions on forums and online communities shape the opinion of whoever is researching. Without monitoring, the brand finds out about the problem too late, once it has already become a narrative.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">05</div>
+        <h3>Poorly positioned in AI</h3>
+        <p>When someone asks ChatGPT, Gemini or Perplexity about HVAC, Cooper &amp; Hunter shows up poorly or doesn't show up at all. This is the new recommendation counter, and the brand is out of it.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">06</div>
+        <h3>Everything manual and disconnected</h3>
+        <p>Even what's done today depends on someone stopping to do it. Nothing runs on its own, nothing connects, and the data collected doesn't turn into a decision or an automatic action.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER 1 -->
+<div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=2000&q=80');"></div>
+
+<!-- THE PROPOSAL -->
+<section class="sol-bg">
+  <div class="container">
+    <div class="section-label">The Proposal</div>
+    <h2 class="section-title">An AI structure with eyes on the market, a shield on reputation and presence where the decision happens.</h2>
+    <p class="section-sub">
+      Everything built inside Cooper &amp; Hunter, with Cooper &amp; Hunter's brand, on Cooper &amp; Hunter's infrastructure. The structure runs outside the AI model, which makes it portable: if tomorrow it makes sense to switch the intelligence engine, you switch without rebuilding anything. At the end, the company runs the ecosystem without depending on the outside.
+    </p>
+
+    <div class="sol-grid">
+      <div class="sol-card">
+        <div class="sol-num">01</div>
+        <h3>Agent ecosystem and AI CEO</h3>
+        <p>The core of the project: the complete Claude Code agent structure, with an AI CEO orchestrating departments. It's the brain that coordinates all the fronts below.</p>
+        <ul class="sol-list">
+          <li>AI CEO plus agents by area</li>
+          <li>Cooper &amp; Hunter knowledge base interconnected</li>
+          <li>Security agent scanning for exposed keys and APIs</li>
+          <li>Operated directly in Claude Code, in natural language</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-num">02</div>
+        <h3>Intelligence portal on Vercel</h3>
+        <p>A dedicated portal where all collected data becomes dashboards, lists and alerts. It's the single screen where Cooper &amp; Hunter sees market, competition and reputation.</p>
+        <ul class="sol-list">
+          <li>Portal hosted on Vercel (Cooper &amp; Hunter account)</li>
+          <li>Repository on GitHub (Cooper &amp; Hunter account)</li>
+          <li>Database on Supabase (Cooper &amp; Hunter account)</li>
+          <li>Dashboards for opportunity, competition and reputation</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-num">03</div>
+        <h3>Permit intelligence by location</h3>
+        <p>Capture of building permits in the chosen areas, revealing construction and renovation that will demand HVAC. It starts with the priority locations and grows on demand.</p>
+        <ul class="sol-list">
+          <li>Capture by location, respecting each one's rules</li>
+          <li>Initial areas defined at kickoff</li>
+          <li>New locations added as needed</li>
+          <li>Opportunities landing straight in the portal</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-num">04</div>
+        <h3>Google Business and Instagram radar</h3>
+        <p>Systematic reading of HVAC companies on Google Business and Instagram, plus the map of influencers and content creators in the niche.</p>
+        <ul class="sol-list">
+          <li>Monitoring of HVAC companies on Google Business</li>
+          <li>Collection of company profiles on Instagram</li>
+          <li>Map of HVAC market influencers</li>
+          <li>Map of who creates articles and content in the sector</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-num">05</div>
+        <h3>Visibility in search and AI (GEO)</h3>
+        <p>Make Cooper &amp; Hunter found and recommended when someone asks ChatGPT, Gemini or Perplexity about HVAC, and improve presence in search.</p>
+        <ul class="sol-list">
+          <li>Diagnosis of how the brand shows up in the AIs today</li>
+          <li>Actions to get cited and recommended in the answers</li>
+          <li>Strengthening of presence and authority</li>
+          <li>Tracking of the evolution over time</li>
+        </ul>
+      </div>
+
+      <div class="sol-card" style="grid-column: 1 / -1;">
+        <div class="sol-num">06</div>
+        <h3>Everything running on its own, in routines on Claude Desktop</h3>
+        <p>What ties the whole project together: the fronts above don't depend on someone pressing a button. They become routines that run on their own on Claude Desktop, collect data, update the portal and alert the team. And any adjustment or new location is requested in natural language, straight in Claude Code, and the agents incorporate it.</p>
+        <ul class="sol-list">
+          <li>Automatic collection and update routines</li>
+          <li>Opportunity and reputation alerts for the team</li>
+          <li>New areas and adjustments requested in natural language in Claude Code</li>
+          <li>A structure that grows without needing a rebuild</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>Important: the scraper grows by location, not all at once</h3>
+      <p>
+        You can't sweep the entire United States at once, because each location has different rules from the next for access to permits and public data. The right path, and what's in this proposal, is to choose the priority locations at the start and add others as the business needs them. Each new area is incorporated by the agents from a simple request in Claude Code. The structure is born ready to grow.
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top:24px; border-style:dashed;">
+      <h3>Complementary stage · Reputation on forums and communities (ready in 30 days)</h3>
+      <p>
+        The reputation work comes as a complementary stage, ready in 30 days: monitoring of brand mentions and complaints on forums and online communities, with real-time alerts, authentic and managed presence (real responses and useful content) and press release support. Reputation built sustainably, with no risk of platform penalties.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER 2 -->
+<div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1635348729202-faf66de78c0e?auto=format&fit=crop&w=2000&q=80');"></div>
+
+<!-- TIMELINE -->
+<section>
+  <div class="container">
+    <div class="section-label">The Timeline</div>
+    <h2 class="section-title">Thirty days, from foundation to the ecosystem running on its own.</h2>
+    <p class="section-sub">
+      The project is a single implementation phase. It starts with the base and the infrastructure, opens the intelligence fronts, activates reputation and visibility, and ends with everything integrated into routines and the team operating.
+    </p>
+
+    <div class="roadmap">
+      <div class="month-card highlight">
+        <div class="month-num">DAYS 1 TO 7</div>
+        <h4>Foundation and infra</h4>
+        <p>Agent ecosystem and AI CEO. Portal on Vercel, GitHub and Supabase in Cooper &amp; Hunter's account. Definition of the initial locations.</p>
+      </div>
+      <div class="month-card">
+        <div class="month-num">DAYS 8 TO 15</div>
+        <h4>Intelligence</h4>
+        <p>Permits for the initial areas, Google Business and Instagram radar, map of influencers and creators, all feeding the portal.</p>
+      </div>
+      <div class="month-card">
+        <div class="month-num">DAYS 16 TO 22</div>
+        <h4>AI visibility</h4>
+        <p>Diagnosis and actions for visibility in search and in the AIs (GEO), so the brand is found and recommended in the answers.</p>
+      </div>
+      <div class="month-card highlight">
+        <div class="month-num">DAYS 23 TO 27</div>
+        <h4>Routines and integration</h4>
+        <p>Everything tied into automatic routines on Claude Desktop, collecting and alerting on its own. Testing and fine-tuning.</p>
+      </div>
+      <div class="month-card">
+        <div class="month-num">DAYS 28 TO 30</div>
+        <h4>Handoff</h4>
+        <p>Handover to the team, training on how to request new areas and adjustments in Claude Code, and final delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY MODEL -->
+<section class="sol-bg">
+  <div class="container">
+    <div class="section-label">Delivery Model</div>
+    <h2 class="section-title">Full implementation, with the structure 100% in Cooper &amp; Hunter's account.</h2>
+
+    <div class="deliv-grid">
+      <div class="deliv-card">
+        <div class="deliv-icon">⚡</div>
+        <h3>Implementation and follow-up</h3>
+        <p>Execution of the fronts in parallel, with follow-up throughout the 30 days. At the end, support to clear up questions and adjust whatever is needed with the team.</p>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-icon">🔒</div>
+        <h3>Cooper &amp; Hunter's infra and security</h3>
+        <p>Vercel, GitHub and Supabase in the company's account. All infrastructure, data and credentials stay with Cooper &amp; Hunter. Continuous scanning for exposed keys and APIs.</p>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-icon">🔁</div>
+        <h3>Portable and built to grow</h3>
+        <p>Runs outside the AI model, portable across engines. New locations and fronts are added on demand in Claude Code, without rebuilding anything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="invest-section">
+  <div class="container">
+    <div class="section-label">Investment</div>
+    <h2 class="section-title">Single, fixed-scope project, with split payment.</h2>
+
+    <div class="invest-grid">
+      <div class="invest-main">
+        <div class="invest-main-content">
+          <div class="invest-label">Total investment</div>
+          <div class="invest-value">$8,000</div>
+          <div class="invest-period">single project · 30 days</div>
+          <div class="invest-split">
+            <strong>50%</strong> on signing · <strong>50%</strong> ten days before final delivery<br />
+            Payment via <strong>Stripe</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="invest-details">
+        <h3>What's included</h3>
+        <ul>
+          <li>Complete Claude Code agent ecosystem and AI CEO</li>
+          <li>Intelligence portal on Vercel, with GitHub and Supabase</li>
+          <li>Permit intelligence in the initial locations</li>
+          <li>Google Business, Instagram, influencer and creator radar</li>
+          <li>Visibility in search and in the AIs (GEO)</li>
+          <li>Everything in automatic routines on Claude Desktop</li>
+          <li>Complementary reputation stage on forums and communities, ready in 30 days</li>
+          <li>Training and full handoff at the end of the 30 days</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="terms">
+      <h3>Commercial Terms</h3>
+      <div class="terms-grid">
+        <div class="terms-item">
+          <div class="label">Investment</div>
+          <div class="value">$8,000, single project</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Payment</div>
+          <div class="value">50% on signing and 50% ten days before final delivery</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Payment method</div>
+          <div class="value">Stripe</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Delivery timeline</div>
+          <div class="value">30 days</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Complementary reputation stage</div>
+          <div class="value">Ready in 30 days, on forums and communities</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Location coverage</div>
+          <div class="value">Initial areas at kickoff, new ones added on demand</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Infrastructure</div>
+          <div class="value">100% in Cooper &amp; Hunter's account, no external dependency</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Tools and subscriptions</div>
+          <div class="value">AI environment, Vercel, GitHub, Supabase and APIs on Cooper &amp; Hunter's account, with an estimate at kickoff</div>
+        </div>
+        <div class="terms-item">
+          <div class="label">Proposal validity</div>
+          <div class="value">10 days from sending</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label">Next Step</div>
+    <h2>Ready to give Cooper &amp; Hunter eyes, a shield and presence.</h2>
+    <p>
+      If this makes sense, the next conversation is the final alignment: definition of the initial locations, infrastructure access and start schedule. From the go-ahead, we formalize the agreement and the project begins.
+    </p>
+    <div class="validity">⏳ This proposal is valid for 10 days from sending</div>
+    <div class="cta-buttons">
+      <a href="https://wa.me/14076903219?text=F%C3%A1bio%2C%20I%20read%20the%20Cooper%20%26%20Hunter%20proposal%20and%20I%27d%20like%20to%20talk%20about%20the%20next%20steps." target="_blank" rel="noopener" class="btn btn-secondary">Talk about the proposal</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Proposal prepared by <strong>Fábio Borges</strong> · Me Ensina AI · June 2026</p>
+    <p style="margin-top: 8px; font-size: 12px;">Confidential document, prepared for Cooper &amp; Hunter. Valid for 10 days from sending.</p>
+  </div>
+</footer>
+
+</body>
+</html>
