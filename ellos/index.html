@@ -26,7 +26,7 @@
   .hero-content { position: relative; z-index: 2; width: 100%; }
   .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent); padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 32px; }
   .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent); }
-  .hero h1 { font-size: clamp(40px, 6vw, 76px); font-weight: 800; margin-bottom: 24px; line-height: 1.05; }
+  .hero h1 { font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; margin-bottom: 24px; line-height: 1.12; text-wrap: balance; }
   .hero h1 .highlight { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero-sub { font-size: 20px; color: var(--text-dim); max-width: 760px; margin-bottom: 48px; line-height: 1.5; }
   .hero-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; max-width: 860px; padding-top: 40px; border-top: 1px solid var(--border); }
@@ -138,9 +138,8 @@
   <div class="container hero-content">
     <div class="hero-tag">Proposta de Implementação · Confidencial</div>
     <h1>
-      Tirar a <span class="highlight">Ellos</span> do<br />
-      operacional manual e montar a<br />
-      máquina de gestão e captação.
+      Tirar a <span class="highlight">Ellos</span> do operacional manual<br />
+      e montar gestão e captação com IA.
     </h1>
     <p class="hero-sub">
       Uma fase única que resolve o que mais pesa hoje: o financeiro manual e concentrado em uma pessoa, e a falta de uma estrutura de marketing que meça de verdade o caminho do cliente. Tudo construído dentro da Ellos, rodando com inteligência artificial, começando pela dor mais urgente e entregue em ondas, pra você sentir valor desde as primeiras semanas.
