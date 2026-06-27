@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Your AI Company Plan — Ruthy Kislinger</title>
+<meta name="description" content="A complete AI company: more than 70 agents organized into entire departments, the agents built for your mortgage workflow, and the engine that creates new agents whenever you need them." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --gold:#facc15;
+    --gold-soft:#fde68a;
+    --orange:#f97316;
+    --text:#f5f5f4;
+    --muted:#a3a3a3;
+    --muted-2:#737373;
+    --line:rgba(255,255,255,0.08);
+    --card:rgba(255,255,255,0.035);
+    --card-hover:rgba(255,255,255,0.06);
+    --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --body:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 600px at 12% -5%, rgba(250,204,21,0.10), transparent 60%),radial-gradient(800px 700px at 95% 8%, rgba(249,115,22,0.08), transparent 55%),radial-gradient(900px 900px at 50% 110%, rgba(250,204,21,0.05), transparent 60%);pointer-events:none;}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 80%);-webkit-mask-image:radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 80%);pointer-events:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  header.hero{position:relative;padding:120px 0 80px;text-align:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-soft);background:rgba(250,204,21,0.07);border:1px solid rgba(250,204,21,0.22);padding:9px 18px;border-radius:100px;margin-bottom:34px;backdrop-filter:blur(8px);}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+  h1.hero-title{font-family:var(--display);font-weight:700;font-size:clamp(38px,7vw,72px);line-height:1.04;letter-spacing:-0.03em;margin-bottom:28px;}
+  h1.hero-title .grad{background:linear-gradient(120deg,var(--gold) 0%,var(--gold-soft) 45%,var(--orange) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  h1.hero-title .who{display:block;font-size:clamp(20px,3.4vw,30px);font-weight:500;color:var(--muted);margin-top:18px;letter-spacing:-0.01em;}
+  .hero-lead{max-width:780px;margin:0 auto;font-size:clamp(18px,2.3vw,21px);color:var(--text);font-weight:500;letter-spacing:-0.01em;}
+  .hero-lead strong{color:var(--gold-soft);font-weight:700;}
+  .hero-cta-row{margin-top:44px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:15.5px;letter-spacing:0.01em;padding:16px 30px;border-radius:14px;text-decoration:none;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;}
+  .btn-primary{color:#1a1205;background:linear-gradient(120deg,var(--gold),var(--orange));box-shadow:0 10px 40px -8px rgba(250,204,21,0.5);}
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 50px -6px rgba(250,204,21,0.65);}
+  .btn-ghost{color:var(--text);background:var(--card);border:1px solid var(--line);backdrop-filter:blur(8px);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--card-hover);}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 18px;backdrop-filter:blur(12px);transition:transform .25s ease, border-color .25s ease;}
+  .stat:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.3);}
+  .stat .num{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.2vw,42px);line-height:1;letter-spacing:-0.03em;background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .stat .lbl{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.4;font-weight:500;}
+  section{padding:64px 0;position:relative;}
+  .section-tag{font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .section-tag::before{content:"";width:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--orange));}
+  h2.section-title{font-family:var(--display);font-weight:700;font-size:clamp(27px,4.2vw,40px);letter-spacing:-0.03em;line-height:1.12;margin-bottom:22px;}
+  .prose p{margin-bottom:18px;color:var(--muted);}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--text);font-weight:700;}
+  .prose .accent{color:var(--gold-soft);}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);border:0;margin:0;}
+  .lead-callout{background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.18);border-radius:20px;padding:34px 36px;font-size:clamp(18px,2.2vw,20px);line-height:1.6;color:var(--text);font-weight:500;letter-spacing:-0.01em;}
+  .layers{display:grid;gap:18px;margin-top:34px;}
+  .layer{display:flex;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 30px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease,background .25s ease;}
+  .layer:hover{transform:translateX(4px);border-color:rgba(250,204,21,0.28);background:var(--card-hover);}
+  .layer .idx{flex-shrink:0;font-family:var(--display);font-weight:700;font-size:22px;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:14px;color:var(--gold);background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.2);}
+  .layer .body strong{display:block;color:var(--text);font-weight:700;margin-bottom:5px;font-size:18px;}
+  .layer .body span{color:var(--muted);font-size:15.5px;}
+  .group-label{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:0.02em;color:var(--gold-soft);text-transform:uppercase;margin:42px 0 20px;display:flex;align-items:center;gap:12px;}
+  .group-label::after{content:"";flex:1;height:1px;background:var(--line);}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease,background .25s ease;position:relative;overflow:hidden;}
+  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 100% 0%,rgba(250,204,21,0.07),transparent 70%);opacity:0;transition:opacity .3s ease;}
+  .card:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.28);background:var(--card-hover);}
+  .card:hover::before{opacity:1;}
+  .card h3{font-family:var(--display);font-weight:700;font-size:18.5px;letter-spacing:-0.01em;margin-bottom:10px;color:var(--text);position:relative;}
+  .card .badge{display:inline-block;font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:0.04em;color:var(--gold);background:rgba(250,204,21,0.09);border:1px solid rgba(250,204,21,0.22);border-radius:100px;padding:4px 12px;margin-bottom:14px;}
+  .card p{color:var(--muted);font-size:15px;line-height:1.6;position:relative;}
+  .steps{display:grid;gap:14px;}
+  .step{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease;}
+  .step:hover{transform:translateX(4px);border-color:rgba(250,204,21,0.25);}
+  .step .n{flex-shrink:0;font-family:var(--display);font-weight:700;color:var(--orange);font-size:15px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);}
+  .step .txt span{color:var(--muted);font-size:15.5px;display:block;}
+  .step .txt span strong{color:var(--text);font-weight:700;}
+  .flist{display:grid;gap:14px;}
+  .fitem{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;transition:border-color .25s ease,background .25s ease;}
+  .fitem:hover{border-color:rgba(250,204,21,0.22);background:var(--card-hover);}
+  .fitem .ic{flex-shrink:0;margin-top:2px;width:22px;height:22px;color:var(--gold);}
+  .fitem .c strong{color:var(--text);font-weight:700;}
+  .fitem .c{color:var(--muted);font-size:15.5px;}
+  .note{margin-top:26px;padding:24px 28px;border-radius:16px;background:rgba(255,255,255,0.025);border:1px solid var(--line);border-left:3px solid var(--orange);color:var(--muted);font-size:15.5px;line-height:1.65;}
+  .final-cta{text-align:center;padding:90px 0 40px;}
+  .final-cta h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,46px);letter-spacing:-0.03em;line-height:1.1;margin-bottom:22px;}
+  .final-cta h2 .grad{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .final-cta p{max-width:580px;margin:0 auto 36px;color:var(--muted);font-size:18px;}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px;text-align:center;}
+  .brand{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;}
+  .brand .ai{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  footer .tag{margin-top:10px;color:var(--muted-2);font-size:14px;}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (max-width:760px){
+    body{font-size:16px;}
+    header.hero{padding:88px 0 56px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .cards{grid-template-columns:1fr;}
+    .layer{flex-direction:column;gap:14px;}
+    section{padding:52px 0;}
+    .lead-callout{padding:26px 24px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="dot"></span>Your AI Company Plan</div>
+    <h1 class="hero-title reveal">
+      <span class="grad">Your AI Company Plan</span>
+      <span class="who">Ruthy Kislinger</span>
+    </h1>
+    <p class="hero-lead reveal">
+      You are not getting a tool, nor a few scattered assistants. You are getting a complete AI company: <strong>more than 70 agents</strong> organized into entire departments, plus the agents built specifically for your mortgage workflow, plus the engine that creates new agents whenever you need them.
+    </p>
+    <div class="hero-cta-row reveal">
+      <a href="#departments" class="btn btn-primary">Explore the structure</a>
+      <a href="#timeline" class="btn btn-ghost">See the timeline</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="num">70+</div><div class="lbl">agents ready on day one</div></div>
+      <div class="stat reveal"><div class="num">~11</div><div class="lbl">Paid Traffic agents (Meta Ads)</div></div>
+      <div class="stat reveal"><div class="num">~19</div><div class="lbl">SEO agents</div></div>
+      <div class="stat reveal"><div class="num">30</div><div class="lbl">days to go live</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="what-it-is">
+  <div class="wrap">
+    <div class="section-tag reveal">01 · First things first</div>
+    <h2 class="section-title reveal">What this really is</h2>
+    <div class="prose reveal">
+      <p>Ruthy, it is important to start with what is at stake, because most people who hear "AI agents" picture a little bot that replies to messages. That is not it.</p>
+      <p>What you get is a structure that works like an entire company operating right alongside you. There is a CEO that coordinates everything. There are department heads. There is a marketing department, a paid traffic department, an SEO department, a content department, a copy department, a sales department, a finance department, a brand and design department, a security department. Each department has specialized agents inside it, the same way a large agency would have specialists in every seat.</p>
+      <p>Adding it all up, that is <strong class="accent">more than 70 agents ready on day one</strong>. And above them, the agents specific to your mortgage business, designed for your workflow of lead capture, document organization, and client follow up.</p>
+      <p>That changes the conversation. You are not hiring a piece of software. You are building an operation.</p>
+    </div>
+  </div>
+</section>
+
+<section id="big-picture">
+  <div class="wrap">
+    <div class="section-tag reveal">02 · The big picture</div>
+    <h2 class="section-title reveal">Three layers that fit together</h2>
+    <div class="prose reveal">
+      <p>Think about where you are today. You told me you do not post on social media because you do not have the structure to handle more leads. That you work almost one hundred percent on referrals, and that you know depending only on referrals is fragile. That you have webinar material saved away and want to build a real funnel.</p>
+      <p>All of that is a structure problem. And structure is exactly what is missing when you work alone or with a lean team. Your AI company solves this in three layers that fit together:</p>
+    </div>
+    <div class="layers">
+      <div class="layer reveal">
+        <div class="idx">1</div>
+        <div class="body">
+          <strong>The departments that come ready out of the box.</strong>
+          <span>The lead capture, marketing, sales, finance, and security machine that a mature operation would have, and that you do not have today.</span>
+        </div>
+      </div>
+      <div class="layer reveal">
+        <div class="idx">2</div>
+        <div class="body">
+          <strong>Your niche agents.</strong>
+          <span>The specific mortgage team, built for your workflow, from the first contact on WhatsApp all the way through follow up.</span>
+        </div>
+      </div>
+      <div class="layer reveal">
+        <div class="idx">3</div>
+        <div class="body">
+          <strong>The engine that multiplies.</strong>
+          <span>The Architect, which creates new agents, departments, and workflows on demand, in Portuguese, as your business grows.</span>
+        </div>
+      </div>
+    </div>
+    <div class="prose reveal" style="margin-top:30px;">
+      <p>You are not locked into what we deliver. You become the owner of a structure that evolves with you.</p>
+    </div>
+  </div>
+</section>
+
+<section id="departments">
+  <div class="wrap">
+    <div class="section-tag reveal">03 · The departments that come ready</div>
+    <h2 class="section-title reveal">The part that usually surprises people</h2>
+    <div class="prose reveal">
+      <p>I will group it by department so you can see the scale. I am not going to list all 70 plus agents one by one, because what matters is what each department does for your business.</p>
+    </div>
+    <div class="group-label reveal">The lead capture machine</div>
+    <div class="prose reveal" style="margin-bottom:24px;">
+      <p>These five departments together are, in practice, the client acquisition structure you do not have today. They are the reason you will be able to stop depending only on referrals.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <span class="badge">around 11 agents</span>
+        <h3>Paid Traffic (Meta Ads)</h3>
+        <p>A campaign strategist, a creative director, an audience architect, a pixel and tracking agent, an optimizer, a competitor spy, a campaign builder, a results analyst, and a knowledge curator. And above them, the Traffic Masters squad, which distills the greatest paid traffic references in the world into agents that guide the strategy. This is the department that turns your webinar material into ads that run on Facebook and Instagram and bring in new clients predictably.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Google Ads and Google Business Profile</h3>
+        <p>Capturing demand at the exact moment someone searches for mortgage on Google, plus optimizing your local presence on Maps. When someone searches for you or for your service in your area, you show up well positioned.</p>
+      </div>
+      <div class="card reveal">
+        <span class="badge">around 19 agents</span>
+        <h3>SEO, your organic presence</h3>
+        <p>Technical, local, content, schema, GEO (the new optimization for showing up inside AIs like ChatGPT), e-commerce, backlinks, maps, performance, sitemap. This department makes your business appear on Google and inside AIs without paying per click. It is the opposite of referrals: it works for you twenty four hours a day, even when you are not posting.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Content and Social Media</h3>
+        <p>A social media strategist, video and Reels creators, a carousel specialist, a newsletter and Substack agent, trend monitoring on Instagram and Twitter. Remember that you do not post because you lack the structure? This is the department that produces and organizes the content, turning your knowledge into a constant presence without consuming your day.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Copywriting (Copy Squad)</h3>
+        <p>The greatest copywriters in the world distilled into agents. This is writing that sells, applied to your ads, your pages, your emails. The difference between an ad that goes unnoticed and one that makes a person stop and ask to talk to you lives here.</p>
+      </div>
+    </div>
+    <div class="note reveal">Putting these five departments together: you go from fragile lead capture, based only on who refers you, to a machine that attracts, qualifies, and nurtures leads every day. That is the turning point.</div>
+    <div class="group-label reveal">The departments that sustain the operation</div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Sales and CRM</h3>
+        <p>Lead qualification, discovery, funnel architect, proposal generation, outbound prospecting, and CRM management. This is the team that takes the lead the capture machine brought in and guides it through to closing, with nothing falling through the cracks.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Finance</h3>
+        <p>A CFO that handles revenue, margin, and projections, and a contracts agent. So you can see your business through numbers, not through gut feeling.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Brand and Design</h3>
+        <p>The Brand Squad handles positioning and identity, and the Design Squad handles the interfaces and visual assets. So that everything that goes out with your name looks professional.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Advisory Board</h3>
+        <p>Strategic mentors to support you in the big decisions, the kind that change the direction of the business.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Hormozi Squad</h3>
+        <p>Specialized in irresistible offers, pricing, lead generation, and scaling. When the time comes to package and grow your offer, this is the team for it.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Security</h3>
+        <p>An auditor agent that protects your data and your environment, running verification continuously. I say more about this in the security section, because in your case, dealing with sensitive client documents, this is central.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="niche">
+  <div class="wrap">
+    <div class="section-tag reveal">04 · Your niche agents</div>
+    <h2 class="section-title reveal">Your specific mortgage team</h2>
+    <div class="prose reveal">
+      <p>Above all of this general structure, you get your specific mortgage team, designed for your real workflow. These are built specifically for you:</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Lead Capture Agent</h3>
+        <p>Makes the first contact on WhatsApp in send-only mode and guides the person to your secure portal. It is the entry point of your funnel, and it works on its own.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Document Organization Agent</h3>
+        <p>Builds and tracks the checklist of what is missing for each client, flagging what still needs to be sent. Important and intentional: it organizes documents, it does not assess credit or issue an opinion. You are the one who decides. It just hands you everything clean and in the right order.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Follow Up Agent</h3>
+        <p>Manages the pipeline and the follow up, so that no client sits idle and no stage falls through the cracks. It is the end of "I let it go cold because I lost track in the middle."</p>
+      </div>
+      <div class="card reveal">
+        <h3>Multilingual Communication Agent</h3>
+        <p>Talks in English, Spanish, and Portuguese. Since you serve many Hispanic clients, this agent makes sure communication flows in each person's language, without friction.</p>
+      </div>
+    </div>
+    <div class="note reveal">And coordinating all of this, from the niche team to the general departments, is the Orchestrator CEO. You talk to it, and it activates the right team for each task.</div>
+  </div>
+</section>
+
+<section id="architect">
+  <div class="wrap">
+    <div class="section-tag reveal">05 · The engine that multiplies</div>
+    <h2 class="section-title reveal">The Architect</h2>
+    <div class="lead-callout reveal">
+      This is the piece that makes the difference between a delivery that ages and one that grows with you.
+    </div>
+    <div class="prose reveal" style="margin-top:26px;">
+      <p>The Architect is the agent that creates new agents, new departments, new workflows, and new squads, on demand, in Portuguese. When your business changes, when you want to attack a new front, when a need comes up that no one foresaw on day one, you do not have to wait. You ask the Architect, and your AI company gains a new team.</p>
+      <p>That is why the right phrase is not <span class="accent">"you got 70 agents."</span> It is <strong>"you got a company that builds the next agents whenever you need them."</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="structure">
+  <div class="wrap">
+    <div class="section-tag reveal">06 · The structure behind it all</div>
+    <h2 class="section-title reveal">The infrastructure comes with it</h2>
+    <div class="prose reveal" style="margin-bottom:28px;">
+      <p>For all these agents to truly work, you get the infrastructure along with them:</p>
+    </div>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Your own CRM.</strong> Your client pipeline, organized, with every lead and every stage in its place.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Secure document portal.</strong> Where the client sends what is needed, in a controlled way, with no sensitive document floating loose in WhatsApp or email.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Dedicated number.</strong> To separate the business channel from your personal one and bring professionalism to the contact.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Panel and dashboard.</strong> The view of your operation in one place: leads, status, numbers.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Live Artifacts.</strong> Living, interactive pieces (calculators, checklists, panels) that you use day to day with clients.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="end-to-end">
+  <div class="wrap">
+    <div class="section-tag reveal">07 · How it works, end to end</div>
+    <h2 class="section-title reveal">The path of a mortgage client</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div class="txt"><span><strong>The lead arrives.</strong> It can come from a referral, like today, or from the lead capture machine (ad, Google, content). The Lead Capture Agent makes the first contact on WhatsApp and takes the person to the secure portal.</span></div></div>
+      <div class="step reveal"><div class="n">2</div><div class="txt"><span><strong>The documents get organized.</strong> The Document Organization Agent builds the client's checklist, receives the files through the portal, and shows what is still missing. All clean, nothing lost. It organizes, you decide.</span></div></div>
+      <div class="step reveal"><div class="n">3</div><div class="txt"><span><strong>Communication flows in the right language.</strong> The Multilingual Agent carries the conversation in English, Spanish, or Portuguese, depending on the client.</span></div></div>
+      <div class="step reveal"><div class="n">4</div><div class="txt"><span><strong>Nothing goes cold.</strong> The Follow Up Agent manages the pipeline in your CRM and the follow up, keeping every client moving.</span></div></div>
+      <div class="step reveal"><div class="n">5</div><div class="txt"><span><strong>You close more, with less operational effort.</strong> And meanwhile, in the background, the marketing, traffic, SEO, and content departments keep filling the top of the funnel, so you never again depend only on the next referral.</span></div></div>
+    </div>
+    <div class="note reveal">You remain the professional. Your AI company takes care of the structure you lack today to scale.</div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="wrap">
+    <div class="section-tag reveal">08 · Security and privacy</div>
+    <h2 class="section-title reveal">Taken seriously in the build, not as an afterthought</h2>
+    <div class="prose reveal" style="margin-bottom:28px;">
+      <p>You deal with sensitive client information, so this point is taken seriously in the build, not as an afterthought.</p>
+    </div>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="c"><strong>Documents only come in through the portal.</strong> No sensitive file floating loose in WhatsApp or email. The intake channel is controlled.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="c"><strong>Data minimization.</strong> Information such as a Social Security number or account number is handled with the minimum necessary, recording only the final digits when needed, never the full data exposed without reason.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="c"><strong>A checklist, not a credit assessment.</strong> The document agent organizes what is missing. It does not assess credit, does not issue an opinion, and does not make an approval decision. That is yours, always.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="c"><strong>Human in the loop.</strong> Every decision that matters goes through you. The AI prepares, organizes, and accelerates. You sign.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="c"><strong>Daily auditing.</strong> The security agent runs verification of the environment and the access points continuously.</div></div>
+    </div>
+    <div class="note reveal">It is important to be honest with you: this is a structure built with good security and privacy practices. I am not selling any agency certification, and the structure does not become the owner of your data. The data is yours, it stays under your control, and the technology is a layer of organization and protection serving your operation.</div>
+  </div>
+</section>
+
+<section id="installation">
+  <div class="wrap">
+    <div class="section-tag reveal">09 · The installation, done with you</div>
+    <h2 class="section-title reveal">You walk away with your AI company running</h2>
+    <div class="prose reveal">
+      <p>You do not receive a package and have to figure it out on your own. The installation is done together with you, live, on your computer. We connect the agents, configure the portal, the CRM, the dedicated number, and the panel, and we leave everything working before we wrap up. You walk away from the installation with your AI company running, not with a list of tasks.</p>
+    </div>
+    <div class="section-tag reveal" style="margin-top:56px;">10 · Support and evolution for 12 months</div>
+    <h2 class="section-title reveal">The delivery does not end at the installation</h2>
+    <div class="prose reveal" style="margin-bottom:28px;">
+      <p>For twelve months you have:</p>
+    </div>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Updates.</strong> As AI tools evolve (and they evolve fast), your structure keeps pace.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Community group.</strong> Access to the group to exchange ideas with other business owners on the same journey.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>One-on-one support.</strong> To solve what is specific to your business.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Use case library.</strong> A growing collection of practical applications, so you can see what others are doing and apply it to your own.</div></div>
+    </div>
+    <div class="note reveal">The idea is simple: over the course of these twelve months, you stop being a user and become the captain of your own AI company. The one in command becomes you.</div>
+  </div>
+</section>
+
+<section id="grows">
+  <div class="wrap">
+    <div class="section-tag reveal">11 · It grows with you</div>
+    <h2 class="section-title reveal">Built to scale</h2>
+    <div class="prose reveal" style="margin-bottom:28px;">
+      <p>The structure is not closed around what you do today. It was built to scale:</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>E-commerce</h3>
+        <p>The SEO and e-commerce departments are already ready for the day you want an arm to sell products or services online.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Consulting</h3>
+        <p>If you want to offer consulting by reusing all of this structure, it is already there. No new installation, no starting from zero.</p>
+      </div>
+    </div>
+    <div class="note reveal">You build the foundation once and use it across more than one business front.</div>
+  </div>
+</section>
+
+<section id="included">
+  <div class="wrap">
+    <div class="section-tag reveal">12 · What is included</div>
+    <h2 class="section-title reveal">The recap, to round out the scale</h2>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>The complete AI company.</strong> More than 70 agents in ready departments: Orchestrator CEO and department heads, Paid Traffic (around 11 agents plus Traffic Masters), Google Ads and Google Business Profile, SEO (around 19 agents), Content and Social Media, Copy Squad, Sales and CRM, Finance, Brand and Design, Advisory Board, Hormozi Squad, and Security.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Your niche agents (mortgage).</strong> Lead Capture, Document Organization, Follow Up, and Multilingual Communication, coordinated by the Orchestrator CEO.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>The engine that multiplies.</strong> The Architect, creating new agents, departments, workflows, and squads on demand, in Portuguese.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>The structure.</strong> Your own CRM, secure document portal, dedicated number, panel and dashboard, Live Artifacts.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>The installation.</strong> Done live, with you, leaving everything up and running.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>12 months.</strong> Updates, community group, one-on-one support, and a use case library.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="section-tag reveal">13 · Timeline</div>
+    <h2 class="section-title reveal">The path to your AI company going live</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div class="txt"><span><strong>Mapping.</strong> We dive into your real mortgage workflow: how the lead arrives, how documents are requested, how you follow up with the client. It is the foundation for building it right.</span></div></div>
+      <div class="step reveal"><div class="n">2</div><div class="txt"><span><strong>Build and validation.</strong> We assemble and fine tune the niche agents and the departments for your case, and we validate everything with fictitious data, to test safely before any real client data enters.</span></div></div>
+      <div class="step reveal"><div class="n">3</div><div class="txt"><span><strong>Live within 30 days.</strong> The live installation delivers your AI company up and running, with you in the captain's seat.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <div class="wrap">
+    <h2 class="reveal">You are not hiring a piece of software.<br /><span class="grad">You are building an operation.</span></h2>
+    <p class="reveal">More than 70 agents in ready departments, your mortgage niche team, and the engine that builds the next agents whenever you need them.</p>
+    <a href="#departments" class="btn btn-primary reveal">Explore the structure</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Me Ensina <span class="ai">AI</span></div>
+    <div class="tag">Structure built by Me Ensina AI.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    document.querySelectorAll('.hero .reveal').forEach(function(e,i){
+      e.style.transitionDelay=(i*0.08)+'s';
+    });
+  })();
+</script>
+
+</body>
+</html>
