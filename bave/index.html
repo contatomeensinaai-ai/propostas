@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Proposta de Parceria de Tecnologia — BAVE Holding</title>
+<meta name="description" content="Construção de uma empresa de inteligência artificial completa para a BAVE Holding: mais de 70 agentes, CEO orquestrador, Arquiteto, agentes de nicho e camada de auditoria de compliance." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --gold:#facc15;
+    --gold-soft:#fde68a;
+    --orange:#f97316;
+    --text:#f5f5f4;
+    --muted:#a3a3a3;
+    --muted-2:#737373;
+    --line:rgba(255,255,255,0.08);
+    --card:rgba(255,255,255,0.035);
+    --card-hover:rgba(255,255,255,0.06);
+    --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --body:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 600px at 12% -5%, rgba(250,204,21,0.10), transparent 60%),radial-gradient(800px 700px at 95% 8%, rgba(249,115,22,0.08), transparent 55%),radial-gradient(900px 900px at 50% 110%, rgba(250,204,21,0.05), transparent 60%);pointer-events:none;}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 80%);-webkit-mask-image:radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 80%);pointer-events:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  header.hero{position:relative;padding:120px 0 80px;text-align:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-soft);background:rgba(250,204,21,0.07);border:1px solid rgba(250,204,21,0.22);padding:9px 18px;border-radius:100px;margin-bottom:34px;backdrop-filter:blur(8px);}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+  h1.hero-title{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,64px);line-height:1.06;letter-spacing:-0.03em;margin-bottom:24px;}
+  h1.hero-title .grad{background:linear-gradient(120deg,var(--gold) 0%,var(--gold-soft) 45%,var(--orange) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  h1.hero-title .who{display:block;font-size:clamp(18px,3vw,26px);font-weight:500;color:var(--muted);margin-top:18px;letter-spacing:-0.01em;}
+  .hero-meta{margin-top:22px;color:var(--muted-2);font-size:14.5px;font-family:var(--display);letter-spacing:0.02em;}
+  .hero-lead{max-width:780px;margin:32px auto 0;font-size:clamp(18px,2.3vw,21px);color:var(--text);font-weight:500;letter-spacing:-0.01em;}
+  .hero-lead strong{color:var(--gold-soft);font-weight:700;}
+  .hero-cta-row{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:15.5px;letter-spacing:0.01em;padding:16px 30px;border-radius:14px;text-decoration:none;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;}
+  .btn-primary{color:#1a1205;background:linear-gradient(120deg,var(--gold),var(--orange));box-shadow:0 10px 40px -8px rgba(250,204,21,0.5);}
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 50px -6px rgba(250,204,21,0.65);}
+  .btn-ghost{color:var(--text);background:var(--card);border:1px solid var(--line);backdrop-filter:blur(8px);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--card-hover);}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 18px;backdrop-filter:blur(12px);transition:transform .25s ease, border-color .25s ease;}
+  .stat:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.3);}
+  .stat .num{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,40px);line-height:1;letter-spacing:-0.03em;background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .stat .lbl{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.4;font-weight:500;}
+  section{padding:60px 0;position:relative;}
+  .section-tag{font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+  .section-tag::before{content:"";width:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--orange));}
+  h2.section-title{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-0.03em;line-height:1.14;margin-bottom:22px;}
+  .prose p{margin-bottom:18px;color:var(--muted);}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--text);font-weight:700;}
+  .prose .accent{color:var(--gold-soft);}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);border:0;margin:0;}
+  .lead-callout{background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.18);border-radius:20px;padding:32px 34px;font-size:clamp(17px,2.1vw,19px);line-height:1.6;color:var(--text);font-weight:500;letter-spacing:-0.01em;}
+  .lead-callout strong{color:var(--gold-soft);}
+  .group-label{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:0.02em;color:var(--gold-soft);text-transform:uppercase;margin:42px 0 20px;display:flex;align-items:center;gap:12px;}
+  .group-label::after{content:"";flex:1;height:1px;background:var(--line);}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease,background .25s ease;position:relative;overflow:hidden;}
+  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 100% 0%,rgba(250,204,21,0.07),transparent 70%);opacity:0;transition:opacity .3s ease;}
+  .card:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.28);background:var(--card-hover);}
+  .card:hover::before{opacity:1;}
+  .card h3{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;margin-bottom:10px;color:var(--text);position:relative;}
+  .card .badge{display:inline-block;font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:0.04em;color:var(--gold);background:rgba(250,204,21,0.09);border:1px solid rgba(250,204,21,0.22);border-radius:100px;padding:4px 12px;margin-bottom:14px;}
+  .card p{color:var(--muted);font-size:15px;line-height:1.6;position:relative;}
+  .deptgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;}
+  .dept{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:4px;transition:border-color .25s ease,background .25s ease,transform .25s ease;}
+  .dept:hover{border-color:rgba(250,204,21,0.28);background:var(--card-hover);transform:translateY(-3px);}
+  .dept .dn{font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--text);}
+  .dept .dc{font-size:12.5px;color:var(--gold);font-weight:600;}
+  .steps{display:grid;gap:14px;counter-reset:s;}
+  .step{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease;}
+  .step:hover{transform:translateX(4px);border-color:rgba(250,204,21,0.25);}
+  .step .n{flex-shrink:0;font-family:var(--display);font-weight:700;color:var(--orange);font-size:15px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);}
+  .step .txt span{color:var(--muted);font-size:15.5px;display:block;}
+  .step .txt span strong{color:var(--text);font-weight:700;}
+  .flist{display:grid;gap:14px;}
+  .fitem{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;transition:border-color .25s ease,background .25s ease;}
+  .fitem:hover{border-color:rgba(250,204,21,0.22);background:var(--card-hover);}
+  .fitem .ic{flex-shrink:0;margin-top:2px;width:22px;height:22px;color:var(--gold);}
+  .fitem .c strong{color:var(--text);font-weight:700;}
+  .fitem .c{color:var(--muted);font-size:15.5px;}
+  .note{margin-top:26px;padding:24px 28px;border-radius:16px;background:rgba(255,255,255,0.025);border:1px solid var(--line);border-left:3px solid var(--orange);color:var(--muted);font-size:15.5px;line-height:1.65;}
+  .note strong{color:var(--text);}
+  .phases{display:grid;gap:14px;}
+  .phase{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;align-items:flex-start;transition:transform .25s ease,border-color .25s ease;}
+  .phase:hover{transform:translateX(4px);border-color:rgba(250,204,21,0.25);}
+  .phase .ph{flex-shrink:0;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.2);border-radius:10px;padding:7px 12px;white-space:nowrap;}
+  .phase .pt strong{color:var(--text);font-weight:700;display:block;margin-bottom:3px;}
+  .phase .pt span{color:var(--muted);font-size:15px;}
+  /* INVESTMENT */
+  .invest-section{padding:76px 0;}
+  .invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  .invest-block{position:relative;background:linear-gradient(160deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--line);border-radius:22px;padding:34px 32px;overflow:hidden;}
+  .invest-block.highlight{border-color:rgba(250,204,21,0.28);box-shadow:0 24px 70px -40px rgba(250,204,21,0.45);}
+  .invest-block .il{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
+  .invest-block .iv{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1;letter-spacing:-0.03em;background:linear-gradient(120deg,var(--gold),var(--gold-soft) 55%,var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .invest-block .iv small{font-size:.42em;font-weight:600;color:var(--muted);-webkit-text-fill-color:var(--muted);margin-left:8px;letter-spacing:0;}
+  .invest-block .id{margin-top:16px;color:var(--muted);font-size:15px;line-height:1.6;}
+  .invest-block .id strong{color:var(--gold-soft);font-weight:700;}
+  .infra-card{background:linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));border:1px solid var(--line);border-radius:22px;padding:34px 32px;}
+  .infra-head{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px;}
+  .infra-sub{color:var(--muted);font-size:15px;margin-bottom:22px;}
+  .infra-sub strong{color:var(--text);}
+  table.infra{width:100%;border-collapse:collapse;font-size:15.5px;}
+  table.infra th{text-align:left;font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-2);padding:0 14px 14px;border-bottom:1px solid var(--line);}
+  table.infra th:last-child,table.infra td:last-child{text-align:right;}
+  table.infra td{padding:15px 14px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.05);}
+  table.infra tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  table.infra td .val{color:var(--text);font-weight:600;white-space:nowrap;}
+  table.infra tr.total td{border-bottom:none;padding-top:18px;}
+  table.infra tr.total td{color:var(--text);font-family:var(--display);font-weight:700;font-size:17px;}
+  table.infra tr.total td .val{color:var(--gold);font-size:19px;}
+  .anchor-card{margin-top:18px;background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.18);border-radius:22px;padding:34px 36px;}
+  .anchor-card .il{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
+  .anchor-card p{color:var(--muted);font-size:16px;line-height:1.7;}
+  .anchor-card p strong{color:var(--text);font-weight:700;}
+  .final-cta{text-align:center;padding:84px 0 40px;}
+  .final-cta h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.6vw,44px);letter-spacing:-0.03em;line-height:1.12;margin-bottom:22px;}
+  .final-cta h2 .grad{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .final-cta p{max-width:620px;margin:0 auto 36px;color:var(--muted);font-size:18px;}
+  footer{border-top:1px solid var(--line);padding:44px 0 60px;text-align:center;}
+  .brand{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;}
+  .brand .ai{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  footer .tag{margin-top:10px;color:var(--muted-2);font-size:14px;}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (max-width:820px){
+    body{font-size:16px;}
+    header.hero{padding:88px 0 56px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .cards{grid-template-columns:1fr;}
+    .deptgrid{grid-template-columns:repeat(2,1fr);}
+    .invest-grid{grid-template-columns:1fr;}
+    .phase{flex-direction:column;gap:12px;}
+    section{padding:50px 0;}
+    .invest-block,.infra-card,.anchor-card,.lead-callout{padding:26px 24px;}
+  }
+  @media (max-width:480px){.deptgrid{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="dot"></span>Proposta de Parceria de Tecnologia</div>
+    <h1 class="hero-title reveal">
+      <span class="grad">BAVE Holding</span>
+      <span class="who">Construção de uma Empresa de Inteligência Artificial</span>
+    </h1>
+    <div class="hero-meta reveal">Preparada para Sérgio · Por Fábio Borges, Me Ensina AI · 26 de junho de 2026</div>
+    <p class="hero-lead reveal">
+      Sérgio, esta proposta não descreve um fornecedor. Descreve um <strong>parceiro de tecnologia permanente</strong>.
+    </p>
+    <div class="hero-cta-row reveal">
+      <a href="#investimento" class="btn btn-primary">Ver o investimento</a>
+      <a href="#empresa-ia" class="btn btn-ghost">Conhecer a estrutura</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="num">70+</div><div class="lbl">agentes em departamentos prontos</div></div>
+      <div class="stat reveal"><div class="num">3</div><div class="lbl">empresas do grupo no data warehouse</div></div>
+      <div class="stat reveal"><div class="num">42</div><div class="lbl">estados sob compliance de álcool</div></div>
+      <div class="stat reveal"><div class="num">4</div><div class="lbl">camadas de verificação na auditoria</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="resumo">
+  <div class="wrap">
+    <div class="section-tag reveal">01 · Resumo executivo</div>
+    <h2 class="section-title reveal">Um parceiro de tecnologia permanente</h2>
+    <div class="prose reveal">
+      <p>A BAVE é uma holding com operações reais e pesadas: distribuição de bebidas e álcool em 42 estados sob compliance severo, uma divisão de foods com mandioca e amido pra indústria americana e fábrica de linguiça própria na Flórida, atuação B2B e B2C, cerca de 250 SKUs, aproximadamente 300 clientes e um time enxuto de 8 pessoas que sustenta tudo isso. Você acabou de absorver um impacto de cerca de USD 500.000 nas tarifas e está reorganizando custo pra reescalar com mais inteligência. Esse é o contexto, e ele exige sobriedade.</p>
+      <p>Você usou uma imagem que vira a tese desta parceria: primeiro botar o caminhão na estrada, depois fazer ele voar. Concordamos integralmente. A Fase 1 é fundação: dados confiáveis, acessíveis e auditáveis. Sem isso, nada voa. Só depois de o caminhão estar rodando firme é que ligamos os motores de marketing, captação e automação avançada.</p>
+      <p>E reforçamos o que você mesmo disse: a inteligência artificial aqui não veio pra tirar função de ninguém. Veio pra potencializar o seu time de 8 e liberar essas pessoas pro trabalho que realmente gera receita, enquanto a camada de agentes absorve o operacional repetitivo, o cálculo de compliance e o trabalho de conferência que hoje consome tempo de gente cara.</p>
+      <p>A entrega é uma empresa de inteligência artificial completa: <strong class="accent">mais de 70 agentes organizados em departamentos</strong>, um CEO orquestrador, um Arquiteto que cria novos agentes sob demanda, agentes de nicho desenhados pra realidade do BAVE, e uma camada de auditoria pensada pro seu maior risco operacional, que é a licença de álcool. O modelo é de parceria contínua, com o Fábio como parceiro de tecnologia trazendo inovação ao longo do tempo, e o Hugo como facilitador interno do lado de vocês.</p>
+    </div>
+  </div>
+</section>
+
+<section id="fundacao">
+  <div class="wrap">
+    <div class="section-tag reveal">02 · Fundação de dados (Fase 1)</div>
+    <h2 class="section-title reveal">O ponto de partida não negociável</h2>
+    <div class="prose reveal">
+      <p>Vamos começar pelo que tira o seu sono, porque é o ponto certo de começar.</p>
+      <p>O ERP do BAVE é o QuickBooks Enterprise Desktop, edição Platinum, rodando no Azure. Tecnicamente, isso significa um arquivo de dados proprietário (.QBD), sem API nativa, hospedado em ambiente desktop virtualizado. São 3 arquivos de dados, um por empresa do grupo. Na prática, esses dados estão presos: ricos por dentro, mas inacessíveis por fora. A sua pergunta é direta e correta: esse caminho funciona?</p>
+      <p>A resposta é sim, e o caminho é maduro e homologado, não experimental:</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div class="txt"><span><strong>Extração via conector REST homologado de terceiro.</strong> Existem conectores de mercado, já consolidados, que se conectam ao QuickBooks Enterprise Desktop e expõem os dados via API REST. O custo é de aproximadamente USD 49 por mês por arquivo de dados. Para os 3 arquivos do BAVE, isso representa cerca de USD 147 por mês. Esse conector é a ponte que destrava o que hoje está fechado.</span></div></div>
+      <div class="step reveal"><div class="n">2</div><div class="txt"><span><strong>Reconstrução em um data warehouse no Supabase.</strong> Os dados extraídos do QuickBooks são reorganizados em um data warehouse estruturado, hospedado no Supabase, na conta do próprio BAVE. Esse warehouse passa a ser a fonte de verdade limpa, consultável e versionada das 3 empresas.</span></div></div>
+      <div class="step reveal"><div class="n">3</div><div class="txt"><span><strong>O exército de agentes trabalha em cima do warehouse, nunca direto no ERP.</strong> Isso protege o seu sistema contábil. O QuickBooks continua sendo o sistema de registro oficial, intocado. Os agentes leem e cruzam dados a partir do warehouse, que é uma cópia trabalhável e segura.</span></div></div>
+    </div>
+    <div class="note reveal">Para um profissional que vem de SAP e Rodobens, a lógica é familiar: você não conecta a camada analítica direto na transacional. Você constrói uma camada de dados intermediária, confiável e governada, e opera a inteligência a partir dela. É exatamente isso que a Fase 1 entrega. Sem essa fundação, nenhuma das fases seguintes anda. Por isso ela é o ponto de partida não negociável.</div>
+  </div>
+</section>
+
+<section id="empresa-ia">
+  <div class="wrap">
+    <div class="section-tag reveal">03 · A empresa de IA completa</div>
+    <h2 class="section-title reveal">Uma estrutura organizacional inteira de agentes</h2>
+    <div class="prose reveal" style="margin-bottom:8px;">
+      <p>A parceria entrega uma estrutura organizacional inteira de agentes, e não um chatbot isolado. São mais de 70 agentes já organizados em departamentos prontos:</p>
+    </div>
+    <div class="deptgrid">
+      <div class="dept reveal"><span class="dn">Tráfego pago e Meta</span><span class="dc">cerca de 11 agentes</span></div>
+      <div class="dept reveal"><span class="dn">Google Ads</span></div>
+      <div class="dept reveal"><span class="dn">SEO</span><span class="dc">cerca de 19 agentes</span></div>
+      <div class="dept reveal"><span class="dn">Conteúdo e redes sociais</span></div>
+      <div class="dept reveal"><span class="dn">Copy</span></div>
+      <div class="dept reveal"><span class="dn">Vendas e CRM</span></div>
+      <div class="dept reveal"><span class="dn">Finanças</span></div>
+      <div class="dept reveal"><span class="dn">Marca e design</span></div>
+      <div class="dept reveal"><span class="dn">Conselho</span></div>
+      <div class="dept reveal"><span class="dn">Hormozi</span><span class="dc">oferta e posicionamento</span></div>
+      <div class="dept reveal"><span class="dn">Segurança</span></div>
+    </div>
+    <div class="group-label reveal">Acima desses departamentos atuam duas peças centrais</div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>O CEO Orquestrador</h3>
+        <p>Coordena os departamentos, distribui tarefas e mantém a coerência das operações.</p>
+      </div>
+      <div class="card reveal">
+        <h3>O Arquiteto</h3>
+        <p>O motor que cria novos agentes, novos departamentos, novos fluxos e novos squads sob demanda. É isso que torna a estrutura viva: conforme o BAVE cresce e descobre novas necessidades, a empresa de IA se expande sozinha, sem ter que reconstruir do zero. É aqui que mora o fazer o caminhão voar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nicho">
+  <div class="wrap">
+    <div class="section-tag reveal">04 · Os agentes de nicho do BAVE</div>
+    <h2 class="section-title reveal">Sob medida, não de prateleira</h2>
+    <div class="prose reveal" style="margin-bottom:8px;">
+      <p>Além da estrutura padrão, desenhamos agentes específicos pra realidade do BAVE. Estes não vêm de prateleira, são construídos pro seu negócio:</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Agente de compliance e relatórios de álcool</h3>
+        <p>Galonagem, conversões de medida americana, cálculo tributário por estado e os reportes exigidos pelos 42 estados. É o agente mais sensível do conjunto, e por isso entra protegido pela camada de auditoria descrita na seção 5.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Agente de pedidos e distribuição</h3>
+        <p>Organiza e acompanha o fluxo de pedidos da operação de distribuição.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Agente de custo e land cost</h3>
+        <p>Para a operação de importação, compõe o custo real do produto somando frete, desembaraço e taxas. Você passa a enxergar o custo verdadeiro de cada produto, e não uma estimativa.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Agente de food service e indústria</h3>
+        <p>Voltado à divisão de foods, ao food service e ao atendimento da indústria americana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="auditoria">
+  <div class="wrap">
+    <div class="section-tag reveal">05 · A camada de auditoria</div>
+    <h2 class="section-title reveal">O diferencial pro seu compliance</h2>
+    <div class="prose reveal">
+      <p>Esta é a seção que pedimos pra ler com mais atenção, porque é onde a parceria endereça diretamente o seu maior risco: você tem fiscal a cada 60 dias e a sua licença está em jogo a cada relatório.</p>
+      <p>A arquitetura não confia em um único agente pra entregar um número de compliance. Ela trabalha em camadas de verificação:</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div class="txt"><span><strong>Um agente executa</strong> a tarefa (por exemplo, o cálculo de galonagem e tributo de um estado).</span></div></div>
+      <div class="step reveal"><div class="n">2</div><div class="txt"><span><strong>Um segundo agente confere</strong> o trabalho do primeiro, de forma independente.</span></div></div>
+      <div class="step reveal"><div class="n">3</div><div class="txt"><span><strong>Uma auditoria final</strong> consolida e valida o relatório.</span></div></div>
+      <div class="step reveal"><div class="n">4</div><div class="txt"><span><strong>Um humano dá o double-check</strong> no relatório antes de qualquer coisa sair. O controle final é sempre de uma pessoa.</span></div></div>
+    </div>
+    <div class="note reveal">A direção do princípio é clara e queremos ser explícitos: isto é uma ferramenta, não uma terceirização da sua responsabilidade. A IA reduz drasticamente a chance de erro humano em cálculo repetitivo e em conversão de medida, mas a assinatura, a decisão e a prestação de contas continuam sendo do BAVE. O que entregamos é uma rede de segurança em camadas que mira margem de erro zero no que vai pro fiscal, mantendo a pessoa responsável no comando da palavra final.</div>
+  </div>
+</section>
+
+<section id="crm">
+  <div class="wrap">
+    <div class="section-tag reveal">06 · CRM (GoHighLevel) e Microsoft 365 / Teams</div>
+    <h2 class="section-title reveal">O coração comercial da operação</h2>
+    <div class="prose reveal" style="margin-bottom:8px;">
+      <p>O coração comercial da operação será o <strong>GoHighLevel (GHL)</strong>, que funciona como sistema central unificado:</p>
+    </div>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Ligação dentro da própria plataforma</strong>, com número telefônico obtido no próprio GHL via LeadConnector. A equipe liga e recebe sem sair do sistema.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>E-mail Outlook 365 com sincronização nativa de mão dupla</strong>, de forma que a comunicação por e-mail fica registrada e visível no CRM.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Calendário Outlook com sincronização nativa de mão dupla</strong>, mantendo agenda e CRM alinhados.</div></div>
+    </div>
+    <div class="prose reveal" style="margin-top:24px;">
+      <p>Sobre o <strong>Microsoft Teams</strong>, queremos ser técnicos e honestos: o Teams não tem integração nativa com o GHL. A integração é feita via middleware n8n, que envia notificações pro canal do Teams. Isso funciona bem pro fluxo de avisos e alertas. Caso vocês precisem não só receber aviso, mas também executar ação a partir do Teams, isso é possível, porém é um escopo adicional que confirmamos na reunião técnica.</p>
+      <p>E há uma camada de inteligência sobre o CRM que merece destaque, porque resolve um problema concreto de accountability. Hoje você paga um fixo ao vendedor. A camada de IA amarra esse fixo às tarefas: um agente lê a atividade registrada por vendedor, cruza o que cada um deveria fazer contra o que de fato fez, gera um relatório de quem não cumpriu e dispara alerta. Você sai do escuro sobre desempenho individual.</p>
+    </div>
+    <div class="note reveal">Um ponto de transparência técnica, porque preferimos prometer menos: a sincronização de e-mail de entrada (inbound) precisa ser testada na caixa real de vocês antes de afirmarmos cem por cento de unificação. A sincronização nativa de saída e calendário é sólida; o comportamento do inbound em ambientes Outlook 365 corporativos varia, e vamos validar isso na caixa real antes de cravar como garantido.</div>
+  </div>
+</section>
+
+<section id="marketing">
+  <div class="wrap">
+    <div class="section-tag reveal">07 · Marketing e captação medível</div>
+    <h2 class="section-title reveal">Sair do escuro pro número</h2>
+    <div class="prose reveal" style="margin-bottom:8px;">
+      <p>Hoje o BAVE está, nas suas palavras, no escuro. Não há medição de ROI dos canais, e a porta de entrada resume-se ao cliente que manda mensagem pelo site. Isso significa que você não sabe quanto custa adquirir um cliente nem qual canal funciona.</p>
+      <p>A parceria muda isso por fases (sempre depois da fundação de dados):</p>
+    </div>
+    <div class="flist">
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Mídia paga medível</strong>, com rastreamento de origem e ROI por canal, pra você decidir com número e não com intuição.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>LinkedIn Sales Navigator</strong> apontado pros compradores específicos que importam, em especial os compradores industriais da divisão de mandioca e amido. Captação direcionada, não disparo amplo.</div></div>
+      <div class="fitem reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="c"><strong>Captação ativa</strong>, saindo do modelo passivo de esperar a mensagem chegar no site pra um modelo onde a operação busca o comprador certo.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="prova-entrega">
+  <div class="wrap">
+    <div class="section-tag reveal">08 · Integração da prova de entrega</div>
+    <h2 class="section-title reveal">Não mexemos no que funciona</h2>
+    <div class="prose reveal">
+      <p>Vocês já têm um middleware que conecta uma ferramenta de prova de entrega (no estilo Trackpod) por webhook, salvando os comprovantes no SharePoint, e isso funciona bem. Não mexemos no que funciona.</p>
+      <p>A nossa abordagem é integrar e preservar esse fluxo, trabalhando por evento e webhook, de modo que a prova de entrega continue alimentando o SharePoint e passe também a alimentar a inteligência da operação quando fizer sentido. Respeitamos o que já está consolidado.</p>
+    </div>
+  </div>
+</section>
+
+<section id="onde-roda">
+  <div class="wrap">
+    <div class="section-tag reveal">09 · Onde roda</div>
+    <h2 class="section-title reveal">VPS na nuvem, acesso multi-local</h2>
+    <div class="lead-callout reveal">
+      Os agentes rodam em uma <strong>VPS na nuvem</strong>, e não localmente em uma única máquina. Isso garante acesso multi-local e simultâneo: o Hugo opera do Brasil, o Fábio acessa, e você opera da Flórida, todos sobre o mesmo ambiente vivo. A operação não fica refém de um computador específico nem de uma pessoa estar online.
+    </div>
+  </div>
+</section>
+
+<section id="parceria">
+  <div class="wrap">
+    <div class="section-tag reveal">10 · O modelo de parceria</div>
+    <h2 class="section-title reveal">Parceria permanente, não projeto com data de fim</h2>
+    <div class="prose reveal" style="margin-bottom:8px;">
+      <p>O modelo é de parceria de tecnologia permanente, não de projeto com data de fim.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Fábio</h3>
+        <p>Atua como parceiro de tecnologia contínuo, responsável por trazer inovação ao longo do tempo, evoluir a estrutura de agentes e manter o BAVE à frente. Conforme novas ferramentas e capacidades de IA surgem, elas chegam ao BAVE através da parceria.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Hugo</h3>
+        <p>É o braço técnico e facilitador interno do lado do BAVE, no Brasil. É a ponte que destrava processos internos, traduz a realidade da operação pros agentes e mantém o ritmo do dia a dia.</p>
+      </div>
+      <div class="card reveal" style="grid-column:1 / -1;">
+        <h3>Suporte contínuo</h3>
+        <p>Faz parte do modelo. A relação é de evolução permanente, não de entrega e desaparecimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="section-tag reveal">11 · Roadmap em fases</div>
+    <h2 class="section-title reveal">Do caminhão na estrada ao caminhão voando</h2>
+    <div class="phases">
+      <div class="phase reveal"><div class="ph">Fase 1</div><div class="pt"><strong>Fundação de dados</strong><span>QuickBooks Enterprise Desktop via conector homologado, reconstrução do data warehouse no Supabase. O caminhão na estrada.</span></div></div>
+      <div class="phase reveal"><div class="ph">Fase 2</div><div class="pt"><strong>CRM e comunicação unificada</strong><span>GoHighLevel central, Outlook 365 e calendário em mão dupla, Teams via n8n, camada de accountability de vendedores.</span></div></div>
+      <div class="phase reveal"><div class="ph">Fase 3</div><div class="pt"><strong>Marketing e captação medível</strong><span>Mídia paga com ROI, LinkedIn Sales Navigator pros compradores certos, captação ativa.</span></div></div>
+      <div class="phase reveal"><div class="ph">Fase 4</div><div class="pt"><strong>Compliance e relatórios com auditoria</strong><span>Agentes de nicho de álcool sob a camada de auditoria em múltiplas verificações com double-check humano.</span></div></div>
+      <div class="phase reveal"><div class="ph">Evolução</div><div class="pt"><strong>Evolução contínua</strong><span>O Arquiteto e a parceria mantêm a empresa de IA crescendo conforme o BAVE cresce. O caminhão voando.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="investimento" class="invest-section">
+  <div class="wrap">
+    <div class="section-tag reveal">12 · Investimento</div>
+    <h2 class="section-title reveal">Três blocos transparentes</h2>
+    <div class="prose reveal" style="margin-bottom:30px;">
+      <p>A parceria é estruturada em três blocos transparentes. Não bundlamos a infraestrutura na mensalidade de propósito, e isso é uma vantagem sua, explicada abaixo.</p>
+    </div>
+
+    <div class="invest-grid">
+      <div class="invest-block reveal">
+        <div class="il">Setup único (build inicial)</div>
+        <div class="iv">USD 8.000 <small>pagamento único</small></div>
+        <div class="id">Construção da fundação de dados, montagem da empresa de IA, configuração dos departamentos, agentes de nicho do BAVE e camada de auditoria.</div>
+      </div>
+      <div class="invest-block highlight reveal">
+        <div class="il">Mensalidade da parceria</div>
+        <div class="iv">USD 5.300 <small>por mês</small></div>
+        <div class="id">Inclui o modelo de parceria de tecnologia permanente, suporte contínuo, evolução da estrutura de agentes, e até <strong>12 horas por mês de trabalho direto do Fábio</strong>. Horas que excederem esse teto mensal são cobradas à parte, combinadas com antecedência. Esse teto existe pra proteger a qualidade e a disponibilidade do parceiro técnico, e pra você ter previsibilidade.</div>
+      </div>
+    </div>
+
+    <div class="infra-card reveal">
+      <div class="infra-head">Infraestrutura por conta do cliente (pass-through, na conta do BAVE)</div>
+      <div class="infra-sub">Aproximadamente <strong>USD 452 por mês</strong>, paga diretamente por vocês, nos seus próprios provedores:</div>
+      <table class="infra">
+        <thead><tr><th>Item</th><th>Custo aproximado</th></tr></thead>
+        <tbody>
+          <tr><td>VPS na nuvem</td><td><span class="val">USD 100 por ano (cerca de USD 8 por mês)</span></td></tr>
+          <tr><td>Anthropic (assinatura mensal, valor fixo)</td><td><span class="val">USD 200 por mês</span></td></tr>
+          <tr><td>3 conectores homologados QuickBooks (USD 49 por arquivo)</td><td><span class="val">USD 147 por mês</span></td></tr>
+          <tr><td>GoHighLevel</td><td><span class="val">USD 97 por mês</span></td></tr>
+          <tr class="total"><td>Total aproximado</td><td><span class="val">cerca de USD 452 por mês</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note reveal" style="margin-top:18px;">
+      <strong>Por que isso é uma vantagem sua, e não um custo escondido:</strong> vocês são donos da própria infraestrutura. As contas ficam no nome do BAVE, os dados ficam com vocês, e a IA roda por uma assinatura mensal de valor fixo e previsível, sem surpresa de consumo. Você nunca fica refém de um intermediário que controla a sua infra. Pra um ex-SAP, essa governança de propriedade da própria stack é exatamente o que se espera.
+    </div>
+
+    <div class="anchor-card reveal">
+      <div class="il">Âncora de valor</div>
+      <p>Pra dimensionar: meio analista de compliance carregado no mercado americano custa entre USD 4.500 e USD 7.000 por mês, e ainda assim pode errar um relatório de álcool em 42 estados. A camada de auditoria do BAVE não erra por cansaço nem por volume, e potencializa o time de 8 que já existe ao tirar das costas dessas pessoas o trabalho repetitivo de cálculo e conferência. Na prática, esta parceria funciona como uma apólice de seguro operacional contra o risco de licença, somada a um motor de crescimento. <strong>O custo da parceria é menor que o de meio profissional de compliance, e entrega muito mais que isso.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="proximos-passos">
+  <div class="wrap">
+    <div class="section-tag reveal">13 · Próximos passos</div>
+    <h2 class="section-title reveal">Como começamos</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div class="txt"><span><strong>Aprovação desta proposta</strong> por você.</span></div></div>
+      <div class="step reveal"><div class="n">2</div><div class="txt"><span><strong>Reunião técnica com o Hugo</strong> pra destrinchar os processos internos do BAVE e confirmar os pontos técnicos em detalhe (estrutura dos 3 arquivos do QuickBooks, fluxos de compliance por estado, comportamento da caixa de e-mail, integrações existentes).</span></div></div>
+      <div class="step reveal"><div class="n">3</div><div class="txt"><span><strong>Início da Fase 1</strong>, a fundação de dados.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <div class="wrap">
+    <h2 class="reveal">Primeiro o caminhão na estrada.<br /><span class="grad">Depois, fazer ele voar.</span></h2>
+    <p class="reveal">Sérgio, é assim que se bota o caminhão na estrada do jeito certo, pra ele depois voar com segurança. Estamos prontos pra construir isso com você, como parceiros.</p>
+    <a href="#investimento" class="btn btn-primary reveal">Ver o investimento</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Me Ensina <span class="ai">AI</span></div>
+    <div class="tag">Proposta preparada por Fábio Borges, Me Ensina AI.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});
+    document.querySelectorAll('.hero .reveal').forEach(function(e,i){
+      e.style.transitionDelay=(i*0.07)+'s';
+    });
+  })();
+</script>
+
+</body>
+</html>
