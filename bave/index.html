@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Proposta de Parceria de Tecnologia — BAVE Holding</title>
-<meta name="description" content="Construção de uma empresa de inteligência artificial completa para a BAVE Holding: mais de 70 agentes, CEO orquestrador, Arquiteto, agentes de nicho e camada de auditoria de compliance." />
+<meta name="description" content="Construção de uma empresa de inteligência artificial completa para a BAVE Holding: mais de 160 agentes e especialistas, CEO orquestrador, Arquiteto, agentes de nicho e camada de auditoria de compliance." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -70,14 +70,14 @@
   .card:hover{transform:translateY(-4px);border-color:rgba(250,204,21,0.28);background:var(--card-hover);}
   .card:hover::before{opacity:1;}
   .card h3{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;margin-bottom:10px;color:var(--text);position:relative;}
-  .card .badge{display:inline-block;font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:0.04em;color:var(--gold);background:rgba(250,204,21,0.09);border:1px solid rgba(250,204,21,0.22);border-radius:100px;padding:4px 12px;margin-bottom:14px;}
   .card p{color:var(--muted);font-size:15px;line-height:1.6;position:relative;}
   .deptgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;}
-  .dept{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:4px;transition:border-color .25s ease,background .25s ease,transform .25s ease;}
+  .dept{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;transition:border-color .25s ease,background .25s ease,transform .25s ease;}
   .dept:hover{border-color:rgba(250,204,21,0.28);background:var(--card-hover);transform:translateY(-3px);}
-  .dept .dn{font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--text);}
-  .dept .dc{font-size:12.5px;color:var(--gold);font-weight:600;}
-  .steps{display:grid;gap:14px;counter-reset:s;}
+  .dept .dcount{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.02em;background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+  .dept .dn{font-family:var(--display);font-weight:600;font-size:15px;color:var(--text);line-height:1.3;}
+  .dept .dk{font-size:12px;color:var(--muted-2);font-weight:500;}
+  .steps{display:grid;gap:14px;}
   .step{display:flex;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease;}
   .step:hover{transform:translateX(4px);border-color:rgba(250,204,21,0.25);}
   .step .n{flex-shrink:0;font-family:var(--display);font-weight:700;color:var(--orange);font-size:15px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);}
@@ -97,7 +97,6 @@
   .phase .ph{flex-shrink:0;font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.2);border-radius:10px;padding:7px 12px;white-space:nowrap;}
   .phase .pt strong{color:var(--text);font-weight:700;display:block;margin-bottom:3px;}
   .phase .pt span{color:var(--muted);font-size:15px;}
-  /* INVESTMENT */
   .invest-section{padding:76px 0;}
   .invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
   .invest-block{position:relative;background:linear-gradient(160deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--line);border-radius:22px;padding:34px 32px;overflow:hidden;}
@@ -117,13 +116,8 @@
   table.infra td{padding:15px 14px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.05);}
   table.infra tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
   table.infra td .val{color:var(--text);font-weight:600;white-space:nowrap;}
-  table.infra tr.total td{border-bottom:none;padding-top:18px;}
-  table.infra tr.total td{color:var(--text);font-family:var(--display);font-weight:700;font-size:17px;}
+  table.infra tr.total td{border-bottom:none;padding-top:18px;color:var(--text);font-family:var(--display);font-weight:700;font-size:17px;}
   table.infra tr.total td .val{color:var(--gold);font-size:19px;}
-  .anchor-card{margin-top:18px;background:linear-gradient(135deg,rgba(250,204,21,0.06),rgba(249,115,22,0.04));border:1px solid rgba(250,204,21,0.18);border-radius:22px;padding:34px 36px;}
-  .anchor-card .il{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;}
-  .anchor-card p{color:var(--muted);font-size:16px;line-height:1.7;}
-  .anchor-card p strong{color:var(--text);font-weight:700;}
   .final-cta{text-align:center;padding:84px 0 40px;}
   .final-cta h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.6vw,44px);letter-spacing:-0.03em;line-height:1.12;margin-bottom:22px;}
   .final-cta h2 .grad{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
@@ -143,7 +137,7 @@
     .invest-grid{grid-template-columns:1fr;}
     .phase{flex-direction:column;gap:12px;}
     section{padding:50px 0;}
-    .invest-block,.infra-card,.anchor-card,.lead-callout{padding:26px 24px;}
+    .invest-block,.infra-card,.lead-callout{padding:26px 24px;}
   }
   @media (max-width:480px){.deptgrid{grid-template-columns:1fr;}}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{scroll-behavior:auto;}}
@@ -167,7 +161,7 @@
       <a href="#empresa-ia" class="btn btn-ghost">Conhecer a estrutura</a>
     </div>
     <div class="stats">
-      <div class="stat reveal"><div class="num">70+</div><div class="lbl">agentes em departamentos prontos</div></div>
+      <div class="stat reveal"><div class="num">160+</div><div class="lbl">agentes e especialistas em departamentos</div></div>
       <div class="stat reveal"><div class="num">3</div><div class="lbl">empresas do grupo no data warehouse</div></div>
       <div class="stat reveal"><div class="num">42</div><div class="lbl">estados sob compliance de álcool</div></div>
       <div class="stat reveal"><div class="num">4</div><div class="lbl">camadas de verificação na auditoria</div></div>
@@ -183,7 +177,7 @@
       <p>A BAVE é uma holding com operações reais e pesadas: distribuição de bebidas e álcool em 42 estados sob compliance severo, uma divisão de foods com mandioca e amido pra indústria americana e fábrica de linguiça própria na Flórida, atuação B2B e B2C, cerca de 250 SKUs, aproximadamente 300 clientes e um time enxuto de 8 pessoas que sustenta tudo isso. Você acabou de absorver um impacto de cerca de USD 500.000 nas tarifas e está reorganizando custo pra reescalar com mais inteligência. Esse é o contexto, e ele exige sobriedade.</p>
       <p>Você usou uma imagem que vira a tese desta parceria: primeiro botar o caminhão na estrada, depois fazer ele voar. Concordamos integralmente. A Fase 1 é fundação: dados confiáveis, acessíveis e auditáveis. Sem isso, nada voa. Só depois de o caminhão estar rodando firme é que ligamos os motores de marketing, captação e automação avançada.</p>
       <p>E reforçamos o que você mesmo disse: a inteligência artificial aqui não veio pra tirar função de ninguém. Veio pra potencializar o seu time de 8 e liberar essas pessoas pro trabalho que realmente gera receita, enquanto a camada de agentes absorve o operacional repetitivo, o cálculo de compliance e o trabalho de conferência que hoje consome tempo de gente cara.</p>
-      <p>A entrega é uma empresa de inteligência artificial completa: <strong class="accent">mais de 70 agentes organizados em departamentos</strong>, um CEO orquestrador, um Arquiteto que cria novos agentes sob demanda, agentes de nicho desenhados pra realidade do BAVE, e uma camada de auditoria pensada pro seu maior risco operacional, que é a licença de álcool. O modelo é de parceria contínua, com o Fábio como parceiro de tecnologia trazendo inovação ao longo do tempo, e o Hugo como facilitador interno do lado de vocês.</p>
+      <p>A entrega é uma empresa de inteligência artificial completa: <strong class="accent">mais de 160 agentes e especialistas organizados em departamentos</strong>, um CEO orquestrador, um Arquiteto que cria novos agentes sob demanda, agentes de nicho desenhados pra realidade do BAVE, e uma camada de auditoria pensada pro seu maior risco operacional, que é a licença de álcool. O modelo é de parceria contínua, com o Fábio como parceiro de tecnologia trazendo inovação ao longo do tempo, e o Hugo como facilitador interno do lado de vocês.</p>
     </div>
   </div>
 </section>
@@ -209,23 +203,24 @@
 <section id="empresa-ia">
   <div class="wrap">
     <div class="section-tag reveal">03 · A empresa de IA completa</div>
-    <h2 class="section-title reveal">Uma estrutura organizacional inteira de agentes</h2>
+    <h2 class="section-title reveal">Mais de 160 agentes e especialistas em departamentos prontos</h2>
     <div class="prose reveal" style="margin-bottom:8px;">
-      <p>A parceria entrega uma estrutura organizacional inteira de agentes, e não um chatbot isolado. São mais de 70 agentes já organizados em departamentos prontos:</p>
+      <p>A parceria entrega uma estrutura organizacional inteira de agentes, e não um chatbot isolado. São mais de 160 agentes e especialistas já organizados em departamentos prontos:</p>
     </div>
     <div class="deptgrid">
-      <div class="dept reveal"><span class="dn">Tráfego pago e Meta</span><span class="dc">cerca de 11 agentes</span></div>
-      <div class="dept reveal"><span class="dn">Google Ads</span></div>
-      <div class="dept reveal"><span class="dn">SEO</span><span class="dc">cerca de 19 agentes</span></div>
-      <div class="dept reveal"><span class="dn">Conteúdo e redes sociais</span></div>
-      <div class="dept reveal"><span class="dn">Copy</span></div>
-      <div class="dept reveal"><span class="dn">Vendas e CRM</span></div>
-      <div class="dept reveal"><span class="dn">Finanças</span></div>
-      <div class="dept reveal"><span class="dn">Marca e design</span></div>
-      <div class="dept reveal"><span class="dn">Conselho</span></div>
-      <div class="dept reveal"><span class="dn">Hormozi</span><span class="dc">oferta e posicionamento</span></div>
-      <div class="dept reveal"><span class="dn">Segurança</span></div>
+      <div class="dept reveal"><span class="dcount">11</span><span class="dn">Tráfego pago e Meta</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">2</span><span class="dn">Google Ads e Google Meu Negócio</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">19</span><span class="dn">SEO</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">10</span><span class="dn">Conteúdo e redes sociais</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">25</span><span class="dn">Copy</span><span class="dk">especialistas</span></div>
+      <div class="dept reveal"><span class="dcount">8</span><span class="dn">Vendas e CRM</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">2</span><span class="dn">Finanças</span><span class="dk">agentes</span></div>
+      <div class="dept reveal"><span class="dcount">31</span><span class="dn">Marca e design</span><span class="dk">especialistas</span></div>
+      <div class="dept reveal"><span class="dcount">15</span><span class="dn">Conselho</span><span class="dk">conselheiros</span></div>
+      <div class="dept reveal"><span class="dcount">21</span><span class="dn">Hormozi, oferta e posicionamento</span><span class="dk">especialistas</span></div>
+      <div class="dept reveal"><span class="dcount">1</span><span class="dn">Segurança</span><span class="dk">auditor dedicado</span></div>
     </div>
+    <div class="note reveal">Somados aos squads de especialistas adicionais (tráfego, dados, storytelling), o BAVE passa a contar com mais de 160 agentes e especialistas no total, todos à disposição.</div>
     <div class="group-label reveal">Acima desses departamentos atuam duas peças centrais</div>
     <div class="cards">
       <div class="card reveal">
@@ -265,6 +260,7 @@
         <p>Voltado à divisão de foods, ao food service e ao atendimento da indústria americana.</p>
       </div>
     </div>
+    <div class="note reveal">E estes são apenas o ponto de partida. Através do Arquiteto (seção 5), poderão ser criados quantos agentes forem necessários, sob demanda e em português, conforme o BAVE descobrir novas frentes e necessidades. Não há teto de quantidade: a estrutura cresce com o seu negócio.</div>
   </div>
 </section>
 
@@ -400,7 +396,7 @@
       <div class="invest-block highlight reveal">
         <div class="il">Mensalidade da parceria</div>
         <div class="iv">USD 5.300 <small>por mês</small></div>
-        <div class="id">Inclui o modelo de parceria de tecnologia permanente, suporte contínuo, evolução da estrutura de agentes, e até <strong>12 horas por mês de trabalho direto do Fábio</strong>. Horas que excederem esse teto mensal são cobradas à parte, combinadas com antecedência. Esse teto existe pra proteger a qualidade e a disponibilidade do parceiro técnico, e pra você ter previsibilidade.</div>
+        <div class="id">Inclui o modelo de parceria de tecnologia permanente, suporte contínuo, evolução da estrutura de agentes, e até <strong>25 horas por mês de trabalho direto do Fábio</strong>. Horas que excederem esse teto mensal são cobradas à parte, combinadas com antecedência. Esse teto existe pra proteger a qualidade e a disponibilidade do parceiro técnico, e pra você ter previsibilidade.</div>
       </div>
     </div>
 
@@ -421,11 +417,6 @@
 
     <div class="note reveal" style="margin-top:18px;">
       <strong>Por que isso é uma vantagem sua, e não um custo escondido:</strong> vocês são donos da própria infraestrutura. As contas ficam no nome do BAVE, os dados ficam com vocês, e a IA roda por uma assinatura mensal de valor fixo e previsível, sem surpresa de consumo. Você nunca fica refém de um intermediário que controla a sua infra. Pra um ex-SAP, essa governança de propriedade da própria stack é exatamente o que se espera.
-    </div>
-
-    <div class="anchor-card reveal">
-      <div class="il">Âncora de valor</div>
-      <p>Pra dimensionar: meio analista de compliance carregado no mercado americano custa entre USD 4.500 e USD 7.000 por mês, e ainda assim pode errar um relatório de álcool em 42 estados. A camada de auditoria do BAVE não erra por cansaço nem por volume, e potencializa o time de 8 que já existe ao tirar das costas dessas pessoas o trabalho repetitivo de cálculo e conferência. Na prática, esta parceria funciona como uma apólice de seguro operacional contra o risco de licença, somada a um motor de crescimento. <strong>O custo da parceria é menor que o de meio profissional de compliance, e entrega muito mais que isso.</strong></p>
     </div>
   </div>
 </section>
