@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Guia QuickBooks Online | Me Ensina AI</title>
-<meta name="description" content="Guia passo a passo para conectar o QuickBooks Online, testar a conexao, lancar despesa por projeto e puxar relatorios financeiros." />
+<meta name="description" content="Guia simples para conectar o QuickBooks Online conversando com o Claude. Sem terminal. Voce so conversa e o Claude organiza suas despesas por obra e puxa relatorios." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -37,7 +37,6 @@
     overflow-x:hidden;
     position:relative;
   }
-  /* profundidade: radial gradients + grid */
   body::before{
     content:"";position:fixed;inset:0;z-index:-2;
     background:
@@ -74,12 +73,23 @@
     letter-spacing:-0.03em;margin-bottom:18px;
   }
   h1 .g{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--muted);font-size:clamp(16px,2.4vw,19px);max-width:640px;margin:0 auto}
+  .sub{color:var(--muted);font-size:clamp(16px,2.4vw,19px);max-width:660px;margin:0 auto 30px}
+
+  .dlbtn{
+    display:inline-flex;align-items:center;gap:11px;
+    font-family:var(--font);font-size:16px;font-weight:700;text-decoration:none;
+    color:#0a0a0a;background:linear-gradient(135deg,var(--gold),var(--orange));
+    padding:15px 28px;border-radius:14px;transition:.22s;
+    box-shadow:0 8px 30px rgba(250,204,21,0.25);
+  }
+  .dlbtn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 40px rgba(250,204,21,0.38)}
+  .dlbtn svg{width:20px;height:20px}
+  .dlhint{display:block;color:var(--muted);font-size:13px;margin-top:12px}
 
   /* nav */
   nav.toc{
     display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
-    margin:36px 0 8px;
+    margin:40px 0 8px;
   }
   nav.toc a{
     font-size:13px;color:var(--muted);text-decoration:none;
@@ -87,6 +97,19 @@
     padding:8px 13px;border-radius:100px;transition:.2s;
   }
   nav.toc a:hover{color:var(--text);border-color:var(--border-strong);transform:translateY(-1px)}
+
+  /* banner sem terminal */
+  .banner{
+    display:flex;align-items:center;gap:14px;
+    background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.28);
+    border-radius:14px;padding:16px 20px;margin:34px 0 0;
+  }
+  .banner .ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(52,211,153,0.14);color:var(--green)}
+  .banner .ic svg{width:20px;height:20px}
+  .banner p{font-size:15px;color:#d3f2e5}
+  .banner p b{color:#fff}
 
   /* sections */
   section{margin:56px 0;scroll-margin-top:24px}
@@ -125,7 +148,32 @@
   a.link{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(250,204,21,0.35)}
   a.link:hover{border-color:var(--gold)}
 
-  /* code block */
+  /* chat bubbles (exemplo de conversa) */
+  .chat{display:flex;flex-direction:column;gap:12px;margin:14px 0}
+  .bub{max-width:82%;padding:12px 16px;border-radius:16px;font-size:14.5px;line-height:1.6}
+  .bub.you{align-self:flex-end;background:linear-gradient(135deg,rgba(250,204,21,0.16),rgba(249,115,22,0.14));border:1px solid rgba(250,204,21,0.28);color:#f6ecc9;border-bottom-right-radius:5px}
+  .bub.cl{align-self:flex-start;background:var(--card);border:1px solid var(--border);color:#d8d8d8;border-bottom-left-radius:5px}
+  .bub .who{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:4px;opacity:.7}
+  .bub.you .who{color:var(--gold)}
+  .bub.cl .who{color:var(--green)}
+
+  /* prompt block destacado */
+  .prompt{
+    position:relative;border-radius:16px;overflow:hidden;margin:18px 0;
+    background:linear-gradient(180deg,rgba(250,204,21,0.05),rgba(0,0,0,0.55));
+    border:1px solid rgba(250,204,21,0.38);
+    box-shadow:0 10px 40px rgba(250,204,21,0.10);
+  }
+  .prompt .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 16px;border-bottom:1px solid rgba(250,204,21,0.22);
+    background:rgba(250,204,21,0.06);
+  }
+  .prompt .bar span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .prompt pre{margin:0;padding:20px 18px;overflow-x:auto}
+  .prompt code{font-family:var(--font);font-size:15px;line-height:1.75;color:#f0ead0;white-space:pre-wrap}
+
+  /* code block generico */
   .code{
     position:relative;background:var(--code-bg);border:1px solid var(--border-strong);
     border-radius:12px;margin:14px 0;overflow:hidden;
@@ -141,7 +189,7 @@
   .cbtn{
     font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;
     color:var(--gold);background:rgba(250,204,21,0.08);
-    border:1px solid rgba(250,204,21,0.28);border-radius:8px;padding:5px 12px;transition:.18s;
+    border:1px solid rgba(250,204,21,0.28);border-radius:8px;padding:6px 13px;transition:.18s;
   }
   .cbtn:hover{background:rgba(250,204,21,0.16)}
   .cbtn.ok{color:var(--green);border-color:rgba(52,211,153,0.4);background:rgba(52,211,153,0.1)}
@@ -151,6 +199,7 @@
   .note{border-radius:12px;padding:16px 18px;margin:16px 0;font-size:14.5px;border:1px solid}
   .note.gold{background:rgba(250,204,21,0.06);border-color:rgba(250,204,21,0.28);color:#f4e9c4}
   .note.red{background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.3);color:#f4cccc}
+  .note.green{background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.3);color:#cfeee0}
   .note b{color:#fff}
 
   /* table */
@@ -175,12 +224,6 @@
   .tag.ok{color:var(--green);background:rgba(52,211,153,0.12)}
   .tag.no{color:var(--red);background:rgba(248,113,113,0.12)}
 
-  /* checklist */
-  .chk{display:flex;flex-direction:column;gap:10px}
-  .chk div{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#d6d6d6}
-  .chk .box{flex:0 0 auto;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--gold);position:relative;margin-top:3px}
-  .chk .box::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--gold);border-width:0 2px 2px 0;transform:rotate(45deg)}
-
   footer{text-align:center;padding:56px 0 46px;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:14px}
   footer .brand{font-weight:700;color:var(--text);letter-spacing:-0.01em}
   footer .brand .g{background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -193,292 +236,250 @@
     .grid2{grid-template-columns:1fr}
     header{padding:52px 0 28px}
     .code code{font-size:12.5px}
+    .bub{max-width:92%}
   }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="reveal">
-      <span class="kicker"><span class="dot"></span> Skill Me Ensina AI</span>
-      <h1>Conecte seu <span class="g">QuickBooks Online</span> e automatize a contabilidade</h1>
-      <p class="sub">Guia passo a passo para ligar o QBO no seu computador, testar a conexao, lancar despesa vinculada a projeto e puxar relatorios financeiros. Tudo rodando na sua maquina, com suas credenciais.</p>
+
+    <header>
+      <div class="kicker"><span class="dot"></span> Skill QuickBooks Online</div>
+      <h1>Organize suas despesas por obra <span class="g">conversando com o Claude</span></h1>
+      <p class="sub">Voce nao usa terminal. Voce nao digita comando nenhum. Voce so conversa com o Claude em portugues, e ele lanca a despesa no projeto certo do QuickBooks e puxa seus relatorios pra voce.</p>
+      <a class="dlbtn" href="quickbooks-online.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Baixar a skill (.zip)
+      </a>
+      <span class="dlhint">Arquivo unico. Voce baixa uma vez e coloca na pasta de skills do seu Claude.</span>
+
+      <div class="banner">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <p><b>Regra de ouro deste guia:</b> em nenhum momento voce abre um terminal ou digita um comando de programador. Quem executa e sempre o Claude. Voce so conversa.</p>
+      </div>
+
       <nav class="toc">
-        <a href="#o-que-faz">O que faz</a>
-        <a href="#pre">Pre requisitos</a>
-        <a href="#credenciais">4 credenciais</a>
-        <a href="#instalar">Instalar</a>
-        <a href="#rodar">Rodar</a>
+        <a href="#o-que">O que faz</a>
+        <a href="#requisitos">Pre requisitos</a>
+        <a href="#baixar">Baixar e instalar</a>
+        <a href="#autorizar">Autorizar o QuickBooks</a>
+        <a href="#conversar">Colar o prompt</a>
         <a href="#limites">Funciona x nao funciona</a>
-        <a href="#checklist">Checklist</a>
+        <a href="#erros">Erros comuns</a>
       </nav>
     </header>
 
-    <!-- 1. O QUE FAZ -->
-    <section id="o-que-faz" class="reveal">
+    <!-- 1 -->
+    <section id="o-que" class="reveal">
       <div class="h2row"><span class="step-num">1</span><h2>O que essa skill faz</h2></div>
-      <p class="lead">Ela integra a sua empresa ao QuickBooks Online usando a Accounting API (v3), com scripts simples em Node. Voce ganha quatro capacidades praticas:</p>
+      <p class="lead">Ela liga o Claude direto ao seu QuickBooks Online. A partir dai, voce so pede em linguagem normal e o Claude faz o trabalho tecnico por baixo.</p>
       <div class="card">
         <ul class="clean">
-          <li><strong>Conectar o QBO</strong> via OAuth2 e manter o acesso renovado sozinho.</li>
-          <li><strong>Testar a conexao</strong> para confirmar que as credenciais estao certas.</li>
-          <li><strong>Lancar despesa vinculada a um projeto</strong> (a despesa fica atribuida ao projeto certo dentro do QBO).</li>
-          <li><strong>Puxar relatorios financeiros</strong> como DRE (P&L), Balanco, Fluxo de Caixa e outros.</li>
+          <li><strong>Lanca despesas ligadas a cada obra ou projeto.</strong> Voce diz de qual obra e a nota, o Claude registra vinculada ao projeto certo.</li>
+          <li><strong>Puxa relatorios financeiros.</strong> Lucro e prejuizo (P&amp;L), balanco e outros, com os numeros resumidos em portugues simples.</li>
+          <li><strong>Confere se ficou certo.</strong> Depois de lancar, o Claude le de volta no QuickBooks pra provar que a despesa entrou no projeto.</li>
+          <li><strong>Cuida do acesso sozinho.</strong> Voce autoriza uma vez e o Claude renova o acesso automaticamente nas proximas.</li>
         </ul>
       </div>
-      <div class="note gold">Para quem serve: dono de empresa ou operador financeiro que ja usa QuickBooks Online e quer parar de digitar despesa por despesa na mao, alem de puxar relatorio na hora que precisar sem abrir o painel.</div>
+      <div class="note gold">Pra quem serve: dono de obra, construtora, prestador de servico ou qualquer negocio que precisa saber quanto cada projeto custou, sem depender do contador toda semana.</div>
     </section>
 
-    <!-- 2. PRE REQUISITOS -->
-    <section id="pre" class="reveal">
-      <div class="h2row"><span class="step-num">2</span><h2>Pre requisitos</h2></div>
-      <p class="lead">Antes de comecar, confira que voce tem tres coisas:</p>
+    <!-- 2 -->
+    <section id="requisitos" class="reveal">
+      <div class="h2row"><span class="step-num">2</span><h2>Pre requisitos honestos</h2></div>
+      <p class="lead">Sao poucos, e a gente conta a verdade sobre cada um.</p>
       <div class="card">
         <ul class="clean">
-          <li><strong>Conta no QuickBooks Online.</strong> Para comecar sem risco, use o sandbox (empresa de teste com dados ficticios) que a conta de desenvolvedor ja cria.</li>
-          <li><strong>Plano Plus ou Advanced</strong> se voce for usar Projects (despesa por projeto). No Simple Start e no Essentials o recurso de Projects nao existe. O sandbox ja vem como Plus.</li>
-          <li><strong>Node 18 ou superior</strong> instalado. A skill nao usa nenhuma dependencia extra, so o Node.</li>
+          <li><strong>Claude Desktop ou Claude Code.</strong> E o programa onde o Claude roda a skill por voce. Sem ele o Claude nao consegue executar. Nao existe versao que funcione so pelo navegador.</li>
+          <li><strong>Autorizar o QuickBooks uma vez.</strong> A Intuit (dona do QuickBooks) exige que voce prove que a conta e sua. Isso e feito uma unica vez. Depois o Claude cuida do resto.</li>
+          <li><strong>Plano QuickBooks Plus ou Advanced</strong> pra usar despesa por projeto. Os planos mais simples nao tem o recurso de Projetos.</li>
         </ul>
       </div>
-      <div class="code">
-        <div class="bar"><span>conferir a versao do node</span><button class="cbtn" data-copy="node --version">Copiar</button></div>
-        <pre><code>node --version</code></pre>
-      </div>
-      <p class="card" style="font-size:14.5px;color:#cfcfcf">Se aparecer algo como <span class="inline">v18</span> ou maior, esta pronto. Se der erro de comando nao encontrado, instale o Node primeiro em <a class="link" href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>.</p>
+      <div class="note green">Tudo o que for tecnico (instalar, salvar arquivo, testar conexao) quem faz e o Claude. Sua parte e conversar e, uma vez, pegar as credenciais na tela da Intuit.</div>
     </section>
 
-    <!-- 3. CREDENCIAIS -->
-    <section id="credenciais" class="reveal">
-      <div class="h2row"><span class="step-num">3</span><h2>Obter as 4 credenciais na Intuit</h2></div>
-      <p class="lead">O objetivo desta etapa e sair com quatro valores: <span class="inline">Client ID</span>, <span class="inline">Client Secret</span>, <span class="inline">Realm ID</span> (Company ID) e <span class="inline">Refresh Token</span>. Leva cerca de 10 minutos. Comece sempre pelo sandbox.</p>
+    <!-- 3 -->
+    <section id="baixar" class="reveal">
+      <div class="h2row"><span class="step-num">3</span><h2>Baixar a skill e colocar no lugar</h2></div>
+      <p class="lead">Baixe o arquivo e coloque na pasta de skills do seu Claude. So isso.</p>
 
-      <div class="card">
-        <h3>Parte 1 &middot; Criar conta de desenvolvedor</h3>
-        <ol class="steps">
-          <li>Abra <a class="link" href="https://developer.intuit.com" target="_blank" rel="noopener">developer.intuit.com</a>.</li>
-          <li>Clique em <strong>Sign up</strong> (ou <strong>Sign in</strong> se ja tiver login Intuit ou QuickBooks).</li>
-          <li>Confirme o e-mail se for pedido.</li>
-        </ol>
+      <div style="text-align:center;margin:6px 0 22px">
+        <a class="dlbtn" href="quickbooks-online.zip" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar quickbooks-online.zip
+        </a>
       </div>
 
       <div class="card">
-        <h3>Parte 2 &middot; Criar o app (gera Client ID e Client Secret)</h3>
-        <ol class="steps">
-          <li>Logado, va em <strong>Dashboard</strong>.</li>
-          <li>Clique em <strong>Create an app</strong>.</li>
-          <li>Escolha a plataforma <strong>QuickBooks Online and Payments</strong>.</li>
-          <li>De um nome qualquer (ex: Minha Integracao) e marque o escopo <span class="inline">com.intuit.quickbooks.accounting</span>. Crie.</li>
-          <li>No app, abra a aba <strong>Keys &amp; credentials</strong>.</li>
-          <li>Selecione a secao <strong>Development</strong> (nao Production).</li>
-          <li>Anote o <strong>Client ID</strong> e o <strong>Client Secret</strong>.</li>
-        </ol>
+        <h3>Onde soltar o arquivo</h3>
+        <p>Descompacte o .zip. Vai aparecer uma pasta chamada <span class="inline">quickbooks-online</span>. Coloque essa pasta dentro da pasta de skills do seu Claude:</p>
+        <ul class="clean" style="margin-top:12px">
+          <li><strong>No Claude Code:</strong> a pasta de skills fica em <span class="inline">.claude/skills</span> dentro do seu projeto.</li>
+          <li><strong>No Claude Desktop:</strong> arraste a pasta <span class="inline">quickbooks-online</span> pra pasta de skills que o Claude usa (a mesma onde ficam suas outras skills).</li>
+        </ul>
       </div>
-
-      <div class="card">
-        <h3>Parte 3 &middot; O sandbox (empresa de teste) ja vem pronto</h3>
-        <ol class="steps">
-          <li>A conta de dev ja cria um sandbox. Confira em <strong>Dashboard &gt; Sandbox</strong>.</li>
-          <li>Anote o <strong>Company ID</strong> mostrado ali: esse e o seu <strong>Realm ID</strong>.</li>
-          <li>Para habilitar Projects, abra a empresa de teste e va em <strong>Settings (engrenagem) &gt; Account and settings &gt; Advanced</strong> e ative <strong>Projects</strong>.</li>
-          <li>Crie 1 projeto de teste em <strong>Projects &gt; New project</strong>, escolha um cliente existente e salve. Assim o script encontra um projeto real.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <h3>Parte 4 &middot; Gerar o Refresh Token (OAuth Playground)</h3>
-        <ol class="steps">
-          <li>Abra o <a class="link" href="https://developer.intuit.com/app/developer/playground" target="_blank" rel="noopener">OAuth 2.0 Playground</a>.</li>
-          <li>No topo, selecione o SEU app, o ambiente <strong>Sandbox</strong> e o escopo <strong>Accounting</strong>.</li>
-          <li>Clique <strong>Get authorization code</strong> e autorize com a empresa sandbox.</li>
-          <li>Clique <strong>Get tokens</strong>. A tela mostra o Access Token (dura 1 hora, o script renova sozinho), o <strong>Refresh Token</strong> (dura cerca de 100 dias, esse voce guarda) e o Realm ID.</li>
-          <li>Anote o <strong>Refresh Token</strong>.</li>
-        </ol>
-      </div>
-
-      <div class="note red"><b>Trate como senha.</b> O refresh token da acesso de leitura e escrita a sua contabilidade. Nunca compartilhe, nunca cole em chat ou e-mail. Se algum dia vazar, revogue o app na Intuit e gere um novo.</div>
+      <div class="note gold">Nao sabe onde e a pasta de skills? Sem problema. Abra o Claude e pergunte: <b>"onde eu coloco a pasta desta skill?"</b> Ele te mostra o caminho exato do seu computador. Voce nunca precisa adivinhar.</div>
     </section>
 
-    <!-- 4. INSTALAR -->
-    <section id="instalar" class="reveal">
-      <div class="h2row"><span class="step-num">4</span><h2>Instalar a skill e preencher as credenciais</h2></div>
-      <p class="lead">Com as 4 credenciais em maos, entre na pasta da skill pelo terminal e crie o arquivo local a partir do template.</p>
-      <div class="code">
-        <div class="bar"><span>copiar o template de credenciais</span><button class="cbtn" data-copy="cp scripts/credentials.example.json scripts/credentials.local.json">Copiar</button></div>
-        <pre><code>cp scripts/credentials.example.json scripts/credentials.local.json</code></pre>
-      </div>
-      <p class="lead">Abra o arquivo <span class="inline">scripts/credentials.local.json</span> e cole os 4 valores. Deixe o <span class="inline">environment</span> como <span class="inline">"sandbox"</span> por enquanto e salve.</p>
-      <div class="code">
-        <div class="bar"><span>scripts/credentials.local.json</span><button class="cbtn" data-copy='{
-  "clientId": "SEU_CLIENT_ID",
-  "clientSecret": "SEU_CLIENT_SECRET",
-  "realmId": "SEU_REALM_ID",
-  "refreshToken": "SEU_REFRESH_TOKEN",
-  "environment": "sandbox",
-  "minorVersion": "73"
-}'>Copiar</button></div>
-        <pre><code>{
-  "clientId": "SEU_CLIENT_ID",
-  "clientSecret": "SEU_CLIENT_SECRET",
-  "realmId": "SEU_REALM_ID",
-  "refreshToken": "SEU_REFRESH_TOKEN",
-  "environment": "sandbox",
-  "minorVersion": "73"
-}</code></pre>
-      </div>
-      <div class="note gold"><b>Suas credenciais ficam so na sua maquina.</b> O arquivo <span class="inline">credentials.local.json</span> e bloqueado pelo <span class="inline">.gitignore</span>, entao ele nunca vai para o GitHub e nunca e enviado para ninguem. Os valores nao saem do seu computador.</div>
-    </section>
-
-    <!-- 5. RODAR -->
-    <section id="rodar" class="reveal">
-      <div class="h2row"><span class="step-num">5</span><h2>Rodar os 3 comandos</h2></div>
-      <p class="lead">Sempre rode de dentro da pasta da skill. Comece pelo teste de conexao.</p>
+    <!-- 4 -->
+    <section id="autorizar" class="reveal">
+      <div class="h2row"><span class="step-num">4</span><h2>Autorizar o QuickBooks (uma vez)</h2></div>
+      <p class="lead">Aqui voce vai pegar 4 informacoes na tela da Intuit e entregar pro Claude. Leva uns 10 minutos. Comece sempre pela empresa de teste (sandbox), que ja vem com dados ficticios, e so passe pra empresa real depois que tudo funcionar.</p>
 
       <div class="card">
-        <h3>1 &middot; Testar a conexao (faca isso primeiro)</h3>
-        <p>Renova o token, le os dados da empresa e lista clientes e contas. Termina com a mensagem <span class="inline">CONEXAO OK</span> se estiver tudo certo.</p>
-        <div class="code">
-          <div class="bar"><span>terminal</span><button class="cbtn" data-copy="node scripts/test-connection.js">Copiar</button></div>
-          <pre><code>node scripts/test-connection.js</code></pre>
+        <h3>As 4 informacoes que voce vai pegar</h3>
+        <ul class="clean">
+          <li><strong>Client ID</strong> e a identidade do seu aplicativo.</li>
+          <li><strong>Client Secret</strong> e a senha desse aplicativo.</li>
+          <li><strong>Realm ID (Company ID)</strong> e o numero da sua empresa.</li>
+          <li><strong>Refresh Token</strong> e a chave de acesso que o Claude renova sozinho depois.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Passo a passo na tela da Intuit</h3>
+        <ol class="steps">
+          <li>Abra <a class="link" href="https://developer.intuit.com" target="_blank" rel="noopener">developer.intuit.com</a> e crie sua conta (ou entre com seu login QuickBooks).</li>
+          <li>No painel, clique em <strong>"Create an app"</strong> e escolha a opcao <strong>"QuickBooks Online and Payments"</strong>. De um nome qualquer, por exemplo "Minha Integracao".</li>
+          <li>Abra a aba <strong>"Keys &amp; credentials"</strong> e selecione a secao <strong>"Development"</strong>. Ali estao o <strong>Client ID</strong> e o <strong>Client Secret</strong>. Guarde os dois.</li>
+          <li>Va em <strong>"Sandbox"</strong>. A empresa de teste ja vem criada. Anote o <strong>Company ID</strong> que aparece ali, esse e o seu <strong>Realm ID</strong>.</li>
+          <li>Abra o <strong>OAuth Playground</strong> em <a class="link" href="https://developer.intuit.com/app/developer/playground" target="_blank" rel="noopener">developer.intuit.com/app/developer/playground</a>. Selecione seu aplicativo, ambiente Sandbox, escopo Accounting. Clique em <strong>"Get authorization code"</strong>, autorize, depois em <strong>"Get tokens"</strong>.</li>
+          <li>Na tela vai aparecer o <strong>Refresh Token</strong>. Guarde ele. Pronto, voce tem as 4 informacoes.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Ligar os Projetos na empresa de teste</h3>
+        <p>Pra lancar despesa por obra, o QuickBooks precisa ter os Projetos ligados. Na empresa de teste (sandbox), abra o QuickBooks, va em Configuracoes, depois em Advanced, e ative <strong>"Projects"</strong>. Depois crie um projeto de teste no menu Projects. Assim o Claude encontra um projeto de verdade pra lancar.</p>
+      </div>
+
+      <div class="note green"><b>Agora a parte facil:</b> voce so cola as 4 informacoes no chat com o Claude e pede pra ele guardar e testar. O Claude salva num arquivo protegido no seu proprio computador e testa a conexao. Voce nao digita comando nenhum. Ele faz tudo e te avisa se conectou.</div>
+
+      <div class="note red"><b>Seguranca:</b> essas 4 informacoes sao suas e ficam so no seu computador. Trate o Refresh Token como uma senha. Nunca poste em grupo, nunca mande por e-mail. Se achar que vazou, revogue o aplicativo na Intuit e gere um novo.</div>
+    </section>
+
+    <!-- 5 -->
+    <section id="conversar" class="reveal">
+      <div class="h2row"><span class="step-num">5</span><h2>Colar o prompt e conversar</h2></div>
+      <p class="lead">Abra o Claude (Desktop ou Code) com a pasta da skill no lugar. Cole a mensagem abaixo. A partir daqui e so conversa: o Claude assume a conducao e roda tudo por voce.</p>
+
+      <div class="prompt">
+        <div class="bar">
+          <span>Prompt pronto</span>
+          <button class="cbtn" data-target="p1">Copiar</button>
         </div>
+        <pre><code id="p1">Ative a skill quickbooks-online. Quero conectar meu QuickBooks Online e organizar minhas despesas por obra/projeto, sem eu precisar usar o terminal. Me conduza um passo de cada vez, em linguagem simples: (1) confira se eu ja tenho minhas 4 credenciais da Intuit; se nao, me guie a conseguir; (2) salve no lugar certo e teste a conexao pra mim; (3) me mostre como lancar uma despesa vinculada ao projeto e faca por mim quando eu te passar os dados da nota; (4) puxe um relatorio se eu pedir. Rode os comandos voce mesmo, me explique cada resultado e me avise se algo nao funcionar. Nunca me peca pra digitar comando no terminal.</code></pre>
       </div>
 
-      <div class="card">
-        <h3>2 &middot; Lancar despesa vinculada a um projeto</h3>
-        <p>Descobre os projetos, cria a despesa (Purchase) apontando para o projeto e le de volta para confirmar que o vinculo foi gravado. Se voce ainda nao tiver um projeto real, ele cria um sub cliente proxy e avisa a limitacao.</p>
-        <div class="code">
-          <div class="bar"><span>terminal</span><button class="cbtn" data-copy='node scripts/create-project-expense.js
-node scripts/create-project-expense.js --project="PROJ-001" --amount=150.50
-node scripts/create-project-expense.js --project-id=58 --amount=42'>Copiar</button></div>
-          <pre><code>node scripts/create-project-expense.js
-node scripts/create-project-expense.js --project="PROJ-001" --amount=150.50
-node scripts/create-project-expense.js --project-id=58 --amount=42</code></pre>
-        </div>
+      <p class="lead" style="margin-top:26px">Depois disso, a conversa fica assim de simples:</p>
+      <div class="chat">
+        <div class="bub you"><span class="who">Voce</span>Lanca uma despesa de 480 dolares de material na obra PROJ-001.</div>
+        <div class="bub cl"><span class="who">Claude</span>Feito. Registrei 480 dolares de material vinculados ao projeto PROJ-001 e conferi no QuickBooks: a despesa entrou certinho no projeto. Quer que eu marque como reembolsavel do cliente?</div>
+        <div class="bub you"><span class="who">Voce</span>Agora me da o relatorio de lucro do mes.</div>
+        <div class="bub cl"><span class="who">Claude</span>Seu faturamento no mes foi X, as despesas somaram Y e o lucro ficou em Z. Quer que eu abra por projeto pra ver qual obra deu mais margem?</div>
       </div>
 
-      <div class="card">
-        <h3>3 &middot; Puxar relatorios financeiros</h3>
-        <p>Puxa a DRE (P&L) por padrao, imprime um resumo e salva o JSON cru em <span class="inline">scripts/out/</span>. Voce pode pedir outros relatorios: ProfitAndLoss, BalanceSheet, CashFlow, CustomerBalance, AgedReceivables, AgedPayables, GeneralLedger e TrialBalance.</p>
-        <div class="code">
-          <div class="bar"><span>terminal</span><button class="cbtn" data-copy='node scripts/pull-reports.js
-node scripts/pull-reports.js --report=BalanceSheet --start=2026-01-01 --end=2026-12-31'>Copiar</button></div>
-          <pre><code>node scripts/pull-reports.js
-node scripts/pull-reports.js --report=BalanceSheet --start=2026-01-01 --end=2026-12-31</code></pre>
-        </div>
-      </div>
+      <div class="note gold">Voce sempre fala em portugues normal: "lanca essa nota no projeto X", "quanto gastei na obra Y", "me da o balanco". O Claude traduz pra linguagem do QuickBooks, executa e te devolve o resultado explicado. <b>Voce nunca escreve um comando.</b></div>
     </section>
 
-    <!-- 6. LIMITES -->
+    <!-- 6 -->
     <section id="limites" class="reveal">
-      <div class="h2row"><span class="step-num">6</span><h2>O que funciona x o que nao funciona</h2></div>
-      <p class="lead">Cada item abaixo foi rodado de verdade contra um sandbox real da Intuit. Isso aqui e honesto: melhor voce saber o limite antes de prometer algo.</p>
+      <div class="h2row"><span class="step-num">6</span><h2>Funciona x nao funciona</h2></div>
+      <p class="lead">Tudo abaixo foi testado de verdade contra o QuickBooks. Nada de promessa vazia.</p>
 
       <div class="grid2">
         <div class="card feat ok">
           <h3><span class="tag ok">FUNCIONA</span></h3>
-          <ul class="clean" style="margin-top:6px">
-            <li>Renovar o acesso via OAuth2 (refresh token).</li>
-            <li>Ler empresa, clientes e plano de contas.</li>
-            <li>Descobrir os projetos existentes.</li>
-            <li>Criar despesa (Purchase) via API.</li>
-            <li>Vincular a despesa a um projeto (o vinculo persiste na leitura de volta).</li>
-            <li>Marcar a despesa como faturavel.</li>
-            <li>Puxar relatorios contabeis (DRE, Balanco e outros).</li>
+          <ul class="clean" style="margin-top:12px">
+            <li>Lancar despesa vinculada a uma obra ou projeto.</li>
+            <li>Conferir de volta que a despesa entrou no projeto certo.</li>
+            <li>Marcar despesa como reembolsavel do cliente.</li>
+            <li>Ler dados da empresa, clientes e contas.</li>
+            <li>Puxar relatorios: lucro e prejuizo, balanco e outros.</li>
+            <li>Renovar o acesso sozinho, sem voce refazer nada.</li>
           </ul>
         </div>
         <div class="card feat no">
-          <h3><span class="tag no">NAO funciona</span></h3>
-          <ul class="clean" style="margin-top:6px">
-            <li>Criar um Project pela API. O projeto precisa existir na tela do QBO; pela API so da para criar um sub cliente proxy.</li>
-            <li>Usar Projects sem plano Plus ou Advanced.</li>
-            <li>Ler o extrato bancario (o feed bruto do banco). A API expoe entidades contabeis e relatorios, nao o extrato.</li>
-            <li>Confiar no filtro de projeto direto na consulta; a skill puxa os clientes e filtra o projeto no resultado.</li>
+          <h3><span class="tag no">NAO FUNCIONA</span></h3>
+          <ul class="clean" style="margin-top:12px">
+            <li>Criar um Projeto novo pela integracao. O projeto precisa ser criado na tela do QuickBooks antes.</li>
+            <li>Usar Projetos sem o plano Plus ou Advanced.</li>
+            <li>Ler o extrato bruto do seu banco. A integracao trabalha com lancamentos contabeis, nao com o feed do banco.</li>
           </ul>
         </div>
       </div>
 
-      <div class="note gold"><b>Dupla prova.</b> Nao diga que funcionou so pela resposta da API. Confirme nas duas frentes: (1) a saida do script imprime o VEREDITO como SIM e o vinculo bateu; (2) na tela do QBO, abra o projeto na aba de custos e veja a despesa listada.</div>
+      <div class="note gold"><b>Como saber que deu certo de verdade:</b> o Claude te mostra que a despesa foi lancada, e voce confirma na tela do QuickBooks abrindo o projeto e vendo a despesa listada. Duas provas, zero achismo.</div>
     </section>
 
-    <!-- 7. CHECKLIST -->
-    <section id="checklist" class="reveal">
-      <div class="h2row"><span class="step-num">7</span><h2>Checklist de validacao</h2></div>
-      <p class="lead">Marque cada item conforme for confirmando. So diga resolvido quando tudo estiver batido.</p>
+    <!-- 7 -->
+    <section id="erros" class="reveal">
+      <div class="h2row"><span class="step-num">7</span><h2>Erros comuns e o que fazer</h2></div>
+      <p class="lead">Se algo travar, na maioria das vezes e uma dessas situacoes. Em todas, voce so conversa com o Claude, que resolve o lado tecnico.</p>
 
-      <div class="card">
-        <h3>Conexao</h3>
-        <div class="chk">
-          <div><span class="box"></span>Imprimiu access token obtido (OAuth ok).</div>
-          <div><span class="box"></span>Imprimiu o nome da empresa (realm correto).</div>
-          <div><span class="box"></span>Listou clientes e contas sem erro.</div>
-          <div><span class="box"></span>Terminou com CONEXAO OK.</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Despesa por projeto</h3>
-        <div class="chk">
-          <div><span class="box"></span>Imprimiu Purchase criada com Id (POST aceito).</div>
-          <div><span class="box"></span>VEREDITO imprimiu SIM, o vinculo ficou gravado.</div>
-          <div><span class="box"></span>O valor do vinculo bate com o Id do projeto usado.</div>
-          <div><span class="box"></span>O alvo usado e um projeto real, nao apenas o sub cliente proxy.</div>
-          <div><span class="box"></span>Na tela do QBO, a despesa aparece atribuida ao projeto.</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Relatorios</h3>
-        <div class="chk">
-          <div><span class="box"></span>Imprimiu o nome do relatorio, periodo e moeda.</div>
-          <div><span class="box"></span>Imprimiu as linhas do relatorio pedido.</div>
-          <div><span class="box"></span>Salvou o JSON cru em scripts/out/.</div>
-        </div>
-      </div>
-
-      <h3 style="font-size:19px;font-weight:700;margin:34px 0 8px;letter-spacing:-0.01em">Erros comuns</h3>
       <div class="tbl">
         <table>
-          <thead><tr><th>Sintoma</th><th>Causa provavel</th><th>Acao</th></tr></thead>
+          <thead><tr><th>Situacao</th><th>O que significa</th><th>O que voce faz</th></tr></thead>
           <tbody>
-            <tr><td>Faltam credenciais</td><td>Arquivo vazio ou ainda com SEU_CLIENT_ID</td><td>Preencha os 4 campos e salve</td></tr>
-            <tr><td>Falha no refresh (HTTP 400)</td><td>Refresh token expirou (~100 dias) ou foi rotacionado</td><td>Gere um novo no OAuth Playground</td></tr>
-            <tr><td>Nenhuma conta Expense ou Bank</td><td>Empresa sem plano de contas</td><td>Use o sandbox (ja vem populado) ou crie as contas</td></tr>
-            <tr><td>Alvo virou sub cliente proxy</td><td>Nao existe projeto real</td><td>Crie um projeto na tela do QBO e rode de novo</td></tr>
-            <tr><td>Relatorio retorna HTTP 400</td><td>Nome de relatorio invalido</td><td>Use um nome da lista de relatorios validos</td></tr>
+            <tr>
+              <td>"Faltam credenciais"</td>
+              <td>As 4 informacoes ainda nao foram salvas.</td>
+              <td>Volte ao passo 4, pegue as 4 na Intuit e cole no chat. O Claude salva.</td>
+            </tr>
+            <tr>
+              <td>Acesso expirou</td>
+              <td>O Refresh Token venceu (dura cerca de 100 dias).</td>
+              <td>Peca ao Claude pra te guiar a gerar um novo no OAuth Playground. Leva 2 minutos.</td>
+            </tr>
+            <tr>
+              <td>"atualizei seu acesso automaticamente"</td>
+              <td>Normal. A Intuit troca a chave a cada uso e o Claude salva sozinho.</td>
+              <td>Nada. So seguir usando.</td>
+            </tr>
+            <tr>
+              <td>Despesa caiu num cliente comum, nao num Projeto</td>
+              <td>Voce ainda nao tem um Projeto de verdade criado na tela do QuickBooks.</td>
+              <td>Crie um projeto no menu Projects do QuickBooks e peca pro Claude lancar de novo.</td>
+            </tr>
+            <tr>
+              <td>Nao aparece a opcao de Projetos</td>
+              <td>Seu plano nao tem Projetos, ou o recurso esta desligado.</td>
+              <td>Confirme o plano Plus ou Advanced e ligue Projects nas configuracoes.</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="note gold">Deu tudo certo no sandbox? So depois disso passe para producao: pegue as chaves da secao Production (Client ID e Client Secret sao diferentes), gere um novo Refresh Token apontando para a sua empresa real e troque o <span class="inline">environment</span> para <span class="inline">"production"</span>. Producao exige que o app passe pela revisao da Intuit.</div>
+      <div class="note green">Na duvida, sempre a mesma saida: descreva pro Claude o que apareceu na tela. Ele le a situacao, explica em portugues e te diz o proximo passo. Voce nunca precisa entender o lado tecnico.</div>
     </section>
+
+    <footer>
+      <p class="brand">Me Ensina <span class="g">AI</span></p>
+      <p style="margin-top:8px">Skill QuickBooks Online. Voce conversa, o Claude executa.</p>
+    </footer>
+
   </div>
 
-  <footer>
-    <div class="brand">Me <span class="g">Ensina AI</span></div>
-    <div style="margin-top:6px">Guia da skill quickbooks-online &middot; conteudo para alunos</div>
-  </footer>
-
-  <script>
-    // Copiar
-    document.querySelectorAll('.cbtn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var text = btn.getAttribute('data-copy');
-        navigator.clipboard.writeText(text).then(function(){
-          var old = btn.textContent;
-          btn.textContent = 'Copiado';
-          btn.classList.add('ok');
-          setTimeout(function(){ btn.textContent = old; btn.classList.remove('ok'); }, 1600);
-        }).catch(function(){
-          var old = btn.textContent; btn.textContent = 'Copie manual'; setTimeout(function(){btn.textContent=old;},1600);
-        });
+<script>
+  // copiar prompt
+  document.querySelectorAll('.cbtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-target'));
+      if(!el) return;
+      var txt = el.innerText;
+      navigator.clipboard.writeText(txt).then(function(){
+        var old = btn.textContent;
+        btn.textContent = 'Copiado';
+        btn.classList.add('ok');
+        setTimeout(function(){ btn.textContent = old; btn.classList.remove('ok'); }, 1800);
       });
     });
-    // Reveal on scroll
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(function(el, i){
-      el.style.transitionDelay = Math.min(i*60, 240) + 'ms';
-      io.observe(el);
-    });
-  </script>
+  });
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(s){ io.observe(s); });
+</script>
 </body>
 </html>
