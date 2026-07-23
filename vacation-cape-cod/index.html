@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · Vacation Cape Cod Inc.</title>
+<meta name="description" content="Proposta comercial da Me Ensina AI para a Vacation Cape Cod Inc. Sistema próprio de gestão de locação por temporada, integrado à API da Guesty.">
+<style>
+  :root{
+    --bg:#0a0c0f;
+    --ink:#eef1f5;
+    --ink-soft:#aeb6c2;
+    --ink-dim:#828d9c;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --glass:rgba(255,255,255,.035);
+    --glass-2:rgba(255,255,255,.05);
+    --accent:#c8933f;
+    --accent-2:#e6b869;
+    --accent-soft:rgba(200,147,63,.14);
+    --radius:20px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk","Satoshi",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(200,147,63,.10), transparent 60%),
+      radial-gradient(900px 600px at 0% 10%, rgba(120,140,170,.06), transparent 55%),
+      linear-gradient(180deg,#0a0c0f 0%, #0b0e12 40%, #090b0e 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;opacity:.4;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+    mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-2);
+    padding:8px 16px;border-radius:999px;
+    background:var(--accent-soft);border:1px solid rgba(200,147,63,.25);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+  .section-head{max-width:780px;margin-bottom:52px}
+  .section-head .eyebrow{margin-bottom:22px}
+  .section-head h2{font-size:clamp(28px,4.4vw,44px);margin-bottom:16px}
+  .section-head .sub{font-size:clamp(16px,2vw,19px);color:var(--ink-soft)}
+  p{color:var(--ink-soft);font-size:16.5px}
+  .prose{max-width:780px}
+  .prose p+p{margin-top:18px}
+  .prose b{color:var(--ink)}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:rgba(10,12,15,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
+  .brand .mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:16px;
+    box-shadow:0 6px 20px rgba(200,147,63,.35);
+  }
+  .brand small{display:block;font-size:11px;font-weight:600;color:var(--ink-dim);letter-spacing:.02em}
+  .nav-cta{
+    text-decoration:none;font-weight:700;font-size:14px;color:#0a0c0f;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    padding:11px 20px;border-radius:999px;
+    box-shadow:0 8px 24px rgba(200,147,63,.3);transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(200,147,63,.45)}
+
+  .hero{padding-top:96px;padding-bottom:72px}
+  .hero h1{font-size:clamp(34px,6vw,62px);margin:26px 0 22px;max-width:17ch}
+  .hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:64ch;line-height:1.65}
+  .hero .kicker{
+    margin-top:30px;display:inline-flex;align-items:center;gap:12px;
+    padding:14px 22px;border-radius:14px;
+    background:var(--glass-2);border:1px solid var(--line-strong);
+    font-weight:700;color:var(--ink);font-size:15.5px;letter-spacing:-.01em;
+  }
+  .hero .kicker span{color:var(--accent-2)}
+
+  .fases{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .fase{padding:32px 30px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+  .fase.now{background:linear-gradient(180deg,rgba(200,147,63,.11),var(--glass));border-color:rgba(200,147,63,.32);box-shadow:0 24px 70px -34px rgba(200,147,63,.5)}
+  .fase .tag{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+  .fase.now .tag{color:var(--accent-2)}
+  .fase h3{font-size:21px;margin-bottom:12px}
+  .fase p{font-size:15.5px}
+  .fase p+p{margin-top:14px}
+  .honesto{
+    margin-top:26px;padding:24px 28px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    font-size:15.5px;color:var(--ink-soft);line-height:1.7;
+  }
+  .honesto b{color:var(--ink)}
+
+  .mods{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .mod{padding:28px;border-radius:18px;background:var(--glass);border:1px solid var(--line);transition:transform .2s ease,border-color .2s ease}
+  .mod:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.3)}
+  .mod .num{font-size:13px;font-weight:800;color:var(--accent-2);letter-spacing:.1em}
+  .mod h3{font-size:19px;margin:8px 0 12px}
+  .mod p{font-size:15px}
+
+  .squads{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .squad{padding:28px 26px;border-radius:16px;background:var(--glass);border:1px solid var(--line)}
+  .squad .qtd{font-size:34px;font-weight:800;color:var(--accent-2);letter-spacing:-.03em;line-height:1}
+  .squad .qtd small{font-size:14px;font-weight:700;color:var(--ink-dim);letter-spacing:0}
+  .squad h3{font-size:17px;margin:12px 0 8px}
+  .squad p{font-size:14.5px}
+  .total-agentes{
+    margin-top:24px;padding:26px 28px;border-radius:16px;
+    background:linear-gradient(135deg,rgba(200,147,63,.1),var(--glass));
+    border:1px solid rgba(200,147,63,.24);
+    font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.01em;
+  }
+  .total-agentes span{color:var(--accent-2)}
+
+  .lista{display:grid;gap:14px;max-width:860px}
+  .li{display:flex;gap:14px;align-items:flex-start;padding:18px 22px;border-radius:14px;background:var(--glass);border:1px solid var(--line)}
+  .li .ic{flex:0 0 20px;margin-top:3px}
+  .li .ic svg{width:20px;height:20px;display:block;color:var(--accent-2)}
+  .li span{font-size:15.5px;color:var(--ink-soft);line-height:1.6}
+  .li b{color:var(--ink)}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .step{padding:26px 24px;border-radius:16px;background:var(--glass);border:1px solid var(--line)}
+  .step .n{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c0f;font-weight:900;display:grid;place-items:center;font-size:17px;margin-bottom:16px;box-shadow:0 6px 18px rgba(200,147,63,.3)}
+  .step .prazo{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+  .step h3{font-size:17px;margin-bottom:8px}
+  .step p{font-size:14.5px}
+
+  .seals{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .seal{padding:28px 26px;border-radius:16px;background:var(--glass);border:1px solid var(--line);transition:transform .2s ease,border-color .2s ease}
+  .seal:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
+  .seal .badge-ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px;background:var(--accent-soft);border:1px solid rgba(200,147,63,.3)}
+  .seal .badge-ic svg{width:24px;height:24px;color:var(--accent-2)}
+  .seal h3{font-size:17px;margin-bottom:8px}
+  .seal p{font-size:14.5px}
+
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .col{border-radius:var(--radius);overflow:hidden;background:var(--glass);border:1px solid var(--line)}
+  .col-head{padding:22px 24px;font-weight:800;letter-spacing:-.02em;font-size:18px;border-bottom:1px solid var(--line);color:var(--ink)}
+  .row{padding:16px 24px;font-size:15px;line-height:1.55;color:var(--ink-soft);border-bottom:1px solid rgba(255,255,255,.045)}
+  .row:last-child{border-bottom:none}
+  .row b{color:var(--ink);display:block;margin-bottom:2px;font-size:14px}
+
+  .invest{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .price{padding:34px 32px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}
+  .price.b{background:linear-gradient(180deg,rgba(200,147,63,.12),var(--glass));border:1px solid rgba(200,147,63,.32);box-shadow:0 24px 70px -34px rgba(200,147,63,.55)}
+  .price .tag{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim)}
+  .price.b .tag{color:var(--accent-2)}
+  .price .val{font-size:clamp(34px,5vw,46px);font-weight:800;letter-spacing:-.03em;margin:12px 0 6px;color:var(--ink)}
+  .price .desc{font-size:15px;color:var(--ink-soft)}
+  .total-box{
+    margin-top:20px;padding:30px 32px;border-radius:18px;
+    background:linear-gradient(135deg,rgba(200,147,63,.12),var(--glass));
+    border:1px solid rgba(200,147,63,.3);
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .total-box .lbl{font-size:14px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2)}
+  .total-box .big{font-size:clamp(30px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+  .invest-note{margin-top:24px;padding:24px 28px;border-radius:16px;background:var(--glass);border:1px solid var(--line);font-size:15px;color:var(--ink-soft);line-height:1.7}
+  .invest-note b{color:var(--ink)}
+
+  .cta{text-align:center;padding-bottom:100px}
+  .cta-box{max-width:820px;margin:0 auto;padding:56px 40px;border-radius:26px;background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.28);box-shadow:0 30px 90px -40px rgba(200,147,63,.5)}
+  .cta-box h2{font-size:clamp(28px,4.6vw,42px);margin-bottom:14px}
+  .cta-box .sub{font-size:17px;color:var(--ink-soft);margin-bottom:34px;max-width:54ch;margin-left:auto;margin-right:auto}
+  .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em;
+    padding:18px 30px;border-radius:15px;display:inline-flex;align-items:center;gap:11px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn svg{width:20px;height:20px}
+  .btn-primary{color:#0a0c0f;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 12px 34px rgba(200,147,63,.4)}
+  .btn-primary:hover{transform:scale(1.03);box-shadow:0 16px 44px rgba(200,147,63,.55)}
+  .btn-ghost{color:var(--ink);background:var(--glass-2);border:1px solid var(--line-strong)}
+  .btn-ghost:hover{transform:scale(1.03);border-color:rgba(200,147,63,.4)}
+  .reforco{margin-top:26px;font-size:14.5px;color:var(--ink-dim)}
+  .validade{margin-top:12px;font-size:13.5px;color:var(--ink-dim)}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center}
+  footer p{font-size:13.5px;color:var(--ink-dim)}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--ink-soft);margin-bottom:10px}
+  footer .fbrand .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:13px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(1){transition-delay:.04s}
+  .stagger.in>*:nth-child(2){transition-delay:.09s}
+  .stagger.in>*:nth-child(3){transition-delay:.14s}
+  .stagger.in>*:nth-child(4){transition-delay:.19s}
+  .stagger.in>*:nth-child(5){transition-delay:.24s}
+  .stagger.in>*:nth-child(6){transition-delay:.29s}
+  .stagger.in>*:nth-child(7){transition-delay:.34s}
+  .stagger.in>*:nth-child(8){transition-delay:.39s}
+  .stagger.in>*:nth-child(9){transition-delay:.44s}
+  .stagger.in>*:nth-child(10){transition-delay:.49s}
+
+  @media (max-width:900px){
+    .squads{grid-template-columns:1fr 1fr}
+    .seals{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:820px){
+    section{padding:64px 0}
+    .fases{grid-template-columns:1fr}
+    .mods{grid-template-columns:1fr}
+    .cols2{grid-template-columns:1fr}
+    .invest{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .hero{padding-top:64px}
+    .cta-box{padding:40px 24px}
+    .btn{width:100%;justify-content:center}
+  }
+  @media (max-width:520px){
+    .squads{grid-template-columns:1fr}
+    .seals{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .wrap{padding:0 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.stagger>*{transition:none;opacity:1;transform:none}
+    .eyebrow .dot{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">M</div>
+      <div>Me Ensina AI<small>Proposta · Vacation Cape Cod Inc.</small></div>
+    </div>
+    <a class="nav-cta" href="#investimento">Ver investimento</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Proposta comercial · feita pra Vacation Cape Cod Inc.</span>
+    <h1>O seu sistema de locação. No seu nome, com os seus dados.</h1>
+    <p class="lead">Talita, hoje a operação inteira da Vacation Cape Cod mora dentro da Guesty. Esta proposta descreve a construção de um sistema de gestão que é seu, conectado à API da Guesty, onde a operação, o financeiro, o histórico e a inteligência passam a viver. E que abre o caminho pra você depender cada vez menos de intermediário.</p>
+    <div class="kicker">Você dá a ordem. Os agentes executam. Tudo dentro das <span>suas contas.</span></div>
+  </div>
+</header>
+
+<!-- CONTEXTO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O ponto de partida</span>
+      <h2>O que você disse, e o que isso significa</h2>
+    </div>
+    <div class="prose reveal">
+      <p>A Guesty faz muita coisa bem feita. Motor de reserva no seu site, sincronização de calendário com os canais, automação de mensagem, camada de inteligência artificial respondendo hóspede. O problema não é a ferramenta.</p>
+      <p>O problema é que a operação inteira mora na casa dos outros, e a mensalidade cresce junto com o seu negócio. Você não construiu um ativo, você aluga um cômodo.</p>
+      <p>Na nossa conversa você foi clara sobre onde quer chegar. <b>Primeiro:</b> quer a clientela da Vacation Cape Cod num ambiente seu, com reserva direta, sem depender de intermediário pra falar com o seu próprio hóspede. <b>Segundo:</b> não quer ficar com a Guesty pro resto da vida.</p>
+      <p>É exatamente isso que esta proposta constrói, e em duas fases, pra que a operação nunca pare no meio do caminho.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FASES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">A estratégia</span>
+      <h2>Duas fases, sem salto no escuro</h2>
+      <p class="sub">A independência não acontece de uma vez. Ela acontece por acúmulo.</p>
+    </div>
+    <div class="fases stagger">
+      <div class="fase now">
+        <div class="tag">Fase 1 · esta proposta</div>
+        <h3>O sistema no ar</h3>
+        <p>A Guesty continua ligada, mas muda de papel. Ela deixa de ser o lugar onde você trabalha e passa a ser apenas o motor que conecta os canais.</p>
+        <p>Toda a operação, o dado, o histórico, o financeiro e a inteligência passam a viver no seu sistema. Na prática: a reserva entra pela Guesty ou pelo seu site, cai no seu sistema em tempo real, e a partir dali quem conduz é a sua plataforma e os seus agentes.</p>
+      </div>
+      <div class="fase">
+        <div class="tag">Fase 2 · consequência natural</div>
+        <h3>A independência progressiva</h3>
+        <p>Com um ano de operação dentro do seu sistema, você acumula o ativo que hoje não é seu: histórico de hóspede, histórico de preço, histórico de ocupação, base própria de clientes recorrentes e canal direto de venda.</p>
+        <p>Quanto mais a sua reserva direta crescer, menos a Guesty pesa. E o sistema que estamos construindo é justamente a máquina de fazer a reserva direta crescer.</p>
+      </div>
+    </div>
+    <div class="honesto reveal"><b>Um ponto de honestidade, porque eu prefiro assim.</b> A parte da Guesty mais difícil de substituir é a conexão oficial com Airbnb e Vrbo, que exige credenciamento de parceiro junto a cada canal. Isso não é uma decisão de software, é uma decisão de cada plataforma. Todo o resto, e o resto é a maior parte do valor, passa a ser seu já na Fase 1.</div>
+  </div>
+</section>
+
+<!-- O QUE VAMOS CONSTRUIR -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O sistema</span>
+      <h2>Dez módulos, construídos sob medida</h2>
+      <p class="sub">Tudo dentro das suas contas, com integração completa à API da Guesty.</p>
+    </div>
+    <div class="mods stagger">
+      <div class="mod">
+        <div class="num">MÓDULO 1</div>
+        <h3>Propriedades e anúncios</h3>
+        <p>Criar, atualizar, ativar, desativar, publicar e despublicar anúncios. Fotos, cômodos, camas, banheiros, comodidades, descrição multilíngue, regras da casa e localização. Você monta um anúncio novo sem abrir a Guesty.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 2</div>
+        <h3>Central de reservas</h3>
+        <p>O coração da operação. Buscar, criar, alterar datas, estender ou encurtar estadias, realocar hóspede, cancelar, aprovar ou recusar solicitações, reservas de grupo, estadia mínima, ajuste de preço, notas e histórico completo.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 3</div>
+        <h3>Calendário e disponibilidade</h3>
+        <p>Leitura e atualização do calendário de uma ou de várias propriedades ao mesmo tempo, tipos de bloqueio, importação, exportação e sincronização com os canais.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 4</div>
+        <h3>Pagamentos e conciliação</h3>
+        <p>Cruzamento dos dados de Stripe e Guesty Pay, cobrança de hóspede, agendamento e cancelamento de pagamentos, reembolsos, pagamentos externos, cartão virtual, transações e repasses.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 5</div>
+        <h3>Financeiro e proprietário</h3>
+        <p>Relatórios financeiros, despesas com anexo, faturas, prestação de contas ao proprietário, taxas, comissão por canal e capital de giro. Com opção de sincronizar com o seu sistema contábil.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 6</div>
+        <h3>Precificação e tarifas</h3>
+        <p>Planos de tarifa, calendário de disponibilidade e preço, estratégias de precificação, promoções, cupons e taxas adicionais por reserva ou por propriedade.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 7</div>
+        <h3>Comunicação com o hóspede</h3>
+        <p>Sequência automática de e mail, SMS e WhatsApp. Reservou, recebe as normas e as instruções de entrada. Uma semana antes, a confirmação. No dia da chegada, as boas vindas e o código de acesso. Com a sua voz e sob a sua revisão.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 8</div>
+        <h3>Operação de campo</h3>
+        <p>Métodos de pagamento, check in, códigos de acesso, tarefas, fornecedores, equipe de limpeza e manutenção, com registro de execução por propriedade.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 9</div>
+        <h3>Inteligência e relatórios</h3>
+        <p>Relatório anual de todas as locações, leitura de sazonalidade, ocupação por propriedade e por canal, ticket médio e comparativo entre temporadas. Preço decidido com número na mão, não por sensação.</p>
+      </div>
+      <div class="mod">
+        <div class="num">MÓDULO 10</div>
+        <h3>Sincronização em tempo real</h3>
+        <p>Webhooks de calendário, reservas, pagamentos e hospedagem. Quando algo acontece na Guesty, o seu sistema sabe na hora, sem ninguém precisar conferir nada na mão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">A camada de inteligência</span>
+      <h2>Os agentes que trabalham dentro do sistema</h2>
+      <p class="sub">O sistema é o corpo. Os agentes são quem trabalha nele, cada um com uma função clara, como um time de verdade.</p>
+    </div>
+    <div class="squads stagger">
+      <div class="squad">
+        <div class="qtd">4 <small>agentes</small></div>
+        <h3>Operação e hospedagem</h3>
+        <p>Reservas, comunicação com hóspede, check in e códigos de acesso, limpeza e manutenção.</p>
+      </div>
+      <div class="squad">
+        <div class="qtd">3 <small>agentes</small></div>
+        <h3>Receita e precificação</h3>
+        <p>Precificação por temporada e ocupação, análise de sazonalidade, desempenho por canal.</p>
+      </div>
+      <div class="squad">
+        <div class="qtd">4 <small>agentes</small></div>
+        <h3>Financeiro</h3>
+        <p>Conciliação de pagamentos, despesas e comprovantes, prestação de contas ao proprietário, consolidação anual.</p>
+      </div>
+      <div class="squad">
+        <div class="qtd">4 <small>agentes</small></div>
+        <h3>Tráfego e marketing</h3>
+        <p>Analista de tráfego pago, cruzamento de anúncio com locação efetivada, direção criativa e copy de anúncio.</p>
+      </div>
+      <div class="squad">
+        <div class="qtd">2 <small>agentes</small></div>
+        <h3>Inteligência e relatórios</h3>
+        <p>Relatório executivo periódico e alerta de anomalia, que avisa quando algum número sai do padrão.</p>
+      </div>
+      <div class="squad">
+        <div class="qtd">3 <small>agentes</small></div>
+        <h3>Governança</h3>
+        <p>CEO orquestrador, que é com quem você fala. Agente de segurança, que audita antes de qualquer coisa entrar no ar. Arquiteto, que cria agentes novos quando a operação pedir.</p>
+      </div>
+    </div>
+    <div class="total-agentes reveal">A partir de <span>20 agentes sob medida</span> para a Vacation Cape Cod, com a composição final calibrada na sessão técnica com você.</div>
+  </div>
+</section>
+
+<!-- ROTINAS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que muda no seu dia</span>
+      <h2>Os agentes têm horário</h2>
+      <p class="sub">Eles não ficam esperando você pedir. Trabalham em rotina, e trazem o resultado pronto.</p>
+    </div>
+    <div class="lista stagger">
+      <div class="li"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Toda manhã.</b> Checagem de chegadas e saídas do dia, com as mensagens correspondentes já preparadas pra você aprovar.</span></div>
+      <div class="li"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Todo dia.</b> Varredura do calendário em busca de buracos de ocupação nas próximas semanas, com sugestão de ajuste de preço.</span></div>
+      <div class="li"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg></span><span><b>Todo dia.</b> Leitura das campanhas de anúncio cruzada com as reservas que efetivamente entraram.</span></div>
+      <div class="li"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span><b>Toda semana.</b> Relatório de ocupação, receita e comparativo com a mesma semana da temporada anterior.</span></div>
+      <div class="li"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M14 3v6h6M9 14h6M9 17h4"/></svg></span><span><b>Todo mês.</b> Fechamento financeiro por propriedade e prestação de contas ao proprietário.</span></div>
+    </div>
+    <div class="honesto reveal">Você define o que cada rotina pode decidir sozinha e o que precisa passar pelo seu OK. <b>Nada entra no automático sem a sua autorização.</b></div>
+  </div>
+</section>
+
+<!-- TRAFEGO + CLAUDE CODE -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Duas peças que mudam o jogo</span>
+      <h2>O anúncio que virou reserva. E a porta aberta pros seus agentes.</h2>
+    </div>
+    <div class="cols2 reveal">
+      <div class="col">
+        <div class="col-head">Tráfego pago cruzado com locação</div>
+        <div class="row"><b>A pergunta que quase ninguém responde</b>Qual anúncio virou reserva paga. Sem essa resposta, tráfego pago é aposta.</div>
+        <div class="row"><b>O que o sistema faz</b>Cruza o dado da campanha com a reserva efetivada dentro da sua base, propriedade por propriedade.</div>
+        <div class="row"><b>O que os agentes fazem</b>Acompanham diariamente, sugerem otimização, apontam qual criativo está gastando sem retorno e produzem ideia e copy de anúncio novo.</div>
+      </div>
+      <div class="col">
+        <div class="col-head">Conexão direta com o seu Claude Code</div>
+        <div class="row"><b>O sistema não é caixa fechada</b>Ele nasce com a porta aberta pros seus agentes. A ligação com o seu Claude Code faz parte da entrega.</div>
+        <div class="row"><b>Na prática</b>Você escreve: me mostra a ocupação de agosto por propriedade. Ou: prepara as mensagens de chegada de amanhã.</div>
+        <div class="row"><b>O que acontece</b>A ordem sai de você, os agentes acionam o sistema, e a resposta volta pronta. Você dirige, eles executam.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cronograma</span>
+      <h2>Do zero ao sistema no ar em 14 dias</h2>
+    </div>
+    <div class="steps stagger">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="prazo">Até 2 dias</div>
+        <h3>Kickoff e acessos</h3>
+        <p>Assinatura, liberação dos acessos e sessão de kickoff pra alinhar prioridade e escopo fino.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="prazo">7 dias</div>
+        <h3>Primeira versão</h3>
+        <p>Você recebe o sistema rodando com os seus dados reais, pra avaliar com os seus olhos e apontar o que melhorar.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="prazo">Mais 7 dias</div>
+        <h3>Ajuste e entrega final</h3>
+        <p>Aplicamos o seu retorno, fechamos as rotinas automáticas e entregamos a versão final.</p>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div class="prazo">12 meses</div>
+        <h3>Acompanhamento</h3>
+        <p>Manutenção, atualização dos agentes, atualização de segurança e acesso à nossa comunidade.</p>
+      </div>
+    </div>
+    <div class="honesto reveal">A primeira versão existe pra você olhar com os seus olhos e dizer o que precisa melhorar. <b>Não é uma prévia decorativa, é o sistema rodando com os seus dados.</b></div>
+  </div>
+</section>
+
+<!-- 12 MESES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Incluso por 12 meses</span>
+      <h2>O que continua depois da entrega</h2>
+      <p class="sub">Sem custo adicional dentro do prazo de doze meses, contados a partir da entrega final.</p>
+    </div>
+    <div class="seals stagger">
+      <div class="seal">
+        <div class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 01-5 5L5 16v3h3l4.7-4.7a4 4 0 015-5z"/></svg></div>
+        <h3>Manutenção do sistema</h3>
+        <p>Doze meses de manutenção do que foi construído.</p>
+      </div>
+      <div class="seal">
+        <div class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-6.2-8.5"/><path d="M21 3v6h-6"/></svg></div>
+        <h3>Atualização dos agentes</h3>
+        <p>Os agentes evoluem junto com a sua operação.</p>
+      </div>
+      <div class="seal">
+        <div class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Atualização de segurança</h3>
+        <p>Cada agente auditado antes de entrar no ar.</p>
+      </div>
+      <div class="seal">
+        <div class="badge-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+        <h3>Comunidade</h3>
+        <p>Aulas gravadas e sessões ao vivo quinzenais, pra você e pra quem você indicar do seu time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACESSOS E FORA DO ESCOPO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Transparência total</span>
+      <h2>O que você libera, e o que não está incluso</h2>
+      <p class="sub">Toda a infraestrutura permanece nas suas contas e no seu nome. É de propósito: é o que garante que o sistema e os dados ficam com você.</p>
+    </div>
+    <div class="cols2 reveal">
+      <div class="col">
+        <div class="col-head">Acessos que a Vacation Cape Cod libera</div>
+        <div class="row"><b>Guesty</b>Acesso de administrador, credenciais de API com token de leitura e escrita, e confirmação do escopo liberado pra sua conta.</div>
+        <div class="row"><b>Pagamentos</b>Acesso de leitura ao Stripe e ao Guesty Pay, pra conciliação.</div>
+        <div class="row"><b>Comunicação</b>Domínio de e mail autenticado, conta e número de envio de SMS e WhatsApp.</div>
+        <div class="row"><b>Tráfego e marketing</b>Contas de anúncio e de rede social que entrarem na operação.</div>
+        <div class="row"><b>Ambiente técnico</b>Conta do Claude Code, banco de dados e hospedagem sob titularidade da Vacation Cape Cod, mais as chaves de API dos serviços integrados.</div>
+      </div>
+      <div class="col">
+        <div class="col-head">Fora do escopo, fica na sua conta</div>
+        <div class="row">Assinatura da Guesty, enquanto ela estiver em uso</div>
+        <div class="row">Assinatura e consumo da conta de inteligência artificial</div>
+        <div class="row">Banco de dados e hospedagem</div>
+        <div class="row">Verba de anúncio</div>
+        <div class="row">Taxas de Stripe e de processamento de pagamento</div>
+        <div class="row">Custos de envio de SMS, WhatsApp e e mail</div>
+      </div>
+    </div>
+    <div class="honesto reveal"><b>Confidencialidade.</b> O contrato inclui cláusula de confidencialidade e proteção de dados. Durante o projeto teremos acesso a informação sensível da operação, do financeiro e da base de hóspedes da Vacation Cape Cod, e isso precisa estar resguardado por escrito, pra sua segurança.</div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Investimento</span>
+      <h2>Investimento</h2>
+      <p class="sub">O projeto completo: os dez módulos do sistema, os agentes sob medida, a integração com a Guesty, a instalação e os doze meses de acompanhamento.</p>
+    </div>
+    <div class="invest stagger">
+      <div class="price b">
+        <div class="tag">Parcela 1 · na assinatura</div>
+        <div class="val">USD $6,000</div>
+        <p class="desc">Libera o kickoff e o início da construção.</p>
+      </div>
+      <div class="price">
+        <div class="tag">Parcela 2 · 30 dias depois</div>
+        <div class="val">USD $6,000</div>
+        <p class="desc">Trinta dias após a assinatura do contrato.</p>
+      </div>
+    </div>
+    <div class="total-box reveal">
+      <div class="lbl">Total do projeto</div>
+      <div class="big">USD $12,000</div>
+    </div>
+    <div class="invest-note reveal">Emitimos a fatura pelo QuickBooks, com pagamento por cartão da empresa ou cheque. O serviço é classificado como consultoria. O valor cobre o trabalho do nosso time: diagnóstico, construção do sistema, integração com a API da Guesty, agentes sob medida, instalação e os doze meses de acompanhamento. <b>As ferramentas de terceiros necessárias pra operar são contratadas direto na sua conta e no seu nome, e não estão incluídas neste valor.</b></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap reveal">
+    <div class="cta-box">
+      <h2>Talita, é só dar o sinal</h2>
+      <p class="sub">Aprove a proposta e a gente emite o contrato com a cláusula de confidencialidade, manda a fatura pelo QuickBooks e marca o kickoff.</p>
+      <div class="btns">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/14076903219?text=Ol%C3%A1%20F%C3%A1bio%21%20Aprovo%20a%20proposta%20do%20sistema%20de%20gest%C3%A3o%20da%20Vacation%20Cape%20Cod.%20Pode%20emitir%20o%20contrato%20e%20a%20fatura.">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.7-.85-2-.95-.26-.1-.46-.15-.65.15-.2.3-.75.94-.92 1.14-.17.2-.34.22-.63.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.57-.9-2.15-.24-.56-.48-.48-.65-.49h-.56c-.2 0-.5.07-.77.37-.26.3-1 1-1 2.42s1.03 2.8 1.17 3c.15.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.27-.19-.56-.34zM12 2a10 10 0 00-8.6 15.05L2 22l5.05-1.32A10 10 0 1012 2zm0 18.17a8.13 8.13 0 01-4.14-1.13l-.3-.18-3 .79.8-2.92-.2-.3A8.17 8.17 0 1112 20.17z"/></svg>
+          Aprovar a proposta
+        </a>
+        <a class="btn btn-ghost" href="mailto:contato@meensinaai.com?subject=Proposta%20Vacation%20Cape%20Cod%20Inc.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          Tirar uma dúvida antes
+        </a>
+      </div>
+      <p class="reforco">Assim que você aprovar, emitimos o contrato e a fatura, e o kickoff acontece em até 2 dias.</p>
+      <p class="validade">Validade desta proposta: 7 dias a partir de 22 de julho de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><span class="mark">M</span>Me Ensina AI</div>
+    <p>Proposta comercial privada para a Vacation Cape Cod Inc. · 22 de julho de 2026 · Valores em USD</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal, .stagger');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
