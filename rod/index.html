@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Plano de Ação · Rod</title>
+<meta name="description" content="Plano de Ação da Rod: da operação pulverizada a um ecossistema de dados unificado que trabalha pra você. Preparado pela Me Ensina AI.">
+<style>
+  :root{
+    --bg:#0a0c0f;
+    --bg-2:#0d1116;
+    --ink:#eef1f5;
+    --ink-soft:#aeb6c2;
+    --ink-dim:#828d9c;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --glass:rgba(255,255,255,.035);
+    --glass-2:rgba(255,255,255,.05);
+    --accent:#c8933f;
+    --accent-2:#e6b869;
+    --accent-soft:rgba(200,147,63,.14);
+    --danger:#8a939e;
+    --ok:#e6b869;
+    --radius:20px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk","Satoshi",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(200,147,63,.10), transparent 60%),
+      radial-gradient(900px 600px at 0% 10%, rgba(120,140,170,.06), transparent 55%),
+      linear-gradient(180deg,#0a0c0f 0%, #0b0e12 40%, #090b0e 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;opacity:.4;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+    mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-2);
+    padding:8px 16px;border-radius:999px;
+    background:var(--accent-soft);border:1px solid rgba(200,147,63,.25);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+  .section-head{max-width:760px;margin-bottom:52px}
+  .section-head .eyebrow{margin-bottom:22px}
+  .section-head h2{font-size:clamp(28px,4.4vw,44px);margin-bottom:16px}
+  .section-head .sub{font-size:clamp(16px,2vw,19px);color:var(--ink-soft)}
+  p{color:var(--ink-soft);font-size:16.5px}
+  .card{
+    background:var(--glass);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:rgba(10,12,15,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
+  .brand .mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:16px;
+    box-shadow:0 6px 20px rgba(200,147,63,.35);
+  }
+  .brand small{display:block;font-size:11px;font-weight:600;color:var(--ink-dim);letter-spacing:.02em}
+  .nav-tag{
+    font-weight:700;font-size:13px;color:var(--accent-2);
+    padding:9px 18px;border-radius:999px;
+    background:var(--accent-soft);border:1px solid rgba(200,147,63,.25);
+  }
+
+  /* HERO */
+  .hero{padding-top:96px;padding-bottom:72px}
+  .hero h1{font-size:clamp(34px,6vw,64px);margin:26px 0 22px;max-width:17ch}
+  .hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:62ch;line-height:1.65}
+  .hero .kicker{
+    margin-top:30px;display:inline-flex;align-items:center;gap:12px;
+    padding:14px 22px;border-radius:14px;
+    background:var(--glass-2);border:1px solid var(--line-strong);
+    font-weight:700;color:var(--ink);font-size:15.5px;letter-spacing:-.01em;
+  }
+  .hero .kicker span{color:var(--accent-2)}
+
+  /* GENERIC GRID */
+  .grid{display:grid;gap:20px}
+  .prose p+p{margin-top:18px}
+  .prose{max-width:760px}
+
+  /* LISTA DE FONTES DE DADOS */
+  .sources{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .source{
+    padding:22px 24px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .source:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
+  .source h3{font-size:17px;margin-bottom:6px}
+  .source p{font-size:14.5px}
+  .warn-note{
+    margin-top:26px;padding:22px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    font-size:15.5px;color:var(--ink-soft);line-height:1.65;
+  }
+  .warn-note b{color:var(--ink)}
+
+  /* PRINCIPIO / ORDEM DE ACESSO */
+  .access{display:grid;gap:16px;margin-top:8px}
+  .access-node{
+    position:relative;padding:24px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+  }
+  .access-node .rank{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+  .access-node h3{font-size:19px;margin-bottom:6px}
+  .access-node p{font-size:15px}
+  .access-node.r1{border-left:3px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),var(--glass))}
+  .access-node.r2{margin-left:14px}
+  .access-node.r3{margin-left:28px}
+  .closer{
+    margin-top:26px;font-size:clamp(18px,2.4vw,23px);font-weight:700;color:var(--ink);
+    letter-spacing:-.02em;line-height:1.4;max-width:62ch;
+  }
+  .closer b{color:var(--accent-2)}
+
+  /* FASES */
+  .phases{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .phase{padding:28px 28px;border-radius:18px;background:var(--glass);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+  .phase:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.3)}
+  .phase.lead-phase{grid-column:1 / -1;background:linear-gradient(135deg,rgba(200,147,63,.08),var(--glass));border:1px solid rgba(200,147,63,.22)}
+  .phase .num{font-size:13px;font-weight:800;color:var(--accent-2);letter-spacing:.1em}
+  .phase h3{font-size:20px;margin:8px 0 12px}
+  .phase p{font-size:15px}
+
+  /* PASSOS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{padding:26px 24px;border-radius:16px;background:var(--glass);border:1px solid var(--line);position:relative}
+  .step .n{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c0f;font-weight:900;display:grid;place-items:center;font-size:17px;margin-bottom:16px;box-shadow:0 6px 18px rgba(200,147,63,.3)}
+  .step h3{font-size:17px;margin-bottom:8px}
+  .step p{font-size:14.5px}
+
+  /* PROSE DESTAQUE */
+  .highlight-box{
+    margin-top:8px;padding:34px 32px;border-radius:20px;
+    background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));
+    border:1px solid rgba(200,147,63,.28);
+    box-shadow:0 24px 70px -40px rgba(200,147,63,.5);
+    max-width:820px;
+  }
+  .highlight-box p{font-size:16.5px;color:var(--ink);line-height:1.7}
+  .highlight-box p+p{margin-top:16px}
+
+  /* CONTATO / FECHO */
+  .close{text-align:center;padding-bottom:100px}
+  .close-box{max-width:820px;margin:0 auto;padding:52px 40px;border-radius:26px;background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.28);box-shadow:0 30px 90px -40px rgba(200,147,63,.5)}
+  .close-box h2{font-size:clamp(26px,4.4vw,40px);margin-bottom:14px}
+  .close-box .sub{font-size:17px;color:var(--ink-soft);max-width:56ch;margin-left:auto;margin-right:auto}
+  .close-box .signature{margin-top:26px;font-size:15px;color:var(--ink-dim);letter-spacing:.01em}
+  .close-box .signature b{color:var(--ink-soft)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center}
+  footer p{font-size:13.5px;color:var(--ink-dim)}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--ink-soft);margin-bottom:10px}
+  footer .fbrand .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:13px}
+
+  /* REVEAL ANIMATION */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(1){transition-delay:.04s}
+  .stagger.in>*:nth-child(2){transition-delay:.1s}
+  .stagger.in>*:nth-child(3){transition-delay:.16s}
+  .stagger.in>*:nth-child(4){transition-delay:.22s}
+  .stagger.in>*:nth-child(5){transition-delay:.28s}
+  .stagger.in>*:nth-child(6){transition-delay:.34s}
+  .stagger.in>*:nth-child(7){transition-delay:.4s}
+
+  @media (max-width:820px){
+    section{padding:64px 0}
+    .sources{grid-template-columns:1fr}
+    .phases{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .access-node.r2,.access-node.r3{margin-left:0}
+    .nav-tag{display:none}
+    .hero{padding-top:64px}
+    .close-box{padding:40px 24px}
+    .highlight-box{padding:28px 24px}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.stagger>*{transition:none;opacity:1;transform:none}
+    .eyebrow .dot{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">M</div>
+      <div>Me Ensina AI<small>Plano de Ação · Rod</small></div>
+    </div>
+    <span class="nav-tag">A/C Luiz Tabet</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Plano de Ação · feito pra Rod</span>
+    <h1>Plano de Ação: Iatização da Rod</h1>
+    <p class="lead">Da operação pulverizada a um ecossistema de dados unificado que trabalha pra você.</p>
+    <div class="kicker">Preparado por Fábio Borges, Me Ensina AI, a partir da nossa conversa. <span>A/C Luiz Tabet.</span></div>
+  </div>
+</header>
+
+<!-- 1. O QUE E ESTE PLANO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O plano</span>
+      <h2>O que é este plano</h2>
+    </div>
+    <div class="prose reveal">
+      <p>A Rod tem 38 anos, 40 estacionamentos e muito nome no mercado. Os dados da operação existem e são bons, mas estão espalhados em vários sistemas que não conversam entre si. Este plano mostra como unir tudo isso num só lugar e colocar um time de agentes de IA pra trabalhar em cima desses dados, coordenado por um CEO de IA.</p>
+      <p>O objetivo não é você aprender IA. É receber a estrutura pronta e funcionando, em fases validadas uma a uma, com acompanhamento ao longo de cerca de um ano até a sua equipe operar sozinha. No fim, a Rod ganha autonomia pra automatizar o que quiser, só pedindo pro seu CEO de IA.</p>
+      <p>Tudo isso libera o seu time do trabalho manual e repetitivo pra focar no que faz a Rod crescer: abrir as próximas 10 a 20 garagens com margem sadia e sem inchar o administrativo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ONDE A ROD ESTA HOJE -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Diagnóstico</span>
+      <h2>Onde a Rod está hoje</h2>
+    </div>
+    <div class="prose reveal" style="margin-bottom:36px">
+      <p>Sua operação já é forte e parte dela é referência (o estacionamento do Insper, 100% automatizado, é prova disso). O desafio está no administrativo, o calcanhar de Aquiles de toda rede: margem apertada, muito trabalho manual e dados em ilhas separadas.</p>
+      <p>Os dados de vocês vivem hoje, entre outros lugares, em:</p>
+    </div>
+    <div class="sources stagger">
+      <div class="source">
+        <h3>Valet</h3>
+        <p>Gestão do estacionamento e BI, casado com as câmeras LPR que leem as placas.</p>
+      </div>
+      <div class="source">
+        <h3>OMIE</h3>
+        <p>ERP: contábil, financeiro, gestão.</p>
+      </div>
+      <div class="source">
+        <h3>Alfadigh</h3>
+        <p>Câmeras LPR das unidades de rua.</p>
+      </div>
+      <div class="source">
+        <h3>CCO</h3>
+        <p>O operacional que vocês estão implantando.</p>
+      </div>
+      <div class="source">
+        <h3>Meios de pagamento e banco</h3>
+        <p>Maquininha Stone e outras, boletos, Pix, cartão recorrente dos mensalistas.</p>
+      </div>
+    </div>
+    <div class="warn-note reveal">Enquanto esses dados ficam pulverizados, a conciliação bancária e a auditoria financeira são feitas na unha, o que consome gente e ainda deixa erro passar (taxa de cartão, de banco e de maquininha que ninguém tem braço pra conferir todo dia).</div>
+  </div>
+</section>
+
+<!-- 3. O PRINCIPIO QUE GUIA TUDO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O princípio</span>
+      <h2>O princípio que guia tudo</h2>
+    </div>
+    <div class="prose reveal" style="margin-bottom:36px">
+      <p>Não importa qual sistema você usa. Importa como os agentes acessam o dado que cada sistema gera. Tudo é número e texto, e nossa engenharia junta esse quebra-cabeça num só lugar.</p>
+      <p>A ordem de acesso, do melhor pro possível:</p>
+    </div>
+    <div class="access stagger">
+      <div class="access-node r1">
+        <div class="rank">Ideal</div>
+        <h3>Acesso direto por API</h3>
+        <p>O agente entra e puxa o dado quando precisa.</p>
+      </div>
+      <div class="access-node r2">
+        <div class="rank">Quando não há API</div>
+        <h3>Envio automático diário</h3>
+        <p>O sistema manda todo dia um arquivo com tudo do dia anterior, e o agente lê e organiza sozinho.</p>
+      </div>
+      <div class="access-node r3">
+        <div class="rank">Último caso</div>
+        <h3>Coleta assistida</h3>
+        <p>O dado é trazido de forma guiada, sem depender de ninguém digitando.</p>
+      </div>
+    </div>
+    <p class="closer reveal">O gargalo real da sua gestão não é nenhum sistema isolado. É o <b>cruzamento dos dados</b> de todas as fontes num lugar só. Resolvido o cruzamento, o resto é o que vocês quiserem.</p>
+  </div>
+</section>
+
+<!-- 4. AS FASES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">As fases</span>
+      <h2>Sequência de implementação</h2>
+      <p class="sub">Cada fase é validada antes de começar a próxima.</p>
+    </div>
+    <div class="phases stagger">
+      <div class="phase lead-phase">
+        <div class="num">FASE 0</div>
+        <h3>Mapeamento e conexão</h3>
+        <p>Levantar onde cada dado cai e liberar os acessos (Valet, OMIE, Alfadigh, CCO, banco e maquininha). Este é o alicerce e é o passo que depende da apuração técnica que segue em anexo.</p>
+      </div>
+      <div class="phase">
+        <div class="num">FASE 1</div>
+        <h3>Base de dados unificada e conciliação automática</h3>
+        <p>Trazer Valet, OMIE, banco e maquininha pra uma base única. Conciliação bancária e auditoria financeira passam a rodar sozinhas, todo dia: cada taxa de cartão, banco e maquininha vira uma regra conferida automaticamente. Aqui morre a conciliação na unha. Esse é o item que mais dói hoje e por isso abre a fila.</p>
+      </div>
+      <div class="phase">
+        <div class="num">FASE 2</div>
+        <h3>Agentes operacionais</h3>
+        <p>Cobrança automática de inadimplência dos mensalistas, atendimento das demandas repetitivas (compra de selo e convênio, 2ª via de boleto, consulta de vaga por unidade) e ponte automática com a contabilidade.</p>
+      </div>
+      <div class="phase">
+        <div class="num">FASE 3</div>
+        <h3>Análise conversacional</h3>
+        <p>Uma camada onde cada pessoa conversa com os dados: a Fabiana e o Márcio pedem sazonalidade e decisão, a Luiz pede estratégia de marketing pra encher a baixa temporada, e os relatórios chegam no formato que vocês quiserem (planilha, email ou WhatsApp, no horário que definirem).</p>
+      </div>
+      <div class="phase">
+        <div class="num">FASE 4</div>
+        <h3>Autonomia e escala</h3>
+        <p>A equipe passa a operar e automatizar sozinha, e a estrutura acompanha a abertura das novas garagens. O que funciona numa unidade replica na rede inteira, porque o processo administrativo de estacionamento é o mesmo em qualquer lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COMO TRABALHAMOS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Como trabalhamos</span>
+      <h2>Dentro do processo, não entregar e sumir</h2>
+    </div>
+    <div class="highlight-box reveal">
+      <p>Não é entregar e sumir. Ficamos dentro do processo implementando e auditando por alguns meses e acompanhando ao longo de cerca de um ano, porque a tecnologia muda rápido e o que está bom hoje melhora amanhã.</p>
+      <p>Ao final, a Rod tem a estrutura ancorada e a sua equipe com autonomia total pra criar e automatizar por conta própria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROXIMO PASSO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Próximo passo</span>
+      <h2>O que acontece a seguir</h2>
+    </div>
+    <div class="steps stagger">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Apurar os acessos</h3>
+        <p>Apurar os acessos aos sistemas. A lista técnica segue em anexo, A/C Luiz Tabet.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Refinar as fases</h3>
+        <p>Com as respostas, refinamos as fases e o prazo pra estrutura no ar.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Apresentar a proposta</h3>
+        <p>Apresentamos a proposta, com escopo, fases e cronograma.</p>
+      </div>
+    </div>
+    <div class="close" style="padding-top:52px;padding-bottom:0">
+      <div class="close-box reveal">
+        <h2>Assim que vocês devolverem os acessos, o plano ganha datas</h2>
+        <p class="sub">Com os acessos em mãos, o plano ganha datas e a proposta sai na sequência.</p>
+        <p class="signature">Documento preparado para a <b>Rod</b>, A/C <b>Luiz Tabet</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><span class="mark">M</span>Me Ensina AI</div>
+    <p>Plano de Ação · Documento preparado para a Rod, A/C Luiz Tabet · Julho de 2026</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal, .stagger');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
