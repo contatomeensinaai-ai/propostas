@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Acesso aos dados da Rod</title>
-<meta name="description" content="Acesso aos dados da Rod: o primeiro passo, antes de qualquer automação. O que apurar e solicitar pra conectar cada sistema. Preparado pela Me Ensina AI.">
+<meta name="description" content="Acesso aos dados da Rod: o primeiro passo é confirmar com cada fornecedor se o sistema tem API, pra plugarmos os agentes de IA nos seus dados. Preparado pela Me Ensina AI.">
 <style>
   :root{
     --bg:#0a0c0f;
@@ -102,7 +102,7 @@
   /* HERO */
   .hero{padding-top:96px;padding-bottom:72px}
   .hero h1{font-size:clamp(34px,6vw,64px);margin:26px 0 22px;max-width:16ch}
-  .hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:62ch;line-height:1.65}
+  .hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:64ch;line-height:1.65}
   .hero .kicker{
     margin-top:30px;display:inline-flex;align-items:center;gap:12px;
     padding:14px 22px;border-radius:14px;
@@ -115,59 +115,78 @@
   .prose p+p{margin-top:18px}
   .prose{max-width:760px}
 
-  /* 3 JEITOS DE ACESSAR */
-  .access{display:grid;gap:16px;margin-top:8px}
-  .access-node{
-    position:relative;padding:24px 26px;border-radius:16px;
-    background:var(--glass);border:1px solid var(--line);
+  /* SECAO 1 DESTAQUE (o pedido central) */
+  .ask-box{
+    padding:36px 34px;border-radius:22px;max-width:900px;
+    background:linear-gradient(135deg,rgba(200,147,63,.12),var(--glass));
+    border:1px solid rgba(200,147,63,.3);
+    box-shadow:0 24px 70px -40px rgba(200,147,63,.5);
   }
-  .access-node .rank{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
-  .access-node h3{font-size:19px;margin-bottom:6px}
-  .access-node p{font-size:15px}
-  .access-node.r1{border-left:3px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),var(--glass))}
-  .access-node.r2{margin-left:14px}
-  .access-node.r3{margin-left:28px}
+  .ask-box p{font-size:17px;color:var(--ink);line-height:1.7}
 
-  /* VALET PRIORIDADE */
-  .priority{
-    padding:34px 34px;border-radius:22px;
+  /* SECAO 2 PAYOFF */
+  .payoff{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .pay{
+    padding:28px 28px;border-radius:18px;position:relative;overflow:hidden;
+    background:var(--glass);border:1px solid var(--line);
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .pay:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
+  .pay.feature{
+    grid-column:1 / -1;
     background:linear-gradient(135deg,rgba(200,147,63,.14),var(--glass));
     border:1px solid rgba(200,147,63,.38);
     box-shadow:0 30px 80px -40px rgba(200,147,63,.6);
-    margin-bottom:24px;
   }
-  .priority .flag{
+  .pay .pic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px;background:var(--accent-soft);border:1px solid rgba(200,147,63,.3)}
+  .pay .pic svg{width:24px;height:24px;color:var(--accent-2)}
+  .pay .flag{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0a0c0f;
+    font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0a0c0f;
     background:linear-gradient(135deg,var(--accent-2),var(--accent));
-    padding:7px 15px;border-radius:999px;margin-bottom:18px;
+    padding:6px 13px;border-radius:999px;margin-bottom:16px;
     box-shadow:0 8px 24px rgba(200,147,63,.4);
   }
-  .priority .flag .dot{width:7px;height:7px;border-radius:50%;background:#0a0c0f;animation:pulse 2.4s infinite}
-  .priority h3{font-size:clamp(22px,3vw,28px);margin-bottom:10px}
-  .priority p{font-size:16px;color:var(--ink);margin-bottom:22px}
-  .ask-list{display:grid;gap:14px}
-  .ask-item{
-    display:flex;gap:14px;align-items:flex-start;
-    padding:18px 20px;border-radius:14px;
-    background:rgba(255,255,255,.04);border:1px solid rgba(200,147,63,.22);
+  .pay h3{font-size:19px;margin-bottom:8px}
+  .pay.feature h3{font-size:clamp(20px,2.6vw,25px)}
+  .pay p{font-size:15px}
+  .pay.feature p{font-size:16px;color:var(--ink)}
+  .payoff-note{
+    margin-top:26px;padding:22px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    font-size:15.5px;color:var(--ink-soft);line-height:1.65;
   }
-  .ask-item .check{flex:0 0 22px;margin-top:2px}
-  .ask-item .check svg{width:22px;height:22px;display:block;color:var(--accent-2)}
-  .ask-item p{font-size:15.5px;color:var(--ink-soft);margin:0}
-  .ask-item b{color:var(--ink)}
+  .payoff-note b{color:var(--ink)}
 
-  /* OUTROS SISTEMAS */
-  .others-intro{max-width:760px;margin:8px 0 24px}
+  /* SECAO 3 SISTEMAS */
+  .q-list{display:grid;gap:14px;margin:8px 0 36px;max-width:900px}
+  .q-item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:18px 22px;border-radius:14px;
+    background:var(--glass);border:1px solid var(--line);
+  }
+  .q-item .qn{
+    flex:0 0 30px;width:30px;height:30px;border-radius:9px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c0f;
+    font-weight:900;font-size:14px;display:grid;place-items:center;margin-top:1px;
+  }
+  .q-item p{font-size:15.5px;color:var(--ink-soft);margin:0}
   .systems{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .system{
-    padding:22px 24px;border-radius:16px;
+    padding:24px 26px;border-radius:16px;
     background:var(--glass);border:1px solid var(--line);
     transition:transform .2s ease,border-color .2s ease;
   }
   .system:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
-  .system h3{font-size:17px;margin-bottom:6px}
-  .system .tag{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--ink-dim);text-transform:uppercase;margin-bottom:10px;display:block}
+  .system.top{
+    grid-column:1 / -1;
+    background:linear-gradient(135deg,rgba(200,147,63,.12),var(--glass));
+    border:1px solid rgba(200,147,63,.34);
+  }
+  .system .tag{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--ink-dim);text-transform:uppercase;margin-bottom:10px;display:inline-flex;align-items:center;gap:8px}
+  .system.top .tag{color:var(--accent-2)}
+  .system.top .tag .mini{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#0a0c0f;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:.08em}
+  .system h3{font-size:18px;margin-bottom:6px}
   .system p{font-size:14.5px}
 
   /* PROSE DESTAQUE */
@@ -176,7 +195,7 @@
     background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));
     border:1px solid rgba(200,147,63,.28);
     box-shadow:0 24px 70px -40px rgba(200,147,63,.5);
-    max-width:820px;
+    max-width:860px;
   }
   .highlight-box p{font-size:16.5px;color:var(--ink);line-height:1.7}
   .highlight-box p+p{margin-top:16px}
@@ -210,20 +229,20 @@
 
   @media (max-width:820px){
     section{padding:64px 0}
+    .payoff{grid-template-columns:1fr}
     .systems{grid-template-columns:1fr}
-    .access-node.r2,.access-node.r3{margin-left:0}
     .nav-tag{display:none}
     .hero{padding-top:64px}
     .close-box{padding:40px 24px}
     .highlight-box{padding:28px 24px}
-    .priority{padding:28px 24px}
+    .ask-box{padding:28px 24px}
   }
   @media (max-width:480px){
     .wrap{padding:0 18px}
   }
   @media (prefers-reduced-motion:reduce){
     .reveal,.stagger>*{transition:none;opacity:1;transform:none}
-    .eyebrow .dot,.priority .flag .dot{animation:none}
+    .eyebrow .dot{animation:none}
   }
 </style>
 </head>
@@ -244,83 +263,92 @@
   <div class="wrap reveal">
     <span class="eyebrow"><span class="dot"></span>Acesso aos dados · feito pra Rod</span>
     <h1>Acesso aos dados da Rod</h1>
-    <p class="lead">O primeiro passo, antes de qualquer automação: como eu entro em cada sistema.</p>
+    <p class="lead">O primeiro passo: confirmar com cada fornecedor se o sistema tem API, pra plugarmos os agentes de IA nos seus dados.</p>
     <div class="kicker">Preparado por Fábio Borges, Me Ensina AI, a partir da nossa conversa. <span>A/C Luiz Tabet.</span></div>
   </div>
 </header>
 
-<!-- 1. POR QUE ISSO VEM PRIMEIRO -->
+<!-- 1. O QUE PRECISAMOS QUE VOCES VERIFIQUEM AGORA -->
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">O ponto de partida</span>
-      <h2>Por que isso vem primeiro</h2>
+      <span class="eyebrow">O pedido</span>
+      <h2>O que precisamos que vocês verifiquem agora</h2>
     </div>
-    <div class="prose reveal">
-      <p>Toda a automação depende de uma coisa só: eu conseguir acessar o dado que cada sistema de vocês gera. Toda ferramenta que a gente for usar precisa ter uma porta de entrada pros dados, o que a gente chama de API. Com essa porta, meus agentes entram e puxam a informação na hora que precisam. Sem ela, a gente combina outro caminho. Por isso, antes de falar de qualquer automação, eu preciso mapear como eu entro em cada sistema de vocês.</p>
-      <p>O sistema pode estar todo automatizado, mas por baixo ele alimenta um banco de dados. É esse banco que eu preciso acessar.</p>
+    <div class="ask-box reveal">
+      <p>O primeiro passo é vocês checarem, com o fornecedor de cada sistema, se ele tem API. É por essa porta que os nossos agentes de IA se integram e passam a trabalhar com os dados disponíveis na plataforma, puxando a informação direto (o que a gente chama tecnicamente de GET). Com esse acesso liberado, a estrutura toda a gente monta do nosso lado.</p>
     </div>
   </div>
 </section>
 
-<!-- 2. OS 3 JEITOS DE ACESSAR O DADO -->
+<!-- 2. O QUE A GENTE MONTA COM ESSE ACESSO (PAYOFF) -->
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Os 3 jeitos</span>
-      <h2>Os 3 jeitos de acessar o dado</h2>
-      <p class="sub">Do melhor pro possível.</p>
+      <span class="eyebrow">O pra quê</span>
+      <h2>O que a gente monta com esse acesso</h2>
+      <p class="sub">Assim que os agentes tiverem acesso aos dados, construímos tudo que conversamos na call, entre outros:</p>
     </div>
-    <div class="access stagger">
-      <div class="access-node r1">
-        <div class="rank">Ideal</div>
-        <h3>Acesso direto por API</h3>
-        <p>Eu entro no sistema e puxo o dado na hora que precisar. Tecnicamente isso se chama fazer um GET. É a forma mais segura de não errar dado.</p>
+    <div class="payoff stagger">
+      <div class="pay feature">
+        <span class="flag">Destaque</span>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Dashboard de conciliação automática</h3>
+        <p>Banco, cartão e maquininha batidos todo dia, sozinho, no lugar do trabalho na unha.</p>
       </div>
-      <div class="access-node r2">
-        <div class="rank">Quando não há API</div>
-        <h3>Envio automático diário</h3>
-        <p>O sistema manda todo dia, num horário fixo, um arquivo com tudo que aconteceu no dia anterior pra um email. Meu agente lê esse arquivo de manhã e organiza sozinho. Foi assim que resolvi a compilação de dados de mais de 70 operadoras de seguro: um email diário com o arquivo do dia anterior, e o agente às 6h montando tudo.</p>
+      <div class="pay">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
+        <h3>Reports</h3>
+        <p>No formato que vocês quiserem (planilha, email ou WhatsApp), no horário que definirem.</p>
       </div>
-      <div class="access-node r3">
-        <div class="rank">Último caso</div>
-        <h3>Coleta manual</h3>
-        <p>Alguém baixa o arquivo. A gente evita, mas funciona.</p>
+      <div class="pay">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Análise de inadimplência</h3>
+        <p>Quem não está efetuando o pagamento, com a cobrança automática dos mensalistas.</p>
+      </div>
+      <div class="pay">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg></div>
+        <h3>Sazonalidade e estratégia</h3>
+        <p>Movimento por período e ações pra encher a baixa temporada.</p>
+      </div>
+      <div class="pay">
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>Atendimento das demandas repetitivas</h3>
+        <p>Selo e convênio, 2ª via de boleto, consulta de vaga, e ponte automática com a contabilidade.</p>
       </div>
     </div>
+    <div class="payoff-note reveal"><b>Vocês não precisam entender de IA nem operar nada disso.</b> Recebem a estrutura pronta e funcionando.</div>
   </div>
 </section>
 
-<!-- 3. O QUE PRECISO QUE APUREM AGORA -->
+<!-- 3. OS SISTEMAS PRA CHECAR COM OS FORNECEDORES -->
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">A lista de apuração</span>
-      <h2>O que eu preciso que vocês apurem agora</h2>
-      <p class="sub">Comece pela Valet.</p>
+      <span class="eyebrow">A checagem</span>
+      <h2>Os sistemas pra checar com os fornecedores</h2>
+      <p class="sub">Pra cada sistema, a pergunta pro fornecedor é a mesma:</p>
     </div>
-
-    <div class="priority reveal">
-      <span class="flag"><span class="dot"></span>Prioridade · Valet primeiro</span>
-      <h3>Valet</h3>
-      <p>É o coração da operação (gestão, BI e as câmeras LPR que leem as placas). Da Valet eu preciso de duas coisas:</p>
-      <div class="ask-list">
-        <div class="ask-item">
-          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-          <p>A <b>documentação da API REST</b>. Eles não têm API pública, mas têm uma API REST bem estruturada.</p>
-        </div>
-        <div class="ask-item">
-          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-          <p>A <b>liberação de um acesso</b> pra eu fazer as consultas (os GET) e, se possível, um <b>ambiente de teste (sandbox)</b> pra eu montar o meu ambiente.</p>
-        </div>
+    <div class="q-list reveal">
+      <div class="q-item">
+        <span class="qn">1</span>
+        <p>Tem API? Se tiver, me manda a documentação (link ou PDF).</p>
+      </div>
+      <div class="q-item">
+        <span class="qn">2</span>
+        <p>Consegue liberar um acesso pra a gente fazer as consultas (uma chave ou token, e se possível um ambiente de teste, o sandbox)?</p>
+      </div>
+      <div class="q-item">
+        <span class="qn">3</span>
+        <p>Se não tiver API, dá pra configurar um envio automático todo dia de um arquivo com tudo do dia anterior pra um email fixo?</p>
       </div>
     </div>
-
-    <div class="prose others-intro reveal">
-      <p>Depois da Valet, na sequência, o mesmo raciocínio pros outros sistemas. Pra cada um a pergunta é a mesma: onde o dado cai, tem API (me manda a documentação), libera o acesso; e se não tiver API, dá pra automatizar aquele envio diário?</p>
-    </div>
-
     <div class="systems stagger">
+      <div class="system top">
+        <span class="tag"><span class="mini">Mais importante</span> Valet</span>
+        <h3>Gestão, BI e câmeras LPR</h3>
+        <p>É onde estão placas, valores, permanência, mensalistas e faturamento. Eles não têm API pública, mas têm uma API REST bem estruturada; peçam a documentação e a liberação de acesso e sandbox.</p>
+      </div>
       <div class="system">
         <span class="tag">OMIE</span>
         <h3>Contábil, financeiro, gestão</h3>
@@ -329,31 +357,32 @@
       <div class="system">
         <span class="tag">Alfadigh</span>
         <h3>Câmeras das unidades de rua</h3>
-        <p>Tem API? Onde ele grava as placas lidas?</p>
+        <p>Tem API? Onde grava as placas lidas?</p>
       </div>
       <div class="system">
         <span class="tag">CCO</span>
-        <h3>O operacional que vocês estão implantando</h3>
-        <p>Vai ter API ou exportação de dados?</p>
+        <h3>O que vocês estão implantando</h3>
+        <p>Vai ter API ou exportação?</p>
       </div>
       <div class="system">
         <span class="tag">Banco e maquininha</span>
         <h3>Stone e outras</h3>
-        <p>Dá pra puxar as taxas e as transações por API ou por relatório e arquivo?</p>
+        <p>Dá pra puxar taxas e transações por API ou por relatório e arquivo?</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. COMO O DADO VOLTA -->
+<!-- 4. COMO A GENTE TRABALHA O DADO -->
 <section>
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">A volta</span>
-      <h2>Como o dado volta pra vocês</h2>
+      <span class="eyebrow">Como funciona</span>
+      <h2>Como a gente trabalha o dado</h2>
     </div>
     <div class="highlight-box reveal">
-      <p>Do mesmo jeito que eu entro, eu devolvo. O relatório chega no formato que vocês quiserem: planilha, email ou uma mensagem no WhatsApp, no horário que definirem. O destino também é combinado com vocês.</p>
+      <p>Melhor caso: acesso direto por API (o GET), a gente entra e puxa na hora. Se algum sistema não tiver API, a gente combina o envio automático diário do dia anterior pra um email, e o agente lê e organiza sozinho (foi assim que resolvi a compilação de dados de mais de 70 operadoras de seguro).</p>
+      <p>Do mesmo jeito que a gente entra, a gente devolve: o relatório volta no formato e no horário que vocês quiserem.</p>
     </div>
   </div>
 </section>
@@ -367,8 +396,8 @@
     </div>
     <div class="close" style="padding-top:8px;padding-bottom:0">
       <div class="close-box reveal">
-        <h2>Comecem pela documentação da API REST da Valet e pela liberação do acesso</h2>
-        <p class="sub">Com isso em mãos eu monto o ambiente, e a gente avança pro cronograma e pra proposta. Podem ir mandando conforme conseguem, não precisa esperar juntar tudo.</p>
+        <h2>Confirmem com os fornecedores quais sistemas têm API, começando pela Valet</h2>
+        <p class="sub">Me tragam a documentação e o acesso. Com isso em mãos, a gente monta o ambiente e avança pro cronograma e pra proposta. Podem ir mandando conforme conseguem, não precisa esperar juntar tudo.</p>
         <p class="signature">Preparado para a <b>Rod</b>, A/C <b>Luiz Tabet</b>.</p>
       </div>
     </div>
