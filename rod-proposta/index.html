@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta de Consultoria · Rod</title>
+<meta name="description" content="Proposta de Consultoria da Rod: um time de agentes de IA pra gestão completa da rede, operacional, financeira e estratégica. Preparado pela Me Ensina AI.">
+<style>
+  :root{
+    --bg:#0a0c0f;
+    --bg-2:#0d1116;
+    --ink:#eef1f5;
+    --ink-soft:#aeb6c2;
+    --ink-dim:#828d9c;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --glass:rgba(255,255,255,.035);
+    --glass-2:rgba(255,255,255,.05);
+    --accent:#c8933f;
+    --accent-2:#e6b869;
+    --accent-soft:rgba(200,147,63,.14);
+    --danger:#8a939e;
+    --ok:#e6b869;
+    --radius:20px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk","Satoshi",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(200,147,63,.10), transparent 60%),
+      radial-gradient(900px 600px at 0% 10%, rgba(120,140,170,.06), transparent 55%),
+      linear-gradient(180deg,#0a0c0f 0%, #0b0e12 40%, #090b0e 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;opacity:.4;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+    mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 75%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-2);
+    padding:8px 16px;border-radius:999px;
+    background:var(--accent-soft);border:1px solid rgba(200,147,63,.25);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+  .section-head{max-width:780px;margin-bottom:52px}
+  .section-head .eyebrow{margin-bottom:22px}
+  .section-head h2{font-size:clamp(28px,4.4vw,44px);margin-bottom:16px}
+  .section-head .sub{font-size:clamp(16px,2vw,19px);color:var(--ink-soft)}
+  p{color:var(--ink-soft);font-size:16.5px}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    background:rgba(10,12,15,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
+  .brand .mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:16px;
+    box-shadow:0 6px 20px rgba(200,147,63,.35);
+  }
+  .brand small{display:block;font-size:11px;font-weight:600;color:var(--ink-dim);letter-spacing:.02em}
+  .nav-cta{
+    text-decoration:none;font-weight:700;font-size:14px;color:#0a0c0f;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    padding:11px 20px;border-radius:999px;
+    box-shadow:0 8px 24px rgba(200,147,63,.3);transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(200,147,63,.45)}
+
+  /* HERO */
+  .hero{padding-top:96px;padding-bottom:72px}
+  .hero h1{font-size:clamp(34px,6vw,60px);margin:26px 0 22px;max-width:18ch}
+  .hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:62ch;line-height:1.65}
+  .hero .kicker{
+    margin-top:30px;display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:14px 22px;border-radius:14px;
+    background:var(--glass-2);border:1px solid var(--line-strong);
+    font-weight:700;color:var(--ink);font-size:15.5px;letter-spacing:-.01em;
+  }
+  .hero .kicker span{color:var(--accent-2)}
+
+  /* PROSE */
+  .prose p+p{margin-top:18px}
+  .prose{max-width:780px}
+
+  /* ORGANOGRAMA DE AGENTES */
+  .org-intro{max-width:780px;margin-bottom:40px}
+  .group{margin-bottom:32px}
+  .group-head{
+    display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .group-head .gline{height:1px;flex:1;background:linear-gradient(90deg,rgba(200,147,63,.4),transparent)}
+  .group-head h3{
+    font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);
+    padding:8px 16px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(200,147,63,.25);
+  }
+  .agents{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .agents.one{grid-template-columns:1fr}
+  .agent{
+    padding:22px 24px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .agent:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
+  .agent .role{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .agent h4{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;color:var(--ink)}
+  .agent p{font-size:14.5px}
+  .agent.ceo{grid-column:1 / -1;background:linear-gradient(135deg,rgba(200,147,63,.13),var(--glass));border:1px solid rgba(200,147,63,.34);box-shadow:0 20px 60px -34px rgba(200,147,63,.5)}
+  .agent.core{background:linear-gradient(90deg,var(--accent-soft),var(--glass));border-left:3px solid var(--accent)}
+  .agent.king{background:linear-gradient(135deg,rgba(200,147,63,.14),var(--glass));border:1px solid rgba(200,147,63,.4);box-shadow:0 24px 70px -40px rgba(200,147,63,.55)}
+  .agent .king-flag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#0a0c0f;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    padding:5px 12px;border-radius:999px;margin-bottom:12px;
+    box-shadow:0 8px 22px rgba(200,147,63,.4);
+  }
+  .org-note{
+    margin-top:20px;padding:22px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    font-size:15.5px;color:var(--ink-soft);line-height:1.65;max-width:none;
+  }
+  .org-note b{color:var(--ink)}
+
+  /* HONEST NOTE */
+  .honest{
+    margin-top:26px;padding:24px 28px;border-radius:16px;
+    background:rgba(255,255,255,.02);border:1px solid var(--line-strong);
+    font-size:15.5px;color:var(--ink-soft);line-height:1.7;max-width:820px;
+  }
+  .honest b{color:var(--ink)}
+  .honest .lbl{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:10px}
+
+  /* TIMELINE FASES */
+  .timeline{display:grid;gap:16px;margin-top:8px}
+  .phase{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:24px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    transition:border-color .2s ease;
+  }
+  .phase:hover{border-color:rgba(200,147,63,.32)}
+  .phase.key{background:linear-gradient(135deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.3)}
+  .phase .pn{
+    flex:0 0 auto;width:52px;height:52px;border-radius:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c0f;
+    font-weight:900;font-size:15px;display:grid;place-items:center;line-height:1.1;text-align:center;
+    box-shadow:0 8px 22px rgba(200,147,63,.3);
+  }
+  .phase .pn small{display:block;font-size:9px;letter-spacing:.1em}
+  .phase .pbody h3{font-size:18px;margin-bottom:6px}
+  .phase .pbody p{font-size:15px}
+
+  /* MODELO DE TRABALHO */
+  .model{display:grid;gap:16px;max-width:900px}
+  .model-item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:20px 24px;border-radius:14px;
+    background:var(--glass);border:1px solid var(--line);
+  }
+  .model-item.star{background:linear-gradient(135deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.3)}
+  .model-item .ic{flex:0 0 22px;margin-top:2px}
+  .model-item .ic svg{width:22px;height:22px;color:var(--accent-2);display:block}
+  .model-item p{font-size:15.5px;margin:0}
+  .model-item b{color:var(--ink)}
+
+  /* PRE-REQUISITOS */
+  .prereq{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .req{
+    padding:28px 26px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--line);
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .req:hover{transform:translateY(-4px);border-color:rgba(200,147,63,.35)}
+  .req .req-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;background:var(--accent-soft);border:1px solid rgba(200,147,63,.3)}
+  .req .req-ic svg{width:23px;height:23px;color:var(--accent-2)}
+  .req h3{font-size:16px;margin-bottom:8px}
+  .req p{font-size:14.5px}
+
+  /* INVESTIMENTO */
+  .invest-hero{
+    padding:44px 40px;border-radius:24px;text-align:center;
+    background:linear-gradient(180deg,rgba(200,147,63,.16),var(--glass));
+    border:1px solid rgba(200,147,63,.4);
+    box-shadow:0 30px 90px -40px rgba(200,147,63,.6);
+    margin-bottom:24px;
+  }
+  .invest-hero .tag{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2)}
+  .invest-hero .big{font-size:clamp(44px,8vw,72px);font-weight:900;letter-spacing:-.04em;margin:12px 0 4px;color:var(--ink);line-height:1}
+  .invest-hero .cap{font-size:15px;color:var(--ink-soft)}
+  .invest-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .pblock{padding:30px 30px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}
+  .pblock .ptag{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim)}
+  .pblock .pval{font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-.03em;margin:10px 0 8px;color:var(--ink)}
+  .pblock .pval small{font-size:16px;font-weight:700;color:var(--ink-soft)}
+  .pblock .pdesc{font-size:15px;color:var(--ink-soft)}
+  .invest-seal{
+    margin-top:24px;padding:28px 30px;border-radius:18px;display:flex;gap:16px;align-items:flex-start;
+    background:linear-gradient(135deg,rgba(200,147,63,.12),var(--glass));
+    border:1px solid rgba(200,147,63,.32);
+    box-shadow:0 24px 70px -40px rgba(200,147,63,.5);
+  }
+  .invest-seal .seal-ic{flex:0 0 auto;width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 8px 24px rgba(200,147,63,.4)}
+  .invest-seal .seal-ic svg{width:26px;height:26px;color:#0a0c0f}
+  .invest-seal h3{font-size:18px;margin-bottom:8px;color:var(--ink)}
+  .invest-seal p{font-size:15.5px;color:var(--ink);line-height:1.65}
+  .invest-seal b{color:var(--accent-2)}
+
+  /* PROSE DESTAQUE */
+  .highlight-box{
+    margin-top:8px;padding:34px 32px;border-radius:20px;
+    background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));
+    border:1px solid rgba(200,147,63,.28);
+    box-shadow:0 24px 70px -40px rgba(200,147,63,.5);
+    max-width:860px;
+  }
+  .highlight-box p{font-size:16.5px;color:var(--ink);line-height:1.7}
+  .highlight-box p+p{margin-top:16px}
+
+  /* PROXIMO PASSO */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+  .step{padding:28px 26px;border-radius:16px;background:var(--glass);border:1px solid var(--line);position:relative}
+  .step .n{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c0f;font-weight:900;display:grid;place-items:center;font-size:17px;margin-bottom:16px;box-shadow:0 6px 18px rgba(200,147,63,.3)}
+  .step h3{font-size:16px;margin-bottom:8px}
+  .step p{font-size:14.5px}
+
+  /* FECHO */
+  .close{text-align:center;padding-bottom:100px}
+  .close-box{max-width:820px;margin:0 auto;padding:52px 40px;border-radius:26px;background:linear-gradient(180deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.28);box-shadow:0 30px 90px -40px rgba(200,147,63,.5)}
+  .close-box h2{font-size:clamp(26px,4.4vw,40px);margin-bottom:14px}
+  .close-box .sub{font-size:17px;color:var(--ink-soft);max-width:56ch;margin-left:auto;margin-right:auto}
+  .close-box .signature{margin-top:26px;font-size:15px;color:var(--ink-dim);letter-spacing:.01em}
+  .close-box .signature b{color:var(--ink-soft)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center}
+  footer p{font-size:13.5px;color:var(--ink-dim)}
+  footer .fbrand{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--ink-soft);margin-bottom:10px}
+  footer .fbrand .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0a0c0f;font-weight:900;font-size:13px}
+
+  /* REVEAL ANIMATION */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(1){transition-delay:.04s}
+  .stagger.in>*:nth-child(2){transition-delay:.1s}
+  .stagger.in>*:nth-child(3){transition-delay:.16s}
+  .stagger.in>*:nth-child(4){transition-delay:.22s}
+  .stagger.in>*:nth-child(5){transition-delay:.28s}
+
+  @media (max-width:820px){
+    section{padding:64px 0}
+    .agents{grid-template-columns:1fr}
+    .prereq{grid-template-columns:1fr}
+    .invest-split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .hero{padding-top:64px}
+    .close-box,.invest-hero{padding:40px 24px}
+    .highlight-box{padding:28px 24px}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.stagger>*{transition:none;opacity:1;transform:none}
+    .eyebrow .dot{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">M</div>
+      <div>Me Ensina AI<small>Proposta · Rod</small></div>
+    </div>
+    <a class="nav-cta" href="#investimento">Ver investimento</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Proposta de Consultoria · feita pra Rod</span>
+    <h1>Proposta de Consultoria: Iatização da Rod</h1>
+    <p class="lead">Um time de agentes de IA pra gestão completa da sua rede: operacional, financeira e estratégica.</p>
+    <div class="kicker">Preparado por Fábio Borges, Me Ensina AI. <span>A/C Luiza Tabet.</span> 7 de agosto de 2026.</div>
+  </div>
+</header>
+
+<!-- 1. O QUE A GENTE VAI CONSTRUIR -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que vamos construir</span>
+      <h2>O que a gente vai construir</h2>
+    </div>
+    <div class="prose reveal">
+      <p>A Rod tem 38 anos, 40 estacionamentos e muito nome no mercado. Os dados existem e são bons, mas estão espalhados. A gente unifica esses dados e coloca um time de agentes de IA pra trabalhar em cima deles, coordenado por um CEO de IA. Cada função que hoje precisa de uma pessoa vira um agente, e juntos eles fazem a gestão completa: a operação, o financeiro e a estratégia.</p>
+      <p>Vocês não precisam entender de IA nem operar nada disso. Recebem a estrutura pronta e, ao longo do ano, a gente treina a equipe pra usar os agentes com autonomia. É entrega em fases, validando cada etapa, com a gente dentro do processo pelos 12 meses.</p>
+      <p>O que isso libera: o seu time sai do trabalho manual e repetitivo pra focar no que faz a Rod crescer, abrir as próximas garagens com margem sadia e enxergar cada unidade com clareza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. O TIME DE AGENTES DE IA -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O time</span>
+      <h2>O time de agentes de IA</h2>
+      <p class="sub">Não é um robô só. É uma empresa de agentes que conversam entre si, cada um especialista na sua função.</p>
+    </div>
+
+    <!-- Orquestração -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Orquestração</h3><span class="gline"></span></div>
+      <div class="agents one">
+        <div class="agent ceo">
+          <div class="role">Topo</div>
+          <h4>CEO de IA</h4>
+          <p>Recebe os pedidos (WhatsApp, planilha ou chat), aciona os especialistas, roda as rotinas automáticas e entrega tudo no formato que vocês quiserem.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Núcleo de dados -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Núcleo de dados</h3><span class="gline"></span></div>
+      <div class="agents one">
+        <div class="agent core">
+          <div class="role">A porta</div>
+          <h4>Coletor Valeti</h4>
+          <p>Puxa os dados da Valeti pela API (pagamentos, tickets, mensalistas, convênios) e mantém uma base unificada de onde todos os outros trabalham.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financeiro -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Financeiro</h3><span class="gline"></span></div>
+      <div class="agents">
+        <div class="agent king">
+          <span class="king-flag">Item rei</span>
+          <h4>Conciliação</h4>
+          <p>Cruza os pagamentos da Valeti com o extrato do banco e o relatório da maquininha (Stone), e aponta divergência de taxa e valor que não bateu. Fim da conciliação na unha.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Inadimplência e Cobrança</h4>
+          <p>Identifica os mensalistas em atraso e dispara a régua de cobrança pelos nossos canais.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Faturamento e Caixa</h4>
+          <p>Fecha a receita por unidade, por dia e por forma de pagamento, e o fechamento de caixa.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Convênios e Nota Fiscal</h4>
+          <p>Acompanha credenciados e convênios e o controle de emissão de NFS-e.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Operação e ocupação -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Operação e ocupação</h3><span class="gline"></span></div>
+      <div class="agents">
+        <div class="agent">
+          <div class="role">Operação</div>
+          <h4>Frequência e Ocupação</h4>
+          <p>Lê o fluxo de veículos pra mostrar a taxa de ocupação por unidade, por dia e por hora.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Operação</div>
+          <h4>Sazonalidade</h4>
+          <p>Acha os padrões de alta e baixa temporada e projeta o movimento.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estratégia e gestão -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Estratégia e gestão</h3><span class="gline"></span></div>
+      <div class="agents">
+        <div class="agent">
+          <div class="role">Estratégia</div>
+          <h4>Estratégia de Negócios</h4>
+          <p>Recomenda ajuste de tabela de preço, aponta a unidade que dá lucro e a que queima caixa, e apoia a decisão de onde abrir as próximas garagens.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Estratégia</div>
+          <h4>Análise e Decisão (conversacional)</h4>
+          <p>A camada com que o Márcio e a Fabiana conversam pra decidir estratégia, na hora.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Estratégia</div>
+          <h4>Marketing e Comunicação</h4>
+          <p>Apoia a Luiza com campanhas pra encher a baixa temporada, a partir do que a Sazonalidade aponta.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Estratégia</div>
+          <h4>Atendimento</h4>
+          <p>Cuida das demandas repetitivas: 2ª via de boleto, compra de selo e convênio, consulta de vaga por unidade.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org-note reveal">A lista cresce conforme a operação pede. A ideia é simples: <b>imagine cada pessoa que faria a gestão completa da rede, e ponha um agente ao lado dela.</b></div>
+  </div>
+</section>
+
+<!-- 3. COMO FUNCIONA NA PRATICA -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Na prática</span>
+      <h2>Como funciona na prática</h2>
+    </div>
+    <div class="prose reveal">
+      <p>Você faz um pedido pelo canal que preferir. O CEO de IA aciona os agentes especialistas, que puxam o dado da Valeti, cruzam com o resto e devolvem o relatório pronto. Além dos relatórios, tem a camada conversacional: você pergunta a sazonalidade, pede a estratégia pra baixa temporada, e o agente responde e já aciona quem executa.</p>
+    </div>
+    <div class="honest reveal">
+      <span class="lbl">Observação honesta</span>
+      <p>Pra não prometer o que a ferramenta não faz: pro financeiro, a API da Valeti é de leitura. Os agentes leem e analisam os dados; as ações, como a cobrança e os avisos, saem pelos <b>nossos canais</b> (WhatsApp, email, CRM), não alteram a Valeti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. AS FASES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Roteiro</span>
+      <h2>As fases</h2>
+      <p class="sub">Cada fase é validada antes de começar a próxima, e o treinamento da equipe acontece ao longo de todas.</p>
+    </div>
+    <div class="timeline stagger">
+      <div class="phase">
+        <div class="pn"><small>FASE</small>0</div>
+        <div class="pbody">
+          <h3>Conexão</h3>
+          <p>Liberação da chave da Valeti e montagem no sandbox, sem tocar na produção.</p>
+        </div>
+      </div>
+      <div class="phase key">
+        <div class="pn"><small>FASE</small>1</div>
+        <div class="pbody">
+          <h3>Financeiro</h3>
+          <p>O núcleo que mais dói: conciliação e inadimplência, com faturamento e caixa. Primeira entrega de valor.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="pn"><small>FASE</small>2</div>
+        <div class="pbody">
+          <h3>Operação</h3>
+          <p>Frequência, ocupação e sazonalidade.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="pn"><small>FASE</small>3</div>
+        <div class="pbody">
+          <h3>Estratégia</h3>
+          <p>Estratégia de negócios, análise conversacional e marketing.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="pn"><small>FASE</small>4</div>
+        <div class="pbody">
+          <h3>Autonomia</h3>
+          <p>A equipe operando sozinha, com a estrutura acompanhando a abertura das novas garagens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. O MODELO DE TRABALHO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Modelo</span>
+      <h2>O modelo de trabalho</h2>
+    </div>
+    <div class="model stagger">
+      <div class="model-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <p>Consultoria de 12 meses com a gente dentro do processo o tempo todo. Não é entregar e sair. São meses de implementação e auditoria mais o acompanhamento até a equipe operar sozinha.</p>
+      </div>
+      <div class="model-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+        <p><b>Treinamento da equipe</b> pra usar os agentes ao longo de todo o ano.</p>
+      </div>
+      <div class="model-item star">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
+        <p>A <b>mensalidade é fixa pelos 12 meses e cobre esta estrutura e as próximas que entrarem.</b> Sistemas novos (por exemplo OMIE, Alfadigh, CCO) não aumentam a mensalidade. Cada sistema novo tem apenas um setup próprio de integração.</p>
+      </div>
+      <div class="model-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <p>Os 12 meses começam a contar da liberação da chave de acesso, não da assinatura, porque o acesso depende do fornecedor. Enquanto isso, a gente já trabalha no sandbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PRE-REQUISITOS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que a Rod provê</span>
+      <h2>Pré-requisitos</h2>
+    </div>
+    <div class="prereq stagger">
+      <div class="req">
+        <div class="req-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 00-7 7c0 3 2 5 3 7h8c1-2 3-4 3-7a7 7 0 00-7-7z"/><path d="M9 21h6"/></svg></div>
+        <h3>Assinatura Claude Pro Max (US$200/mês)</h3>
+        <p>A Rod mantém a assinatura sob a qual os agentes rodam. É um custo da Rod, à parte do valor da consultoria.</p>
+      </div>
+      <div class="req">
+        <div class="req-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div>
+        <h3>Agentes via API, por demanda</h3>
+        <p>Se a operação exigir, alguns agentes rodam via API por demanda. O custo de uso fica por conta da Rod, e só entra quando for necessário.</p>
+      </div>
+      <div class="req">
+        <div class="req-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.5 12.5L20 3M16 3h4v4"/></svg></div>
+        <h3>Chave de acesso da Valeti (sandbox)</h3>
+        <p>Liberação da chave de acesso da Valeti (a x-api-key), de preferência a de homologação (sandbox) pra começarmos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Investimento</span>
+      <h2>Investimento</h2>
+    </div>
+    <div class="invest-hero reveal">
+      <div class="tag">Valor anual · Ano 1</div>
+      <div class="big">R$284.000</div>
+      <div class="cap">A gente parcela de acordo com o acompanhamento, assim:</div>
+    </div>
+    <div class="invest-split stagger">
+      <div class="pblock">
+        <div class="ptag">Setup</div>
+        <div class="pval">R$80.000</div>
+        <p class="pdesc">Em duas vezes: R$40.000 no ato e R$40.000 em 30 dias.</p>
+      </div>
+      <div class="pblock">
+        <div class="ptag">Mensalidade</div>
+        <div class="pval">R$17.000 <small>por mês</small></div>
+        <p class="pdesc">Num contrato de 12 meses.</p>
+      </div>
+    </div>
+    <div class="invest-seal reveal">
+      <div class="seal-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <div>
+        <h3>Mensalidade fixa</h3>
+        <p>A mensalidade é fixa e cobre esta estrutura e as próximas que entrarem. Cada sistema novo que a gente integrar adiciona apenas um setup próprio, e a <b>mensalidade não aumenta.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PROXIMO PASSO -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Próximo passo</span>
+      <h2>Por onde começar</h2>
+    </div>
+    <div class="steps stagger">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Aprovar a proposta</h3>
+        <p>O aceite abre o trabalho e o cronograma.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Liberar acesso e assinatura</h3>
+        <p>Liberar a chave de acesso da Valeti (sandbox) e manter a assinatura Claude Pro Max.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Primeiro relatório rodando</h3>
+        <p>A gente monta a estrutura no sandbox e mostra o primeiro relatório rodando.</p>
+      </div>
+    </div>
+    <div class="close" style="padding-top:52px;padding-bottom:0">
+      <div class="close-box reveal">
+        <h2>Aprove a proposta e a gente começa pelo sandbox</h2>
+        <p class="sub">Com a chave da Valeti liberada e a assinatura Claude Pro Max ativa, a gente monta a estrutura e mostra o primeiro relatório rodando.</p>
+        <p class="signature">Preparado para a <b>Rod</b>, A/C <b>Luiza Tabet</b>. 7 de agosto de 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><span class="mark">M</span>Me Ensina AI</div>
+    <p>Proposta de Consultoria · Preparado para a Rod, A/C Luiza Tabet · 7 de agosto de 2026 · Valores em BRL</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal, .stagger');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
