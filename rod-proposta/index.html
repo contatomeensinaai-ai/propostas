@@ -215,12 +215,23 @@
   .invest-hero .tag{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2)}
   .invest-hero .big{font-size:clamp(44px,8vw,72px);font-weight:900;letter-spacing:-.04em;margin:12px 0 4px;color:var(--ink);line-height:1}
   .invest-hero .cap{font-size:15px;color:var(--ink-soft)}
-  .invest-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .pblock{padding:30px 30px;border-radius:20px;background:var(--glass);border:1px solid var(--line)}
-  .pblock .ptag{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim)}
-  .pblock .pval{font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-.03em;margin:10px 0 8px;color:var(--ink)}
-  .pblock .pval small{font-size:16px;font-weight:700;color:var(--ink-soft)}
-  .pblock .pdesc{font-size:15px;color:var(--ink-soft)}
+  .invest-intro{font-size:clamp(17px,2.2vw,20px);color:var(--ink-soft);margin-bottom:24px;font-weight:600}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+  .opt{padding:34px 32px;border-radius:22px;position:relative;display:flex;flex-direction:column}
+  .opt.parc{background:var(--glass);border:1px solid var(--line)}
+  .opt.avista{background:linear-gradient(180deg,rgba(200,147,63,.16),var(--glass));border:1px solid rgba(200,147,63,.4);box-shadow:0 30px 90px -40px rgba(200,147,63,.6)}
+  .opt .opt-tag{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .opt.avista .opt-tag{color:var(--accent-2)}
+  .opt .save{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0a0c0f;background:linear-gradient(135deg,var(--accent-2),var(--accent));padding:5px 12px;border-radius:999px;box-shadow:0 8px 22px rgba(200,147,63,.4)}
+  .opt .opt-val{font-size:clamp(38px,6vw,54px);font-weight:900;letter-spacing:-.04em;margin:14px 0 4px;color:var(--ink);line-height:1}
+  .opt .opt-cap{font-size:15px;color:var(--ink-soft);margin-bottom:6px}
+  .opt-lines{margin-top:20px;padding-top:20px;border-top:1px solid var(--line);display:grid;gap:16px}
+  .opt.avista .opt-lines{border-top:1px solid rgba(200,147,63,.25)}
+  .opt-line .ll{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:4px}
+  .opt-line .lv{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .opt-line .lv small{font-size:15px;font-weight:700;color:var(--ink-soft)}
+  .opt-line .ld{font-size:14.5px;color:var(--ink-soft);margin-top:3px}
+  .opt .fill{flex:1}
   .invest-seal{
     margin-top:24px;padding:28px 30px;border-radius:18px;display:flex;gap:16px;align-items:flex-start;
     background:linear-gradient(135deg,rgba(200,147,63,.12),var(--glass));
@@ -280,7 +291,8 @@
     section{padding:64px 0}
     .agents{grid-template-columns:1fr}
     .prereq{grid-template-columns:1fr}
-    .invest-split{grid-template-columns:1fr}
+    .options{grid-template-columns:1fr}
+    .opt.avista{order:-1}
     .steps{grid-template-columns:1fr}
     .nav-cta{display:none}
     .hero{padding-top:64px}
@@ -568,21 +580,30 @@
       <span class="eyebrow">Investimento</span>
       <h2>Investimento</h2>
     </div>
-    <div class="invest-hero reveal">
-      <div class="tag">Valor anual · Ano 1</div>
-      <div class="big">R$284.000</div>
-      <div class="cap">A gente parcela de acordo com o acompanhamento, assim:</div>
-    </div>
-    <div class="invest-split stagger">
-      <div class="pblock">
-        <div class="ptag">Setup</div>
-        <div class="pval">R$80.000</div>
-        <p class="pdesc">Em duas vezes: R$40.000 no ato e R$40.000 em 30 dias.</p>
+    <p class="invest-intro reveal">Duas formas de fechar o Ano 1:</p>
+    <div class="options stagger">
+      <div class="opt avista">
+        <div class="opt-tag">À vista <span class="save">Economia de R$12.000</span></div>
+        <div class="opt-val">R$284.000</div>
+        <div class="opt-cap">O ano completo, pago adiantado.</div>
+        <div class="fill"></div>
       </div>
-      <div class="pblock">
-        <div class="ptag">Mensalidade</div>
-        <div class="pval">R$17.000 <small>por mês</small></div>
-        <p class="pdesc">Num contrato de 12 meses.</p>
+      <div class="opt parc">
+        <div class="opt-tag">Parcelado · Ano 1</div>
+        <div class="opt-val">R$296.000</div>
+        <div class="opt-cap">De acordo com o acompanhamento:</div>
+        <div class="opt-lines">
+          <div class="opt-line">
+            <div class="ll">Setup</div>
+            <div class="lv">R$80.000</div>
+            <div class="ld">Em duas vezes: R$40.000 no ato e R$40.000 em 30 dias.</div>
+          </div>
+          <div class="opt-line">
+            <div class="ll">Mensalidade</div>
+            <div class="lv">R$18.000 <small>por mês</small></div>
+            <div class="ld">Num contrato de 12 meses.</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="invest-seal reveal">
