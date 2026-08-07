@@ -135,6 +135,7 @@
   .agent.ceo{grid-column:1 / -1;background:linear-gradient(135deg,rgba(200,147,63,.13),var(--glass));border:1px solid rgba(200,147,63,.34);box-shadow:0 20px 60px -34px rgba(200,147,63,.5)}
   .agent.core{background:linear-gradient(90deg,var(--accent-soft),var(--glass));border-left:3px solid var(--accent)}
   .agent.king{background:linear-gradient(135deg,rgba(200,147,63,.14),var(--glass));border:1px solid rgba(200,147,63,.4);box-shadow:0 24px 70px -40px rgba(200,147,63,.55)}
+  .agent.guard{background:linear-gradient(135deg,rgba(200,147,63,.1),var(--glass));border:1px solid rgba(200,147,63,.32)}
   .agent .king-flag{
     display:inline-flex;align-items:center;gap:7px;
     font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#0a0c0f;
@@ -142,6 +143,21 @@
     padding:5px 12px;border-radius:999px;margin-bottom:12px;
     box-shadow:0 8px 22px rgba(200,147,63,.4);
   }
+  .agent .guard-flag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);
+    background:var(--accent-soft);border:1px solid rgba(200,147,63,.35);
+    padding:5px 12px;border-radius:999px;margin-bottom:12px;
+  }
+  .team-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .team-stat{
+    display:inline-flex;align-items:baseline;gap:8px;
+    padding:12px 20px;border-radius:14px;
+    background:var(--glass-2);border:1px solid var(--line-strong);
+  }
+  .team-stat b{font-size:24px;font-weight:900;letter-spacing:-.03em;color:var(--accent-2)}
+  .team-stat span{font-size:14px;font-weight:700;color:var(--ink-soft)}
+  .group-head .gcount{font-size:12px;font-weight:700;color:var(--ink-dim);letter-spacing:.02em}
   .org-note{
     margin-top:20px;padding:22px 26px;border-radius:16px;
     background:var(--glass);border:1px solid var(--line);
@@ -351,46 +367,70 @@
     <div class="section-head reveal">
       <span class="eyebrow">O time</span>
       <h2>O time de agentes de IA</h2>
-      <p class="sub">Não é um robô só. É uma empresa de agentes que conversam entre si, cada um especialista na sua função.</p>
+      <p class="sub">Não é um robô só. É uma empresa inteira de agentes que conversam entre si, cada um especialista na sua função. Cada pessoa que hoje faria a gestão da rede ganha um agente do lado. Este é o organograma.</p>
+      <div class="team-stats">
+        <div class="team-stat"><b>25</b><span>agentes especialistas</span></div>
+        <div class="team-stat"><b>7</b><span>departamentos</span></div>
+      </div>
     </div>
 
-    <!-- Orquestração -->
+    <!-- Direção e orquestração -->
     <div class="group reveal">
-      <div class="group-head"><h3>Orquestração</h3><span class="gline"></span></div>
-      <div class="agents one">
+      <div class="group-head"><h3>Direção e orquestração</h3><span class="gcount">3 agentes</span><span class="gline"></span></div>
+      <div class="agents">
         <div class="agent ceo">
           <div class="role">Topo</div>
           <h4>CEO de IA</h4>
-          <p>Recebe os pedidos (WhatsApp, planilha ou chat), aciona os especialistas, roda as rotinas automáticas e entrega tudo no formato que vocês quiserem.</p>
+          <p>Recebe os pedidos (WhatsApp, planilha ou chat), aciona os especialistas e entrega tudo no formato que vocês quiserem.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Direção</div>
+          <h4>Conselho Estratégico</h4>
+          <p>A camada com que o Márcio e a Fabiana conversam pra decidir na hora, com os números na mão.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Direção</div>
+          <h4>Relatórios e Rotinas</h4>
+          <p>Monta o relatório diário (por exemplo, às 8h no WhatsApp) e o fechamento do mês. Tudo que vocês pedem duas vezes vira rotina automática.</p>
         </div>
       </div>
     </div>
 
-    <!-- Núcleo de dados -->
+    <!-- Dados e integração -->
     <div class="group reveal">
-      <div class="group-head"><h3>Núcleo de dados</h3><span class="gline"></span></div>
-      <div class="agents one">
+      <div class="group-head"><h3>Dados e integração</h3><span class="gcount">2 agentes</span><span class="gline"></span></div>
+      <div class="agents">
         <div class="agent core">
           <div class="role">A porta</div>
           <h4>Coletor Valeti</h4>
-          <p>Puxa os dados da Valeti pela API (pagamentos, tickets, mensalistas, convênios) e mantém uma base unificada de onde todos os outros trabalham.</p>
+          <p>Puxa os dados da Valeti (pagamentos, tickets, mensalistas, convênios) e mantém a base unificada de onde todos trabalham.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Dados</div>
+          <h4>Integrador de Sistemas</h4>
+          <p>Conecta os próximos sistemas (OMIE, Alfadigh, CCO, banco e maquininha) à base, à medida que entram.</p>
         </div>
       </div>
     </div>
 
     <!-- Financeiro -->
     <div class="group reveal">
-      <div class="group-head"><h3>Financeiro</h3><span class="gline"></span></div>
+      <div class="group-head"><h3>Financeiro</h3><span class="gcount">7 agentes</span><span class="gline"></span></div>
       <div class="agents">
         <div class="agent king">
           <span class="king-flag">Item rei</span>
           <h4>Conciliação</h4>
-          <p>Cruza os pagamentos da Valeti com o extrato do banco e o relatório da maquininha (Stone), e aponta divergência de taxa e valor que não bateu. Fim da conciliação na unha.</p>
+          <p>Cruza os pagamentos da Valeti com o banco e a maquininha (Stone) e aponta o que não bateu. Fim da conciliação na unha.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Auditoria Financeira</h4>
+          <p>Confere todo dia a taxa de cartão, de banco e de maquininha, e aponta a divergência.</p>
         </div>
         <div class="agent">
           <div class="role">Financeiro</div>
           <h4>Inadimplência e Cobrança</h4>
-          <p>Identifica os mensalistas em atraso e dispara a régua de cobrança pelos nossos canais.</p>
+          <p>Acha os mensalistas em atraso e dispara a régua de cobrança pelos nossos canais.</p>
         </div>
         <div class="agent">
           <div class="role">Financeiro</div>
@@ -399,57 +439,116 @@
         </div>
         <div class="agent">
           <div class="role">Financeiro</div>
-          <h4>Convênios e Nota Fiscal</h4>
-          <p>Acompanha credenciados e convênios e o controle de emissão de NFS-e.</p>
+          <h4>Fluxo de Caixa</h4>
+          <p>Projeta as entradas e saídas e avisa antes de qualquer aperto.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Fiscal e Nota (NFS-e)</h4>
+          <p>Acompanha a emissão das notas fiscais.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Financeiro</div>
+          <h4>Ponte Contábil</h4>
+          <p>Entrega o dado pronto pra contabilidade terceirizada, no formato que ela precisa, no lugar de uma pessoa fazendo esse link na mão.</p>
         </div>
       </div>
     </div>
 
-    <!-- Operação e ocupação -->
+    <!-- Operação e pátio -->
     <div class="group reveal">
-      <div class="group-head"><h3>Operação e ocupação</h3><span class="gline"></span></div>
+      <div class="group-head"><h3>Operação e pátio</h3><span class="gcount">5 agentes</span><span class="gline"></span></div>
       <div class="agents">
         <div class="agent">
           <div class="role">Operação</div>
           <h4>Frequência e Ocupação</h4>
-          <p>Lê o fluxo de veículos pra mostrar a taxa de ocupação por unidade, por dia e por hora.</p>
+          <p>Usa a leitura de placa pra mostrar a ocupação por unidade, por dia e por hora.</p>
+        </div>
+        <div class="agent guard">
+          <span class="guard-flag">Anti-fraude</span>
+          <h4>Auditoria de Pátio</h4>
+          <p>Cruza o carro que entrou com o pagamento registrado e aponta a saída sem cobrança. É o agente que fecha a porta pro dinheiro sumir no caminho.</p>
         </div>
         <div class="agent">
           <div class="role">Operação</div>
-          <h4>Sazonalidade</h4>
-          <p>Acha os padrões de alta e baixa temporada e projeta o movimento.</p>
+          <h4>Reservas</h4>
+          <p>Cuida das reservas de vaga.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Operação</div>
+          <h4>Atendimento</h4>
+          <p>Resolve as demandas repetitivas, como a 2ª via de boleto e a consulta de vaga por unidade.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Operação</div>
+          <h4>Selos e Convênios</h4>
+          <p>Compra de selo e validação de convênio e desconto.</p>
         </div>
       </div>
     </div>
 
-    <!-- Estratégia e gestão -->
+    <!-- Clientes e receita -->
     <div class="group reveal">
-      <div class="group-head"><h3>Estratégia e gestão</h3><span class="gline"></span></div>
+      <div class="group-head"><h3>Clientes e receita</h3><span class="gcount">2 agentes</span><span class="gline"></span></div>
+      <div class="agents">
+        <div class="agent">
+          <div class="role">Clientes</div>
+          <h4>Mensalistas e Recorrência</h4>
+          <p>Gerencia os planos, os vencimentos e o cartão recorrente.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Clientes</div>
+          <h4>Credenciados</h4>
+          <p>Mantém a base de parceiros e credenciados em dia.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estratégia e crescimento -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Estratégia e crescimento</h3><span class="gcount">5 agentes</span><span class="gline"></span></div>
       <div class="agents">
         <div class="agent">
           <div class="role">Estratégia</div>
-          <h4>Estratégia de Negócios</h4>
-          <p>Recomenda ajuste de tabela de preço, aponta a unidade que dá lucro e a que queima caixa, e apoia a decisão de onde abrir as próximas garagens.</p>
+          <h4>Sazonalidade</h4>
+          <p>Acha os padrões de alta e baixa temporada e projeta o movimento.</p>
         </div>
         <div class="agent">
           <div class="role">Estratégia</div>
-          <h4>Análise e Decisão (conversacional)</h4>
-          <p>A camada com que o Márcio e a Fabiana conversam pra decidir estratégia, na hora.</p>
+          <h4>Performance por Unidade</h4>
+          <p>Mostra qual unidade dá lucro e qual queima caixa.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Estratégia</div>
+          <h4>Estratégia de Negócios</h4>
+          <p>Recomenda ajuste de tabela de preço e apoia as decisões de gestão.</p>
+        </div>
+        <div class="agent">
+          <div class="role">Crescimento</div>
+          <h4>Expansão</h4>
+          <p>Analisa onde vale abrir as próximas 10 a 20 garagens.</p>
         </div>
         <div class="agent">
           <div class="role">Estratégia</div>
           <h4>Marketing e Comunicação</h4>
-          <p>Apoia a Luiza com campanhas pra encher a baixa temporada, a partir do que a Sazonalidade aponta.</p>
-        </div>
-        <div class="agent">
-          <div class="role">Estratégia</div>
-          <h4>Atendimento</h4>
-          <p>Cuida das demandas repetitivas: 2ª via de boleto, compra de selo e convênio, consulta de vaga por unidade.</p>
+          <p>Apoia a Luiza com campanhas e tráfego pra encher a baixa temporada.</p>
         </div>
       </div>
     </div>
 
-    <div class="org-note reveal">A lista cresce conforme a operação pede. A ideia é simples: <b>imagine cada pessoa que faria a gestão completa da rede, e ponha um agente ao lado dela.</b></div>
+    <!-- Pessoas -->
+    <div class="group reveal">
+      <div class="group-head"><h3>Pessoas</h3><span class="gcount">1 agente</span><span class="gline"></span></div>
+      <div class="agents one">
+        <div class="agent">
+          <div class="role">Pessoas</div>
+          <h4>RH</h4>
+          <p>Apoia os processos de RH que hoje consomem tempo do time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org-note reveal">Começamos pelo financeiro, que é onde mais dói. Alguns agentes já trabalham com os dados da Valeti desde o primeiro dia; os outros entram por fase, conforme os sistemas (OMIE, banco, RH) vão sendo conectados.</div>
   </div>
 </section>
 
